@@ -64,7 +64,7 @@ print 'PICKLE:', data_string
 
 pickle默认仅由ASCII字符组成。也可以使用更高效的二进制格式（binary format），只是因为在打印的时候更易于理解，本页的所有例子都使用ASCII输出。
 
-```
+```bash
 $ python pickle_string.py
 
 DATA:[{'a': 'A', 'b': 2, 'c': 3.0}]
@@ -124,7 +124,7 @@ if __name__ == '__main__':
 
 在运行时，该脚本创建一个以在命令行指定的参数为名的文件：
 
-```
+```bash
 $ python pickle_dump_to_file_1.py test.dat
 
 WRITING: pickle (elkcip)
@@ -165,7 +165,7 @@ finally:
 
 该版本失败的原因在于没有 SimpleObject 类可用：
 
-```
+```bash
 $ python pickle_load_from_file_1.py test.dat
 
 Traceback (most recent call last):
@@ -184,7 +184,7 @@ from pickle_dump_to_file_1 import SimpleObject
 
 至导入列表的尾部，接着重新运行该脚本：
 
-```
+```bash
 $ python pickle_load_from_file_2.py test.dat
 
 READ: pickle (elkcip)
@@ -330,7 +330,7 @@ show_edges(reloaded)
 
 重新读取的诸多节点（译者注：对应图中的圆圈）不再是同一个对象，但是节点间的关系保持住了，而且读取的仅仅是带有多个引用的对象的一个拷贝。上面所说的可以通过测试各节点在pickle处理前和之后的id()值来验证。
 
-```
+```bash
 $ python pickle_cycle.py
 
 ORIGINAL GRAPH:

@@ -19,13 +19,13 @@ comment: true
 ## 创建项目
 Scrapy必须要创建项目先，然后在项目目录下方能工作。如下命令创建：
 
-```
+```bash
 $ scrapy startproject tutorial
 ```
 
 之后，你能看到新建的scrapy工程目录：
 
-```
+```vim
 └── tutorial
     ├── scrapy.cfg			：项目的配置文件
     └── tutorial			：该项目的Python模块。之后将在此加入代码。
@@ -94,13 +94,13 @@ class DmozSpider(scrapy.Spider):
 
 进入项目的根目录，执行下列命令启动spider:
 
-```
+```bash
 scrapy crawl dmoz
 ```
 
 `crawl dmoz` 启动用于爬取 `dmoz.org` 的spider，您将得到类似的输出:
 
-```
+```vim
 2015-04-24 15:45:12+0800 [scrapy] INFO: Scrapy 0.24.6 started (bot: tutorial)
 2015-04-24 15:45:12+0800 [scrapy] INFO: Optional features available: ssl, http11, django
 2015-04-24 15:45:12+0800 [scrapy] INFO: Overridden settings: {'NEWSPIDER_MODULE': 'tutorial.spiders', 'SPIDER_MODULES': ['tutorial.spiders'], 'BOT_NAME': 'tutorial'}
@@ -175,25 +175,25 @@ Selector有四个基本的方法(点击相应的方法可以看到详细的API�
 
 我们可以通过这段代码选择该页面中网站列表里所有 <li> 元素:
 
-```
+```python
 sel.xpath('//ul/li')
 ```
 
 网站的描述:
 
-```
+```python
 sel.xpath('//ul/li/text()').extract()
 ```
 
 网站的标题:
 
-```
+```python
 sel.xpath('//ul/li/a/text()').extract()
 ```
 
 以及网站的链接:
 
-```
+```python
 sel.xpath('//ul/li/a/@href').extract()
 ```
 
@@ -209,7 +209,7 @@ for sel in response.xpath('//ul/li'):
 
 在我们的spider中加入这段代码:
 
-```
+```python
 import scrapy
 
 class DmozSpider(scrapy.Spider):
@@ -230,7 +230,7 @@ class DmozSpider(scrapy.Spider):
 
 现在尝试再次爬取dmoz.org，您将看到爬取到的网站信息被成功输出:
 
-```
+```bash
 scrapy crawl dmoz
 ```
 

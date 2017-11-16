@@ -3,9 +3,7 @@ layout: post
 title: 理解 SPARQL
 category: Document
 tags: Semantic-Web SPARQL
-year: 2014
-month: 09
-day: 29
+date: 2014-09-29
 published: true
 summary: 代表 Web 未来的语义 Web 是一个以知识为中心的模型，除了人类可读的文档和 XML 消息格式之外，它还增加了机器可以理解和处理的数据。SPARQL Protocol and RDF Query Language (SPARQL) 对于语义 Web 就像 SQL 对于关系数据库一样重要。它允许应用程序对分布式 RDF 数据库进行复杂的查询，并得到了互相竞争的多种框架的支持。本教程通过一家虚拟公司的团队跟踪和日志系统演示了它的用法。
 image: pirates.svg
@@ -93,21 +91,25 @@ RDF 中的每个节点和谓语都用 URI 标识。RDF 也允许不使用 URI �
 
 *清单1：描述作者的三元组的 RDF XML*
 
-    <?xml version="1.0"?> 
-    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:mu="http://aabs.purl.org/music#"> 
-          <rdf:Description rdf:about="http://aabs.purl.org/music#andrew"> 
-                <mu:playsInstrument>
-                     <rdf:Description rdf:about="http://aabs.purl.org/music#guitar"/> 
-               </mu:playsInstrument> 
-          </rdf:Description> 
-    </rdf:RDF>
+```xml
+<?xml version="1.0"?> 
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:mu="http://aabs.purl.org/music#"> 
+      <rdf:Description rdf:about="http://aabs.purl.org/music#andrew"> 
+            <mu:playsInstrument>
+                 <rdf:Description rdf:about="http://aabs.purl.org/music#guitar"/> 
+           </mu:playsInstrument> 
+      </rdf:Description> 
+</rdf:RDF>
+```
 
 它说明的是 “Andrew 弹吉他”，或者更精确地说 “称为 Andrew 的某人弹奏称为吉他的乐器”。必须承认，传递这么少的信息，上述的 XML 太长了。下面是 Turtle 语言的描述，该语言也是由 W3C 掌控的（如清单 2 所示）。
 
 *清单 2. 和清单 1 相同的 RDF，使用 Turtle 描述*
 
-    @prefix : <http://aabs.purl.org/music#> .
-    :andrew :playsInstrument :guitar .
+```xml
+@prefix : <http://aabs.purl.org/music#> .
+:andrew :playsInstrument :guitar .
+```
 
 好多了！这些语句的信噪比高得多，仅此一点就值得使用了。W3C 希望把 Turtle 作为人类可读和可写的 RDF 语言。SPARQL 使用 Turtle，因此后面所有的例子都将使用它。一个三元组的后面用句点（.）作为分隔符，因此空格无关紧要（如图 3 所示）。
 
@@ -121,9 +123,11 @@ RDF 中的每个节点和谓语都用 URI 标识。RDF 也允许不使用 URI �
 
 *清单 3. 在 RDF 中使用 XML Schema 数据类型*
 
-    @prefix xsdt: <http://www.w3.org/2001/XMLSchema#>.
-    @prefix mu: <http://aabs.purl.org/music#>.
-    :andrew :boughtInstrument "1987-06-13T10:30:00"^^xsdt:dateTime .
+```xml
+@prefix xsdt: <http://www.w3.org/2001/XMLSchema#>.
+@prefix mu: <http://aabs.purl.org/music#>.
+:andrew :boughtInstrument "1987-06-13T10:30:00"^^xsdt:dateTime .
+```
 
 ^^ 将数据类型声明（xsdt:dataType）附加到数据的字符串表示（"1987-06-13T10:30:00" 部分）上面。因此它说明的是 “Andrew bought the guitar on 13th June 1987 at ten thirty”。这一规则的例外是，不需要其类型的相关线索就能够明确解析的类型。因此像 5 这样没有任何说明的数字显然是一个整数。类似的，像 Andrew 这样没有任何说明的字符串也只能是一个字符串。布尔类型和小数类型也适用于这种情况。整数、布尔值和小数可以直接给出数字而不需要引号。语句 :guitar :timesRestrung 500 使用了整数。
 
@@ -131,7 +135,9 @@ RDF 中的每个节点和谓语都用 URI 标识。RDF 也允许不使用 URI �
 
 *清单 4. 使用 Python 风格的三元组用引号引起多行*
 
-    :guitar :makersModel """GL350 some more text on a new line (provided you use triple quotes)""" .
+```bash
+:guitar :makersModel """GL350 some more text on a new line (provided you use triple quotes)""" .
+```
 
 图 4 显示了清单 2、3 和 4 对应的 RDF 图。
 
@@ -145,7 +151,9 @@ RDF 没有定义标准数据结构。和一般的编程语言一样，语言设�
 
 *清单 5. 使用列表将一个主语和谓语用于多个宾语*
 
-    :andrew :child :emily . :andrew :child :thomas .
+```bash
+:andrew :child :emily . :andrew :child :thomas .
+```
 
 也可在三元组的主语中使用列表：(:thomas :emily) :parent :andrew .。
 
@@ -153,11 +161,13 @@ RDF 没有定义标准数据结构。和一般的编程语言一样，语言设�
 
 *清单 6. 使用谓语-宾语列表描述单个主语的多条语句*
 
+```bash
     _:JohnConnor a u:User;
       u:domainLogin "someDomain/john.connor";
       u:displayName "John Connor" .
+```
 
-_:JohnConnor 是一个空白节点（用前导下划线表示），可在本地引用。您可能希望通过这种方式编写 RDF，而不使用 “:JohnConnor”（外部可见的），因为域登录和将资源绑定到了 LDAP（轻型目录访问协议），这可能是您的本地资源。两种选择都可以。
+\_:JohnConnor 是一个空白节点（用前导下划线表示），可在本地引用。您可能希望通过这种方式编写 RDF，而不使用 “:JohnConnor”（外部可见的），因为域登录和将资源绑定到了 LDAP（轻型目录访问协议），这可能是您的本地资源。两种选择都可以。
 
 另一种空白节点语法使用 “[]” 表示您不愿提供本地名称的资源。仅用于当前的三元组或者谓语-宾语列表（如清单 7 所示）。
 
@@ -186,7 +196,7 @@ RDF 特意设计来支持用更抽象的词汇表进行分层扩展。扩展的�
 
 RDFS 定义了一个三元组谓语 rdfs:type，声明资源的类型。允许声明类资源继承自其他类。清单 8 是类型声明的一个例子。
 
-*清单 8. 使用 rdfs:type 和 rdfs:subClassOf 定义类的层次结构 *
+*清单 8. 使用 rdfs:type 和 rdfs:subClassOf 定义类的层次结构*
 
     :HeavenlyBody rdfs:type rdfs:Class.
     :Planet, :Asteroid, :Comet, :Meteor
@@ -420,9 +430,9 @@ Joseki 和 Jena 都是用 Java 语言编写的，不过在本教程中不需要�
       joseki:dataset _:JournalDataset;
       joseki:processor joseki:ProcessorSPARQL_FixedDS .
 
-Jena 和 Joseki（本教程中使用的工具）的配置设置都使用 Turtle。总而言之，上述片段定义了类型为 joseki:Service 的一个实体，标签为 “SPARQL on the Professional Journal model”。配置文件中的其他实体通过 joseki:serviceRef “journal” 间接引用它。它存放后面将定义的数据集 _:JournalDataset。
+Jena 和 Joseki（本教程中使用的工具）的配置设置都使用 Turtle。总而言之，上述片段定义了类型为 joseki:Service 的一个实体，标签为 “SPARQL on the Professional Journal model”。配置文件中的其他实体通过 joseki:serviceRef “journal” 间接引用它。它存放后面将定义的数据集 \_:JournalDataset。
 
-现在必须定义前面所提到的 _:JournalDataset 数据集。为此，定义一个 ja:RDFDataset 类型的实体，如清单 20 所示。
+现在必须定义前面所提到的 \_:JournalDataset 数据集。为此，定义一个 ja:RDFDataset 类型的实体，如清单 20 所示。
 
 *清单 20. 数据集配置*
 
@@ -434,7 +444,7 @@ Jena 和 Joseki（本教程中使用的工具）的配置设置都使用 Turtle�
         ja:graph _:JournalGraph
      ]; .
 
-这段 RDF 定义了由 _:JournalDataset 标识的 RDFDataset，其默认图定义为 _:JournalGraph。它定义了可以访问图中数据的 URI，并提供了数据集内容的默认访问方式。最后还需要定义本体及其数据的图。前面用 _:JournalGraph 指代这个图。清单 21 显示了图的定义。
+这段 RDF 定义了由 \_:JournalDataset 标识的 RDFDataset，其默认图定义为 \_:JournalGraph。它定义了可以访问图中数据的 URI，并提供了数据集内容的默认访问方式。最后还需要定义本体及其数据的图。前面用 \_:JournalGraph 指代这个图。清单 21 显示了图的定义。
 
 *清单 21. 图的定义*
 

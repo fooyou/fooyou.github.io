@@ -26,26 +26,26 @@ virtualenv可为部署应用提供方便，把开发环境的虚拟环境打包�
 
 在Mac OS X或linux下，使用以下命令
 
-```
+```bash
 $ sudo easy_install virtualenv
 ```
 
 或更好的使用pip：
 
-```
+```bash
 $ sudo pip install virtualenv
 ```
 *使用 `-E`参数可以使用系统环境变量中的http-proxy*
 
 ubuntu下也可以直接使用apt-get：
 
-```
+```bash
 $ sudo apt-get install python-virtualenv
 ```
 
 如果以前没有安装，那么默认会安装在/usr/local/bin下，使用pip3安装python3版本的virtualenv会加上版本号后缀，比如我现在用的是python3.4，所以我现在的有两个版本的virtualenv：
 
-```
+```bash
 $ ls /usr/local/bin/ | grep virtualenv
 virtualenv
 virtualenv-3.4
@@ -57,7 +57,7 @@ virtualenv-3.4
 
 安装完毕后，打开terminal就可以创建自己的环境。通常先创建一个项目文件夹，然后使用virtualenv创建虚拟环境 ENV（当然名字自己选）
 
-```
+```bash
 $ mkdir myproject
 $ cd myproject
 $ virutlaenv ENV
@@ -71,7 +71,7 @@ Installing setuptools, pip...done.
 
 查看ENV目录可发现：
 
-```
+```bash
 ├── bin
 │   ├── activate
 │   ├── activate.csh
@@ -93,20 +93,20 @@ Installing setuptools, pip...done.
 
 ### 启动虚拟环境
 
-```
+```bash
 $ cd ENV
 $ ./bin/activate 
 ```
 
 OK，现在就已经激活了virtualenv，然后使用pip或者easy_install，或者直接代码安装第三方包了
 
-```
+```bash
 pip install Flask
 ```
 
 如果没有启动虚拟环境，系统也安装了pip，那么第三方包将被装在系统环境中，为避免此类事情发生，可以在环境变量中（~/.bashrc, etc）添加变量：
 
-```
+```bash
 export PIP_REQUIRE_VIRTUALENV=true
 ```
 
@@ -114,7 +114,7 @@ export PIP_REQUIRE_VIRTUALENV=true
 
 退出virtualenv：
 
-```
+```bash
 $ ./bin/deactive
 ```
 
@@ -126,13 +126,13 @@ Virtualenvwrapper是virtualenv的扩展包，用于更方便的管理虚拟环�
 
 ### 安装
 
-```
+```bash
 $ sudo pip install virtualenvwrapper
 ```
 
 此时尚不能使用，实际上需要运行`/usr/local/bin/virtualenvwrapper.sh`也能使其正常工作，打开这个文件里面有安装说明：
 
-```
+```vim
 # Setup:
 #
 #  1. Create a directory to hold the virtual environments.

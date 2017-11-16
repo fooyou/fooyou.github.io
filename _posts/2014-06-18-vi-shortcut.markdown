@@ -3,9 +3,7 @@ layout: post
 title: vim常用快捷键
 category: Document
 tags: vim
-year: 2014
-month: 06
-day: 18
+date: 2014-06-18
 published: true
 summary: vi linux程序员编写代码神器
 image: pirates.svg

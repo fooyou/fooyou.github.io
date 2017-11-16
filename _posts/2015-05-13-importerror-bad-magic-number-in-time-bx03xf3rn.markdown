@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "ImportError: bad magic number in 'time': b'\\x03\\xf3\\r\\n'"
+title: "ImportError: bad magic number in 'time': b'x03xf3rn'"
 category: Document
 tags: python
 year: 2015
@@ -14,8 +14,8 @@ comment: true
 
 编写的Python脚本，用Python3一直好用，有时用Python2.7调用也好用，但今天竟然发生了这个错误：
 
-```
-    ImportError: bad magic number in 'time': b'\x03\xf3\r\n'
+```vim
+ImportError: bad magic number in 'time': b'\x03\xf3\r\n'
 ```
 
 不知道这是神马错误。Google之，如下解决：

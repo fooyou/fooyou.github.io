@@ -3,9 +3,7 @@ layout: post
 title: Git通过代理访问Github
 category: Document
 tags: git github
-year: 2012
-month: 05
-day: 13
+date: 2012-05-13
 published: true
 summary: 公司代理如何拥抱github，使用ssh协议代理喽
 image: pirates.svg
@@ -32,13 +30,13 @@ __ssh协议代理__
 
 1. 配置.ssh/config:
 
-```
+```bash
 $ vi ~/.ssh/config
 ```
 
 写下如下配置项：
 
-```
+```bash
 Host github.com
 Hostname ssh.github.com
 Port 443
@@ -49,7 +47,7 @@ ProxyCommand ~/.ssh/ssh-https-tunnel %h %p
 
 3. 修改host，port，user，pass：
 
-```
+```vim
 # Proxy details
 my $host = "proxy.xxx.com";
 my $port = 8000;
@@ -62,7 +60,7 @@ my $pass = "passwd";
 
 4. 用git 对接你的github仓库吧：
 
-```
+```bash
 $ git clone git@github.com:fooyou/jekyll-bootstrap.git
 ```
 
@@ -72,7 +70,7 @@ $ git clone git@github.com:fooyou/jekyll-bootstrap.git
 
 **ssh-https-tunel 源码**
 
-```
+```bash
 #!/usr/bin/perl -T -w
 # Copyright (C) 2001,2002,2008 Mark Suter <suter@humbug.org.au>
 #

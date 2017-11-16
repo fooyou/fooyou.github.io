@@ -3,9 +3,7 @@ layout: post
 title: Windows下使用LESS和SASS的集成环境
 category: Document
 tags: less sass windows
-year: 2014
-month: 06
-day: 23
+date: 2014-06-23
 published: true
 summary: 为什么要less和sass？互联网风吹
 image: pirates.svg
@@ -21,13 +19,13 @@ comment: true
 
 2. 安装sass
 
-    ```
+    ```bash
     gem install sass
     ```
 
     如果命令行不好用，就手动安装：
 
-    ```
+    ```bash
     gem install --local <path/sass-3.2.12.gem>
     ```
 3. 安装compass：

@@ -3,9 +3,7 @@ layout: post
 title: image 2 pdf和pdf 2 image
 category: Document
 tags: image
-year: 2014
-month: 09
-day: 14
+date: 2014-09-14
 published: true
 summary: 使用 ImageMagick的convert命令和gscan2pdf进行image 2 pdf和pdf 2image
 image: pirates.svg
@@ -16,7 +14,7 @@ comment: true
 
 最开始使用如下命令:
 
-```
+```bash
 convert -resize 50%x%50 -quality 80 *.jpg guitar_train.pdf
 ```
 
@@ -32,7 +30,7 @@ convert -resize 50%x%50 -quality 80 *.jpg guitar_train.pdf
 
 使用ImageMagick convert命令处理图像，把变小，降低其质量（为节省存储空间）批处理代码保存成adjust.sh:
 
-```
+```bash
 for img in `ls *.jpg`
     do
         convert -resize 40% -quality 75 $img out/$img
@@ -41,7 +39,7 @@ for img in `ls *.jpg`
 
 在图片根目录下运行:
 
-```
+```bash
 sh adjust.sh
 ```
 

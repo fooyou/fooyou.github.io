@@ -3,9 +3,7 @@ layout: post
 title: Ubuntu设置环境变量并立即生效
 category: Document
 tags: image
-year: 2014
-month: 06
-day: 17
+date: 2014-06-17
 published: true
 summary: Ubuntu系统修改系统环境变量的最好方法是在/etc/profile.d/文件夹下编写sh文件，而非直接修改/etc/profile文件。
 image: pirates.svg
@@ -28,7 +26,7 @@ Linux系统包含两类持久性环境变量：用户环境变量(Session-wide)�
 - /etc/environment
     - **注意：**这不是个脚本文件，其不支持变量扩展，也不需要使用赋值表达式（无需使用export）
 
-    ```
+    ```bash
     JAVA_HOME=/opt/java/jdk1.8.0_20
     ```
 - /etc/profile
@@ -43,13 +41,13 @@ Linux系统包含两类持久性环境变量：用户环境变量(Session-wide)�
 
 1. 在/etc/profile.d下新建文件java_var.sh
 
-    ```
+    ```bash
     vi /etc/profile.d/java_var.sh
     ```
 
 2. 加入JAVA_HOME、JRE_HOME和PATH到java_var.sh
 
-    ```
+    ```bash
     export JAVA_HOME=/opt/java/jdk1.8.0_20
     export JRE_HOME=$JAVA_HOME/jre
     export CLASSPATH=$CLASSPATH:.:$JAVA_HOME/lib:$JRE_HOME/lib
@@ -58,13 +56,13 @@ Linux系统包含两类持久性环境变量：用户环境变量(Session-wide)�
 
 3. 使配置生效
 
-    ```
+    ```bash
     source /etc/profile
     ```
 
 4. 查看是否设置成功。（使用echo或printenv命令）
 
-    ```
+    ```bash
     echo $JAVA_HOME
     printenv JAVA_HOME
     ```

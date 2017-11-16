@@ -3,9 +3,7 @@ layout: post
 title: vim/vi加密解密文件
 category: Document
 tags: vim
-year: 2014
-month: 09
-day: 19
+date: 2014-09-19
 published: true
 summary: Vim简单加解密文件
 image: pirates.svg
@@ -23,7 +21,7 @@ comment: true
 
 1. vi打开加密文本，输入正确密码，然后输入下面命令：
 
-    ```
+    ```bash
     :set key=
     ```
     回车保存即可解密

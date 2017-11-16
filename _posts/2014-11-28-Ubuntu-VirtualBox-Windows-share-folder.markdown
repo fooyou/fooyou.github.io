@@ -3,9 +3,7 @@ layout: post
 title: Ubuntu VirtualBox Windows 共享文件夹
 category: Document
 tags: windows virtualbox ubuntu
-year: 2014
-month: 11
-day: 28
+date: 2014-11-28
 published: true
 summary: Ubuntu下，和VirtualBox下的Windows系统共享文件夹 
 image: pirates.svg
@@ -32,7 +30,7 @@ comment: true
 5. 确定之后，回到子操作系统Windows XP，此时Windows XP操作系统内并没有任何变更（不会出现发现新硬件或者多出一个共享空间等），下面还需要您的手动配置才行。 
 6. 打Windows XP中"我的电脑"，然后可以查看您的操作系统中各磁盘的盘符信息，VirtualBox中文件共享的机制是将共享文件夹作为一个单独的硬件，因此我们可以将它视作一个网络共享硬件或者是移动设施。在Windows XP中，我们需要为刚才的共享文件分配一个盘符才行，在命令提示符中运行如下命令：（命令是windos下的cmd） 
 
-```
+```bash
 net use x: \\vboxsvr\share 
 ```
 
@@ -40,7 +38,7 @@ net use x: \\vboxsvr\share
 
 如我要在我的Windows XP中创建盘符为e:的网络驱动，则需要执行如下的语句： 
 
-```
+```bash
 net use e: \\vboxsvr\Data 
 ```
 
@@ -48,7 +46,7 @@ net use e: \\vboxsvr\Data
 
 *附：如果您的子操作系统是Linux操作系统，您可以通过如下方式实现共享：*
 
-```
+```bash
 mount -t vboxsf share mount_point 
 ```
 

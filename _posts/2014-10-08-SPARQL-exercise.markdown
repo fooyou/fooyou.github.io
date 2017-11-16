@@ -3,9 +3,7 @@ layout: post
 title: SPARQL 练习
 category: Document
 tags: Semantic-Web SPARQL
-year: 2014
-month: 10
-day: 08
+date: 2014-10-08
 published: true
 summary: 看完《理解SPARQL》做了如下练习，使用dbpedia在线SPARQL进行，网址：http://dbpedia.org/snorql/
 image: pirates.svg

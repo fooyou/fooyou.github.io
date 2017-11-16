@@ -3,9 +3,7 @@ layout: post
 title: Ubuntu开启root账户登录的方法
 category: Document
 tags: ubuntu
-year: 2014
-month: 11
-day: 19
+year: 2014-11-19
 published: true
 summary: Ubuntu下root登录方法
 image: pirates.svg
@@ -18,7 +16,7 @@ Ubuntu 默认是不允许使用root登录的，要使用root权限，就必须�
 
 **1:** 设置root密码，开启root账号：
 
-```
+```bash
 sudo passwd root
 ```
 
@@ -26,12 +24,12 @@ sudo passwd root
 
 **3:** 修改lightdm配置，修改 /etc/lightdm/lightdm.conf.d/10-ubuntu.conf 文件
 
-```
+```bash
 vi /etc/lightdm/lightdm.conf.d/10-ubuntu.conf
 ```
 
 从后面添加如下配置，重启即可看到root账户登录项
 
-```
+```bash
 greeter-show-manual-login=true
 ```

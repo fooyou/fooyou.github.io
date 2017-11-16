@@ -3,9 +3,7 @@ layout: post
 title: SPARQL 1.1概述
 category: Document
 tags: Semantic-Web SPARQL
-year: 2014
-month: 09
-day: 30
+date: 2014-09-30
 published: true
 summary: 本文档是SPARQL 1.1的概览。它介绍了一套W3C的规范，以便于在Web或在RDF存储上查询和操作RDF图的内容。
 image: pirates.svg
@@ -71,7 +69,7 @@ comment: true
 
 假定上述图数据被加载到了SPARQL服务中（比如：可以处理SPARQL查询的HTTP服务端点）SPARQL1.1可用于从简单图模式到复杂的制定查询。例如，可以通过SPARQL SELECT查询人的名字和他们的朋友：
 
-```
+```sql
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 SELECT ?name (COUNT(?friend) AS ?count)
 WHERE { 

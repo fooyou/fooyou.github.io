@@ -3,9 +3,7 @@ layout: post
 title: Eclipse通过proxy无法联网的原因
 category: Workaround
 tags: eclipse proxy ubuntu
-year: 2014
-month: 12
-day: 11
+date: 2014-12-11
 published: true
 summary: Ubuntu下，Eclipse通过代理怎么也连不上网络，如何解决？ 
 image: pirates.svg
