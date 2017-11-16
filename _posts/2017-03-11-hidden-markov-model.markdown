@@ -312,7 +312,7 @@ $$\alpha(i)=P(o_1,o_2,\cdots,o_t,i_t=q_i|\lambda)$$
 
 由于每次递推都是在前一次的基础上进行的，所以降低了复杂度。准确来说，其计算过程如下图所示：
 
-![](https://github.com/fooyou/fooyou.github.io/blob/master/img/dots/pre_direction.dot.png?raw=true)
+![](/postimgs/dots/pre_direction.dot.png)
 
 下方标号表示时间节点，每个时间点都有N种状态，所以相邻两个时间之间的递推消耗 $N^2$ 次计算。而每次递推都是在前一次的基础上做的，所以只需累加 $O(T)$ 次，所以总体复杂度是 $O(T)$ 个 $N^2$ ，即 $O(N^2T)$。
 

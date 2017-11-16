@@ -34,4 +34,4 @@ $ cmus
 $ cmus-lrc
 ```
 
-![cmus-lrc](https://raw.githubusercontent.com/fooyou/fooyou.github.io/master/img/posts/cmus-lrc.jpg)
+![cmus-lrc](/postimgs/cmus-lrc.jpg)

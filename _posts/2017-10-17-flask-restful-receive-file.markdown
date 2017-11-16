@@ -14,11 +14,11 @@ comment: true
 
 *今天中共十九大，祝贺一下！中国加油！大大们加油！*
 
-![daoni](../img/posts/2017-11-18-liyunlong.jpg)
+![daoni](/postimgs/2017-11-18-liyunlong.jpg)
 
 貌似贴错图了，应该是这个：
 
-![xidad](../img/posts/2017-10-18-xidada.jpg)
+![xidad](/postimgs/2017-10-18-xidada.jpg)
 
 
 ## 正文

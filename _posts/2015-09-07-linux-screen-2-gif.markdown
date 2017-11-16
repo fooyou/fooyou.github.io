@@ -13,7 +13,7 @@ latex: false
 
 ### 以下是实际效果：
 
-![sample](https://raw.githubusercontent.com/fooyou/fooyou.github.io/master/img/posts/2015-09-07_17-34-51.gif)
+![sample](/postimgs/2015-09-07_17-34-51.gif)
 
 操作步骤：
 
@@ -38,7 +38,7 @@ ffcast是Arch linux社区的一些黑客的荣耀作品，可以在github上找�
 
 Imagemagick可以读取`.avi`视频并有一些gif优化的小把戏能减少gif文件的大小同时还能保持好的画面质量。`convert`命令的`-layers Optimize`参数可启动Gif优化，我使用的最后的convert命令如下：
 
-```sh
+```bash
 $ convert -set delay 1x40 -layers Optimize $TMP_AVI $HOME/Pictures/$(date +%Y-%m-%d_%H:%M:%S).gif
 ```
 
@@ -48,7 +48,7 @@ $ convert -set delay 1x40 -layers Optimize $TMP_AVI $HOME/Pictures/$(date +%Y-%m
 
 将以下代码另存为：screen2gif，并添加可执行权限，即可使用了。
 
-```sh
+```bash
 TMP_AVI=$(mktemp /tmp/outXXXXXXXXXX.avi)
 ffcast -s % ffmpeg -y -f x11grab -show_region 1 -framerate 15 \
     -video_size %s -i %D+%c -codec:v huffyuv                  \

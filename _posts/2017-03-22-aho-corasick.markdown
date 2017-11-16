@@ -29,7 +29,7 @@ AC算法中有三个核心函数，分别是：
 
 以经典的ushers为例，模式串是he/ she/ his /hers，文本为“ushers”。构建的自动机如图：
 
-![自动机构建图](https://github.com/fooyou/fooyou.github.io/blob/master/img/dots/aho-corasick.dot.png?raw=true)
+![自动机构建图](/postimgs/dots/aho-corasick.dot.png)
 
 ## 匹配过程
 
@@ -51,7 +51,7 @@ success、failure 和 output 表是怎么被计算出来的呢？
 
 很简单，了解一点trie树知识的话就能一眼看穿，goto表就是一棵trie树。把上图的虚线去掉，实线部分就是一棵trie树了。
 
-![自动机构建图](https://github.com/fooyou/fooyou.github.io/blob/master/img/dots/aho-corasick-goto.dot.png?raw=true)
+![自动机构建图](/postimgs/dots/aho-corasick-goto.dot.png)
 
 ### output 表
 

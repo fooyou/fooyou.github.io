@@ -1,0 +1,18 @@
+digraph G {
+    bgcolor="transparent";
+    rankdir=LR;
+    node [shape="circle", fixedsize="true", width="0.2", style="filled", fillcolor="black"];
+    {
+        x11,x12,x13,x14,x15 -> x21,x22,x23,x24,x25 -> x31,x32,x33,x34,x35 -> x41,x42,x43,x44,x45 [arrowsize="0.5"];
+        x11,x12,x13,x14,x15,x21,x22,x23,x24,x25,x41,x42,x43,x44,x45,x31,x32,x33,x34,x35 [label=""];
+        x14 [label="1", fontcolor="white"];
+        x24 [label="2", fontcolor="white"];
+        x44 [label="T", fontcolor="white"];
+
+        x31,x32,x33,x34,x35 [label="⋮", fillcolor="transparent", color="transparent", fontcolor="black"];
+    };
+    {rank = same; x11; x12; x13; x14; x15;};
+    {rank = same; x21; x22; x23; x24; x25;};
+    {rank = same; x41; x42; x43; x44; x45;};
+    {rank = same; x31; x32; x33; x34; x35;};
+}

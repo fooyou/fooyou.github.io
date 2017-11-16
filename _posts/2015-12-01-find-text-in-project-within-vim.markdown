@@ -14,7 +14,7 @@ comment: true
 
 效果图如下：
 
-![vim search demo](https://github.com/fooyou/fooyou.github.io/blob/master/img/posts/2015-12-01_11-15-29.gif?raw=true)
+![vim search demo](/postimgs/2015-12-01_11-15-29.gif?raw=true)
 
 搜了一下发现vim wiki里有关于多个文件搜索内容的文章，比如[find in file within vim](http://vim.wikia.com/wiki/Find_in_files_within_Vim)，里面介绍了几个命令：
 
@@ -33,7 +33,7 @@ comment: true
 
 grep和lgrep依赖于外置命令，vimgrep和lvimgrep则随时可用，vimgrep声明如下：
 
-```
+```bash
 : vim[grep][!] /{pattern}/[g][j] {file} ...
 ```
 
@@ -42,7 +42,7 @@ grep和lgrep依赖于外置命令，vimgrep和lvimgrep则随时可用，vimgrep�
 
 比如要在当前文件夹下递归所有文件搜索`tar`或者是`zip`，就可以这样搜：
 
-```
+```vim
 : lvim /\<\(tar\|zip\)\>/gj **/*
 : lw
 ```
@@ -53,13 +53,13 @@ grep和lgrep依赖于外置命令，vimgrep和lvimgrep则随时可用，vimgrep�
 
 tip: 使用`cword`取当前文件光标所在出的文字，`.vimrc`配置如下：
 
-```
+```vim
 map <F3> :execute "lvimgrep /" . expand("<cword>") . "/gj **/*" <Bar> lw<CR>
 ```
 
 上述配置完成后，在vim中当前光标下，按下F3就会在vim的当前目录下搜索所有的文件及其子文件夹的文件，并显示出来，还可以使用 %:e 来做，意思是当前目录（%）下的同类型文件（e），如下：
 
-```
+```vim
 map <F3> :execute "lvimgrep /" . expand("<cword>") . "/gj " . expand("%:e") <Bar> lw<CR>
 ```
 
@@ -67,7 +67,7 @@ map <F3> :execute "lvimgrep /" . expand("<cword>") . "/gj " . expand("%:e") <Bar
 
 使用vimgrep搜索上百个文件会很慢，而用外置的grep就很快，一个原因是vimgrep使用vim的时序来读取文件，而这个时序将执行几个autocommands，所以我们在检索时关掉这个功能就会提速不少，所以最终的vimrc中配置如下：
 
-```
+```vim
 map <F3> :noautocmd execute "lvimgrep /" . expand("<cword>") . "/gj **/*" <Bar> lw<CR>
 ```
 

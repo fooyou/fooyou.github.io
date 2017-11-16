@@ -1,0 +1,15 @@
+digraph G {
+    bgcolor="transparent";
+    rankdir=LR;
+    node [shape="circle"];
+    {
+        x1 -> y1 [label="b1"];
+        x1 -> x2 [taillabel="a12"];
+        x2 -> y2 [label="b2"];
+        x2 -> x1 [taillabel="a21"];
+        x2 -> x3 [label="a23"]
+        x3 -> y3 [label="b3"];
+    };
+    {rank = same; x1; x2; x3;};
+    {rank = same; y1; y2; y3;};
+}
