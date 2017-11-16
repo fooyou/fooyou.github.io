@@ -154,7 +154,7 @@ comment: true
 但是，这三位作者没有止步于介绍新学习算法，而是走得更远。同年，他们发表了更有深度的文章《[Learning internal representations by error propagation](http://psych.stanford.edu/~jlm/papers/PDP/Volume%201/Chap8_PDP86.pdf)》。文章特别谈到了Minsky在《感知机》中讨论过的问题。尽管这是过去学者的构想，但是，正是这个1986年提出的构想让人们广泛理解了应该如何训练多层神经网络解决复杂学习问题。而且神经网络也因此回来了！
 
 
-在[第二部分](./2017-11-14-a-brief-history-of-neural-nets-and-deep-learning-part-2.markdown)，我们将看到仅仅几年后方向传播和《Learning internal representations by error propagating》中讨论的一些技巧就被应用在解决了一个非常重大的问题上：计算机视觉（使计算机识别手写体）
+在第二部分，我们将看到仅仅几年后方向传播和《Learning internal representations by error propagating》中讨论的一些技巧就被应用在解决了一个非常重大的问题上：计算机视觉（使计算机识别手写体）
 
 
 # 参考

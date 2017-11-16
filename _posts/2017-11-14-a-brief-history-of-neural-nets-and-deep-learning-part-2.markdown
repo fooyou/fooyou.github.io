@@ -112,8 +112,11 @@ LeCun也在贝尔实验室继续支持卷积神经网络，其相应的研究成
 *附：玻尔兹曼机的更多解释*
 
 > 我先学习了经典神经网络模型，花了一些时间来理解这些概率网络的概念。为了说明，我引用一下论文里的内容：
+
 > “网络修改其连接的强度，从而构建一个内部生成模型，生成与实例相同概率分布的实例。然后，当显示任何特定的实例时，网络可以通过在内部模型中找到将生成该实例的变量的值来‘解释’它。
+
 > ...
+
 > 该机由被称为单元的原始计算单元组成，这些单元通过双向链路相互连接。一个单元总是处于两种状态之一，即开或关，它将这些状态作为其相邻单元状态的概率函数，以及与其相连接的权重。权重可以取任何符号的实际值。开启或关闭的单元意味着系统目前接受或拒绝关于域的一些基本假设。链路上的权重表示两个假设之间的弱成对约束。正数的权重表明这两个假设倾向于相互支持；如果当前假定被接受，则另一个更有可能被接受。相反的，负数权重表明，和正数权重其他方面一样，但却是两个假设不能被全部接受。链路权重时对称的，在两个方向上具有相同的强度（Hinton & Sejnowski, 1983）。”
 
 我们就不展开算法的全部细节了，就列出一些亮点：这是**最大似然**算法的变体，这简单意味着它追求与已知正确值匹配的网络可见单元值（visible unit values）概率的最大化。同时计算每个单元的实际最有可能值 ，计算要求太高，因此，训练**吉布斯采样**（training Gibbs Sampling）——以随机的单元值网络作为开始，在给定单元连接值的情况下，不断迭代重新给单元赋值——被用来给出一些实际已知值。当使用训练集学习时，设置可见单位值（ visible units）从而能够得到当前训练样本的值，这样就通过抽样得到了隐藏单位值。一旦抽取到了一些真实值，我们就可以采取类似反向传播的办法——针对每个权重值求偏导数，然后估算出如何调整权重来增加整个网络做出正确预测的概率。
@@ -131,9 +134,13 @@ LeCun也在贝尔实验室继续支持卷积神经网络，其相应的研究成
 *附：唤醒算法的简化假设*
 
 > 在 Hinton 谈论唤醒算法的视频中，他经常提醒简化假设的严重程度，结果证明算法不管用。我将再次引用论文本身来解释这个假设：
+
 > “The key simplifying assumption is that the recognition distribution for a particular example d, Q is factorial (separable) in each layer. If there are h stochastic binary units in a layer B, the portion of the distribution P(B,d) due to that layer is determined by 2^(h - 1) probabilities. However, Q makes the assumption that the actual activity of any one unit in layer P is independent of the activities of all the other units in that layer, given the activities of all the units in the lower layer, l - 1, so the recognition model needs only specify h probabilities rather than 2" - 1. The independence assumption allows F(d; 8.4) to be evaluated efficiently, but this computational tractability is bought at a price, since the true posterior is unlikely to be factorial 
+
 > ... 
+
 > The generative model is taken to be factorial in the same way, although one should note that factorial generative models rarely have recognition distributions that are themselves exactly factorial.”
+
 > 注意 Neal 的信念网络也隐含地使得概率因子分解成只有前向定向连接的单元层。
 
 最终，信念网络的训练多少会快些！尽管没那么大的影响力，对信念网络的无监督学习而言，这一算法改进是非常重要的进步，堪比十年前反向传播的突破。不过，目前为止，新的机器学习方法也开始涌现，人们也又开始质疑神经网络，因为大部分的想法似乎基于直觉，而且因为计算机仍旧很难满足它们的计算需求，人工智能寒冬将在几年内到来。
@@ -141,20 +148,7 @@ LeCun也在贝尔实验室继续支持卷积神经网络，其相应的研究成
 本部分结束。
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-参考：
+# 参考：
 
 > http://www.andreykurenkov.com/writing/a-brief-history-of-neural-nets-and-deep-learning-part-2/
 > https://mp.weixin.qq.com/s/iXtyLK8YHxQT09JufNF4EA##
