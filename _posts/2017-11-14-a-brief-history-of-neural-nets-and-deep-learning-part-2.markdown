@@ -1,13 +1,12 @@
 ---
 layout: post
 title: 神经网络和深度学习简史（二）
+subtitle: 反向传播发展之后取得快速进展的研究
 category: Document
-tags: ml
+tags: ml neural
 date: 2017-11-15 13:11:34
-published: true
 summary: 本文我们将研究一些在反向传播发展之后取得快速进展的研究，直到90年代后期，我们将在后面看到它们是深度学习的基本基础。[第一部分](http://fooyou.github.io/blog/a-brief-history-of-neural-nets-and-deep-learning-part-1)
-image: pirates.svg
-comment: true
+cover: 'https://draftin.com/images/34887?token=rWIBfCstMS8Y3OsonIyWAOPNHnc9NZIGHs5JesWlo01UCpYKKcMbhJOCj-AvZuDS8VeENeNo35Z1BxQhkOexbHM'
 ---
 
 # 第二部分：神经网络的苏醒

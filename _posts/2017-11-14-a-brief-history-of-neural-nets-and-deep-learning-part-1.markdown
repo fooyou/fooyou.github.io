@@ -2,11 +2,10 @@
 layout: post
 title: 神经网络和深度学习简史（一）
 category: Document
-tags: ml
+tags: ml neural
 date: 2017-11-15 09:11:47
-published: true
 summary: 如今，深度学习浪潮拍打计算机语言的海岸已有好几年，但是，2015 年似乎才是这场海啸全力冲击自然语言处理（NLP）会议的一年。—— Dr. Christopher D. Manning, Dec 2015
-image: pirates.svg
+cover: 'https://draftin.com/images/34998?token=eP9x7J-SbQvC30KjZ23yt38XOWoU6_d0JVo72rZF-EHtWcLW-zNPyZU2ZYJu4VPm7Fxs20Gd7mPoRylRtNFigXs'
 comment: true
 ---
 
