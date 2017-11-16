@@ -96,9 +96,52 @@ LeCun也在贝尔实验室继续支持卷积神经网络，其相应的研究成
 
 一个简单的信念，或者说贝叶斯网络——玻尔兹曼机器基本上就是如此，但有着非直接/对称联系和可训练式权重，能够学习特定模式下的概率。
 
-回到玻尔兹曼机器。当这样的单元一起置于网络中，就形成了一张图表，而数据图形模型也是如此。本质上，它们能够做到一些非常类似普通神经网络的事：某些隐藏单元在给定某些代表可见变量的可见单元的已知值（输入——图像像素，文本字符等）后，计算某些隐藏变量的概率（输出——数据分类或数据特征）。以给数字图像分类为例，隐藏变量就是实际的数字值，可见变量是图像的像素；给定数字图像「1」作为输入，可见单元的值就可知，隐藏单元给图像代表「1」的概率进行建模，而这应该会有较高的输出概率。
+回到玻尔兹曼机器。当这样的单元一起置于网络中，就形成了一张图表，而数据图形模型也是如此。本质上，它们能够做到一些非常类似普通神经网络的事：某些**隐藏单元**在给定某些代表**可见变量**的**可见单元**的已知值（输入——图像像素，文本字符等）后，计算某些**隐藏变量**的概率（输出——数据分类或数据特征）。以给数字图像分类为例，隐藏变量就是实际的数字值，可见变量是图像的像素；给定数字图像「1」作为输入，可见单元的值就可知，隐藏单元给图像代表「1」的概率进行建模，而这应该会有较高的输出概率。
 
-玻尔兹曼机器实例。每一行都有相关的权重，就像神经网络一样。注意，这里没有分层——所有事都可能跟所有事相关联。我们会在后文讨论这样一种变异的神经网络
+
+![玻尔兹曼机器实例](https://draftin.com/images/34944?token=wt8jYAmcmFL7nUvwusO-SYCwcXyM0_jECFgyhTNKc5OI7gyImufruQFh98267EgUTNKXFRmZqqPP9ia4OdaOhrQ)
+
+*玻尔兹曼机器实例*
+
+*玻尔兹曼机器实例。每一行都有相关的权重，就像神经网络一样。注意，这里没有分层——所有事都可能跟所有事相关联。我们会在后文讨论这样一种变异的神经网络*
+
+因此，对于分类任务，现在有一种计算每种类别概率的好方法了。这非常类似正常分类神经网络实际计算输出的过程，但这些网络有另一个小花招：它们能够得出看似合理的输入数据。这是从相关的概率等式中得来的——网络不只是会学习计算已知可见变量值时的隐藏变量值概率，还能够由已知隐藏变量值反推可见变量值概率。所以，如果我们想得出一幅「1」数字图像，这些跟像素变量相关的单元就知道需要输出概率1，而图像就能够根据概率得出——这些网络就是**生成图像模型**。虽然可能能够实现目标非常类似普通神经网络的监督式学习，但学习一个好的生成模型的非监督式学习任务——概率性地学习某些数据的隐藏结构——是这些网络普遍所需要的。这些大部分都不是小说，学习算法确实存在，而使其成为可能的特殊公式，正如其论文本身所描述的：
+
+> “或许，玻尔兹曼机器公式最有趣的方面在于它能够引导出一种（与领域无关的）一般性学习算法，这种算法会以整个网络发展出的一种内部模型（这个模型能够捕获其周围环境的基础结构）的方式修改单元之间的联系强度。在寻找这样一个算法的路上，有一段长时间失败的历史（Newell，1982），而很多人（特别是人工智能领域的人）现在相信不存在这样的算法。”
+
+*附：玻尔兹曼机的更多解释*
+
+> 我先学习了经典神经网络模型，花了一些时间来理解这些概率网络的概念。为了说明，我引用一下论文里的内容：
+> “网络修改其连接的强度，从而构建一个内部生成模型，生成与实例相同概率分布的实例。然后，当显示任何特定的实例时，网络可以通过在内部模型中找到将生成该实例的变量的值来‘解释’它。
+> ...
+> 该机由被称为单元的原始计算单元组成，这些单元通过双向链路相互连接。一个单元总是处于两种状态之一，即开或关，它将这些状态作为其相邻单元状态的概率函数，以及与其相连接的权重。权重可以取任何符号的实际值。开启或关闭的单元意味着系统目前接受或拒绝关于域的一些基本假设。链路上的权重表示两个假设之间的弱成对约束。正数的权重表明这两个假设倾向于相互支持；如果当前假定被接受，则另一个更有可能被接受。相反的，负数权重表明，和正数权重其他方面一样，但却是两个假设不能被全部接受。链路权重时对称的，在两个方向上具有相同的强度（Hinton & Sejnowski, 1983）。”
+
+我们就不展开算法的全部细节了，就列出一些亮点：这是**最大似然**算法的变体，这简单意味着它追求与已知正确值匹配的网络可见单元值（visible unit values）概率的最大化。同时计算每个单元的实际最有可能值 ，计算要求太高，因此，训练**吉布斯采样**（training Gibbs Sampling）——以随机的单元值网络作为开始，在给定单元连接值的情况下，不断迭代重新给单元赋值——被用来给出一些实际已知值。当使用训练集学习时，设置可见单位值（ visible units）从而能够得到当前训练样本的值，这样就通过抽样得到了隐藏单位值。一旦抽取到了一些真实值，我们就可以采取类似反向传播的办法——针对每个权重值求偏导数，然后估算出如何调整权重来增加整个网络做出正确预测的概率。
+
+
+和神经网络一样，算法既可以在监督（知道隐藏单元值）也可以在无监督方式下完成。尽管这一算法被证明有效（尤其是在面对自编码神经网络解决的「编码」问题时），但很快就看出不是特别有效。Redford M. Neal 1992年的论文《[Connectionist learning of belief networks](http://www.zabaras.com/Courses/BayesianComputing/Papers/1-s2.0-0004370292900656-main.pdf)》论证了需要一种更快的方法，他说：「这些能力使得玻耳兹曼机在许多应用中都非常有吸引力——要不是学习过程通常被认为是慢的要命。」因此，Neal引入了类似**信念网络**的想法，本质上就像玻耳兹曼机控制、发送连接（所以又有了层次，就像我们之前看过的神经网络一样，而不像上面的玻耳兹曼机控制机概念）。跳出了讨厌的概率数学，这一变化使得网络能以一种更快的学习算法得到训练。洒水器和雨水那一层上面可以视为有一个信念网络——这一术语非常严谨，因为这种基于概率的模型，除了和机器学习领域有着联系，和数学中的概率领域也有着密切的关联。
+
+![信念网络](https://draftin.com/images/34893?token=vvO-2350CpV8LNjOLn8Tmcd2EFeZYCmgNj1GsYxzisrm0tqe2AF_FfynWcppZQdQ9823HTw9E2i8SC7XposnH0w)
+
+*信念网络的解释*
+
+尽管这种方法比玻尔兹曼机进步，但还是太慢了，正确计算变量间的概率关系的数学需求计算量太大了，而且还没啥简化技巧。Hinton、Neal和其他两位合作者很快在1995年的论文《[The wake-sleep algorithm for unsupervised neural networks](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.82.804&rep=rep1&type=pdf)》唤醒算法中提出了一些新技巧。这次他们又搞出一个和上个信念网络有些不一样的网络，现在被叫做「亥姆霍兹机」。再次抛开细节不谈，核心的想法就是对隐含变量的估算和对已知变量的逆转生成计算采取两套不同的权重，前者叫做recognition weights，后者叫做generative weights，保留了Neal's信念网络的有方向的特性。这样一来，当用于玻尔兹曼机的那些监督和无监督学习问题时，训练就快得多。
+
+
+*附：唤醒算法的简化假设*
+
+> 在 Hinton 谈论唤醒算法的视频中，他经常提醒简化假设的严重程度，结果证明算法不管用。我将再次引用论文本身来解释这个假设：
+> “The key simplifying assumption is that the recognition distribution for a particular example d, Q is factorial (separable) in each layer. If there are h stochastic binary units in a layer B, the portion of the distribution P(B,d) due to that layer is determined by 2^(h - 1) probabilities. However, Q makes the assumption that the actual activity of any one unit in layer P is independent of the activities of all the other units in that layer, given the activities of all the units in the lower layer, l - 1, so the recognition model needs only specify h probabilities rather than 2" - 1. The independence assumption allows F(d; 8.4) to be evaluated efficiently, but this computational tractability is bought at a price, since the true posterior is unlikely to be factorial 
+> ... 
+> The generative model is taken to be factorial in the same way, although one should note that factorial generative models rarely have recognition distributions that are themselves exactly factorial.”
+> 注意 Neal 的信念网络也隐含地使得概率因子分解成只有前向定向连接的单元层。
+
+最终，信念网络的训练多少会快些！尽管没那么大的影响力，对信念网络的无监督学习而言，这一算法改进是非常重要的进步，堪比十年前反向传播的突破。不过，目前为止，新的机器学习方法也开始涌现，人们也又开始质疑神经网络，因为大部分的想法似乎基于直觉，而且因为计算机仍旧很难满足它们的计算需求，人工智能寒冬将在几年内到来。
+
+本部分结束。
+
+
+
 
 
 
@@ -114,5 +157,4 @@ LeCun也在贝尔实验室继续支持卷积神经网络，其相应的研究成
 参考：
 
 > http://www.andreykurenkov.com/writing/a-brief-history-of-neural-nets-and-deep-learning-part-2/
-
 > https://mp.weixin.qq.com/s/iXtyLK8YHxQT09JufNF4EA##

@@ -160,6 +160,5 @@ comment: true
 # 参考
 
 > http://www.andreykurenkov.com/writing/a-brief-history-of-neural-nets-and-deep-learning/
-
 > https://mp.weixin.qq.com/s/iXtyLK8YHxQT09JufNF4EA##
 
