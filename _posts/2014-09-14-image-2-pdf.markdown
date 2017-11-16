@@ -1,0 +1,56 @@
+---
+layout: post
+title: image 2 pdf和pdf 2 image
+category: Document
+tags: image
+year: 2014
+month: 09
+day: 14
+published: true
+summary: 使用 ImageMagick的convert命令和gscan2pdf进行image 2 pdf和pdf 2image
+image: pirates.svg
+comment: true
+---
+
+今天老婆的音乐教学事业有所突破,我当然要支持,所以帮老婆把她师弟发过来的吉他教学内容转成pdf文档,教学内容为100多张图片,很大的图片.
+
+最开始使用如下命令:
+
+```
+convert -resize 50%x%50 -quality 80 *.jpg guitar_train.pdf
+```
+
+原图很大,鉴于老婆只在iPad和iPhone上查 看,所以直接把原图切掉一般,并且压缩质量改为原来的80%,看着原来100多兆的图片变成 40多兆的pdf文档,很开心.
+
+但当我打开发现,顺序乱套了,并没有按照文件名 1~178.jpg进行pdf压制,这不要命了么,忙活那么半天白费了.后到 ImageMagick官网论坛一查,果然不能有序排版,他们给出的方案很扯淡,要把每张图先转成pdf然后通过pdftk合并各个pdf.
+
+果断抛弃ImageMagick，后使用 gscan2pdf有GUI界面，可改变image顺序，还可英文OCR，很好。最终步骤如下：
+
+## Step 1
+
+------
+
+使用ImageMagick convert命令处理图像，把变小，降低其质量（为节省存储空间）批处理代码保存成adjust.sh:
+
+```
+for img in `ls *.jpg`
+    do
+        convert -resize 40% -quality 75 $img out/$img
+    done
+```
+
+在图片根目录下运行:
+
+```
+sh adjust.sh
+```
+
+调整后的图片会在out目录下
+
+## Step 2
+
+------
+
+使用gscan2pdf，没有什么好说的，打开⇒ 保存 ⇒ 命名
+
+想干点小脚本的活，除了python等脚本语言，使 用shell还是有些优势的

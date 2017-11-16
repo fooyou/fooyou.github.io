@@ -1,0 +1,37 @@
+---
+layout: post
+title: cmus 播放器的歌词同步显示插件
+category: Document
+tags: linux
+date: 2017-08-04 14:08:31
+published: true
+summary: 自己写了个 cmus 的歌词显示插件，还比较满意
+image: pirates.svg
+comment: true
+---
+
+一直用 cmus 边码代码边听音乐，但是 cmus 无法向 GUI 播放器那样可以动态查看歌词，所以昨天用 python3 写了个插件支持动态显示。
+
+歌词是从歌词迷网站上下载的，但是这个网站上的歌词都是比较老的歌，下载的歌词缓存在 `~/.cmus/lyrics/` 目录下，如果发现下载的歌词不对，你可以直接修改这个目录下的歌词文件。
+
+## 使用方法：
+
+下载 `cmus-lrc` 到本地，然后移动到 `/usr/local/bin/` 下
+
+```
+$ sudo mv cmus-lrc /usr/local/bin/
+```
+
+然后打开 cmus 开始欣赏音乐
+
+```
+$ cmus
+```
+
+打开 cmus-lrc 就可以了
+
+```
+$ cmus-lrc
+```
+
+![cmus-lrc](https://raw.githubusercontent.com/fooyou/fooyou.github.io/master/img/posts/cmus-lrc.jpg)

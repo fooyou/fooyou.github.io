@@ -1,0 +1,15 @@
+---
+layout: post
+title: Makefile
+category: Document
+tags: c++
+year: 2015
+month: 07
+day: 22
+published: true
+summary: Makefile
+image: pirates.svg
+comment: true
+---
+
+> http://www.chinaunix.net/old_jh/23/408225.html

@@ -1,0 +1,359 @@
+---
+layout: post
+title: SPARQL 1.1概述
+category: Document
+tags: Semantic-Web SPARQL
+year: 2014
+month: 09
+day: 30
+published: true
+summary: 本文档是SPARQL 1.1的概览。它介绍了一套W3C的规范，以便于在Web或在RDF存储上查询和操作RDF图的内容。
+image: pirates.svg
+comment: true
+---
+
+*W3C推荐标准2013年3月21日*
+
+## 摘要
+
+本文档是SPARQL 1.1的概览。它介绍了一套W3C的规范，以便于在Web或在RDF存储上查询和操作RDF图的内容。
+
+## 目录
+
+1. 引言
+    - 1.1 示例
+2. SPARQL 1.1 查询语言
+3. SPARQL 1.1 支持多种查询结果格式（XML、JSON、CSV、TSV）
+4. SPARQL 1.1 联合查询
+5. SPARQL 1.1 Entailment Regimes 
+6. SPARQL 1.1 更新语言
+7. SPARQL 1.1 RDF协议
+8. SPARQL 1.1 服务描述
+9. SPARQL 1.1 图存储HTTP协议
+10. 致谢
+11. 参考文献
+
+
+## 1 引言
+
+------
+
+### 1.1 示例
+
+下面，我们将说明使用SPARQL的语言，协议和相关规范的小例子。
+
+一些发布在URL为‘http://example.org/alice’的网站上的RDF图，包含了Alice的个人信息和她的社交联系人。我们使用Turtle语法来说明。
+
+*图：http://example.org/alice*
+
+
+```
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://example.org/alice#me> a foaf:Person .
+<http://example.org/alice#me> foaf:name "Alice" .
+<http://example.org/alice#me> foaf:mbox <mailto:alice@example.org> .
+<http://example.org/alice#me> foaf:knows <http://example.org/bob#me> .
+<http://example.org/bob#me> foaf:knows <http://example.org/alice#me> .
+<http://example.org/bob#me> foaf:name "Bob" .
+<http://example.org/alice#me> foaf:knows <http://example.org/charlie#me> .
+<http://example.org/charlie#me> foaf:knows <http://example.org/alice#me> .
+<http://example.org/charlie#me> foaf:name "Charlie" .
+<http://example.org/alice#me> foaf:knows <http://example.org/snoopy> .
+<http://example.org/snoopy> foaf:name "Snoopy"@en .
+```
+
+使用SPARQL1.1可以查询这样的图，将它们加载到RDF stores中可以以不同的方式操作它们。
+
+
+## 2 SPARQL 1.1 查询语言
+
+假定上述图数据被加载到了SPARQL服务中（比如：可以处理SPARQL查询的HTTP服务端点）SPARQL1.1可用于从简单图模式到复杂的制定查询。例如，可以通过SPARQL SELECT查询人的名字和他们的朋友：
+
+```
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+SELECT ?name (COUNT(?friend) AS ?count)
+WHERE { 
+    ?person foaf:name ?name . 
+    ?person foaf:knows ?friend . 
+} GROUP BY ?person ?name
+```
+
+和2008年的SPARQL 1.0一样，复杂查询可以包含`联合`、`选择性查询部分`和`过滤器`。在SPARQL1.1新增的功能有`value aggregation`，`路径表达式（path expression）`和`嵌套查询（nested queries）`等，同时1.1还支持ASK查询（返回yes/no）和CONSTRUCT查询（其结果可构建RDF图）所有1.1的新功能对这两个查询都可用。
+
+相比1.0，1.1对查询语言增加了一些新功能，包括子查询、价值分配、路径表达式或聚合（aggregate）-比如上例中使用的COUNT。
+
+### 3 SPARQL 1.1 支持多种查询结果格式（XML、JSON、CSV、TSV）
+
+为支持搜索结果的机器读入，SPARQL支持4中常用格式XML（Extensible Markup Language）、JSON（JavaScript Object Notation）、CSV（Comma Separated Values）、TSV（Tab Separated Values），它们在以下文档中有详细描述：
+
+- [SPARQL Query Results XML Format](http://www.w3.org/TR/rdf-sparql-XMLres/)
+- [SPARQL 1.1 Query Results JSON Format](http://www.w3.org/TR/sparql11-results-json/)
+- [SPARQL 1.1 Query Results CSV and TSV Formats](http://www.w3.org/TR/sparql11-results-csv-tsv/)
+
+这些文档详细说明了这些方案和方案中的RDF词根是如何使用目标格式编码的。
+
+上述示例的结果的4中形式：
+
+**XML**
+
+```xml
+<?xml version="1.0"?>
+<sparql xmlns="http://www.w3.org/2005/sparql-results#">
+ <head>
+   <variable name="name"/>
+   <variable name="count"/>
+ </head>
+ <results>
+   <result>
+     <binding name="name">
+       <literal>Alice</literal>
+     </binding>
+     <binding name="count">
+       <literal datatype="http://www.w3.org/2001/XMLSchema#integer">3</literal>
+     </binding>
+   </result>
+   <result>
+     <binding name="name">
+       <literal>Bob</literal>
+     </binding>
+     <binding name="count">
+       <literal datatype="http://www.w3.org/2001/XMLSchema#integer">1</literal>
+     </binding>
+   </result>
+   <result>
+     <binding name="name">
+       <literal>Charlie</literal>
+     </binding>
+     <binding name="count">
+       <literal datatype="http://www.w3.org/2001/XMLSchema#integer">1</literal>
+     </binding>
+   </result>
+ </results>
+</sparql>
+```
+
+**JSON**
+
+```json
+{
+  "head": {
+    "vars": [ "name" , "count" ]
+  } ,
+  "results": {
+    "bindings": [
+      {
+        "name": { "type": "literal" , "value": "Alice" } ,
+        "count": { "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "type": "typed-literal" , "value": "3" }
+      } ,
+      {
+        "name": { "type": "literal" , "value": "Bob" } ,
+        "count": { "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "type": "typed-literal" , "value": "1" }
+      } ,
+      {
+        "name": { "type": "literal" , "value": "Charlie" } ,
+        "count": { "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "type": "typed-literal" , "value": "1" }
+      }
+    ]
+  }
+}
+```
+
+**CSV**
+
+```
+name,count
+Alice,3
+Bob,1
+Charlie,1
+```
+
+**TSV**
+
+```
+?name<TAB>?count
+"Alice"<TAB>3
+"Bob"<TAB>1
+"Charlie"<TAB>1
+```
+
+*（**注**：<Tab>是TAB字符的视觉表示）*
+
+## SPARQL 1.1联合查询（Federated Query）
+
+该文档介绍了一个基于SPARQL1.1查询语言的扩展来为不同SPARQL端点明确委托某些子查询。
+
+举个例子，我们的示例中，有人或许想知道Alice的朋友中是否和DBPedia中用IRI <http://dbpedia.org/resource/Snoopy>标识的资源有相同名字的呢？通过把姓名查询和远程调用SPARQL端点 http://dbpedia.org/sparql结合起来使用关键词`SERVICE`查找<http://dbpedia.org/resource/Snoopy> 的名字就可以做到了：
+
+```
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+SELECT ?name
+WHERE {
+    <http://example.org/alice#me> foaf:knows [ foaf:name ?name ] .
+    SERVICE <http://dbpedia.org/sparql> { <http://dbpedia.org/resource/Snoopy> foaf:name ?name }
+}
+```
+
+输出结果为：
+
+|?name|
+|:-----|
+|"Snoopy"@en|
+
+上述`WHERE`语句的第一句仍然匹配本地的SPARQL服务，接下来的`SERVICE`语句被代理到远程的SPARQL服务上。
+
+------
+
+## 5 SPARQL 1.1 Entailment Regimes
+
+SPARQL可以和形如RDF Schema或者OWL axiom的本体信息一起使用。例如，我们假设除了Alice的数据外，一些由RDF Schema和OWL构成的本体信息构建定义的FOAF词汇表加载到了我们的SPARQL服务里了，
+
+该FOAF本体：（只给摘录）
+
+```
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+...
+foaf:name rdfs:subPropertyOf rdfs:label .
+...
+```
+
+以下查询索要person的label：
+
+```
+SELECT ?label
+WHERE { ?person rdfs:label ?label }
+```
+
+SPARQL引擎不会考虑任何特定的蕴含制度（entailment regimes），对这类查询不返回任何结果，然而一个RDF Schema的引入查询引擎将返回：
+
+|?label|
+|:-----|
+|"Alice"|
+|"Bob"|
+|"Charlie"|
+|"Snoopy"@en|
+
+*因为`foaf:name`是`rdfs:label`的一个子属性*
+
+[SPARQL 1.1 Entailment Regimes](http://www.w3.org/TR/sparql11-entailment/) 规范定义了，什么样的entailment regime返回什么样的结果，以及如何为RDF、RDF Schema、D-Entailment、OWL和RIF指定entailment regime。
+
+------
+
+## 6 SPARQL 1.1 更新语言
+
+[SPARQL 1.1 更新](http://www.w3.org/TR/sparql11-update/)规范中定义了SPARQL1.1的更新请求语法和语义并提供了大量示例代码。更操作可以由一些连续请求组成，并在图存储中执行图集合。提供了在图存储中对RDF图进行更新、创建和移除的操作。
+
+以下示例，可为Alice添加一个叫Dorothy的新朋友到默认的图中，然后通过一个英文tag删掉其他所有Alice朋友的名字：
+
+```
+PREFIX foaf: <http://xmlns.com/foaf/0.1/> .
+
+INSERT DATA { <http://www.example.org/alice#me> foaf:knows [ foaf:name "Dorothy" ]. } ;
+DELETE { ?person foaf:name ?mbox } 
+WHERE { <http://www.example.org/alice#me> foaf:knows ?person .
+        ?person foaf:name ?name FILTER ( lang(?name) = "EN" ) .}
+```
+
+第二个操作表明，插入和删除操作可以依赖于查询结果，WHERE部分的语法参考SPARQL 1.1 查询语言。
+
+------
+
+## 7 SPARQL 1.1 RDF协议
+
+SPARQL 1.1的RDF协议了如何通过HTTP在SPARQL服务上传递查询和更新请求。它也定义了如何映射请求到HTTP GET和POST操作，还有蛇这请求应返回什么样的HTTP响应。
+
+例如，第3节讲的基于<http://www.example.org/sparql/>的SPARQL请求，根据这个规范，会发送如下HTTP GET请求：
+
+```
+GET /sparql/?query=PREFIX%20foaf%3A%20%3Chttp%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2F%3E%0ASELECT%20%3Fname%20%28COUNT%28%3Ffriend%29%20AS%20%3Fcount%29%0AWHERE%20%7B%20%0A%20%20%20%20%3Fperson%20foaf%3Aname%20%3Fname%20.%20%0A%20%20%20%20%3Fperson%20foaf%3Aknows%20%3Ffriend%20.%20%0A%7D%20GROUP%20BY%20%3Fperson%20%3Fname HTTP/1.1
+Host: www.example.org
+User-agent: my-sparql-client/0.1
+```
+
+关于HTTP response的编码和不同query和update请求操作以及所支持的HTTP方法，这些实现细节都在协议规范中有详细描述。
+
+
+## 8 SPARQL 1.1 Service Description
+
+[SPARQL 1.1服务描述](http://www.w3.org/TR/sparql11-service-description/)文档描述了一种用于发现的方法和通过SPARQL 1.1 RDF协议使其可见的用于描述SPAEQL服务的RDF词汇表。
+
+根据此规范，服务端口，当通过HTTP GET操作（不使用query、update）时将返回一个服务提供的RDF描述，比如以下HTTP请求：
+
+```
+GET /sparql/ HTTP/1.1
+Host: www.example.org
+```
+
+使用服务描述词汇表对http://www.example.org/sparql/的端点发出的请求会返回一个RDF描述。这个描述提供， 比如关于端点的默认dataset信息或者是SPARQL语言特性和其所支持的entailment regimes。
+
+## 9 SPARQL 1.1 图存储HTTP协议
+
+对许多处理RDF数据的应用程序和服务来说，没有必要了解SPARQL 1.1的全部内容。之所以真么说是因为SPARQL 1.1的图存储协议提供了旨在直接通过HTTP操作对图集合进行管理的特定操作。
+
+比如，第4节中的第1部分的更新操作，简单的把元祖插入RDF图中。在支持这个协议的服务上，这个插入操作可以直接通过HTTP POST操作把元祖作为payload替代：
+
+```
+POST /rdf-graphs/service?graph=http%3A%2F%2Fwww.example.org%2Falice HTTP/1.1
+Host: example.org
+Content-Type: text/turtle
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+<http://www.example.org/alice#me> foaf:knows [ foaf:name "Dorothy" ] .
+```
+
+其他直接通过HTTP操作进行修改（使用HTTP PUT替换整个图，或者HTTP DELETE 删除一个RDF图） 或者复取（通过HTTP GET）RDF图的操作在 [SPARQL 1.1 图存储HTTP协议](http://www.w3.org/TR/sparql11-http-rdf-update/) 中有详细描述。这个规范可被看成是SPARQL 1.1 Query 和 Update 的轻量级合成。
+
+## 10 致谢
+
+The members of the W3C SPARQL Working group who actively contributed to the SPARQL 1.1 specifications are:
+
+- Carlos Buil Aranda, Universidad Politécnica de Madrid
+- Olivier Corby, Institut National de Recherche en Informatique et en Automatique (INRIA)
+- Souripriya Das, Oracle Corporation
+- Lee Feigenbaum, Cambridge Semantics
+- Paul Gearon, Revelytix Inc
+- Birte Glimm, Universität Ulm
+- Steve Harris, Garlik Ltd
+- Sandro Hawke, W3C
+- Ivan Herman, W3C
+- Nicholas Humfrey, BBC
+- Nico Michaelis, Dreamlab Technologies AG
+- Chimezie Ogbuji, Invited Expert
+- Matthew Perry, Oracle Corporation
+- Alexandre Passant, DERI, National University of Ireland, Galway
+- Axel Polleres, Siemens AG
+- Eric Prud'hommeaux, W3C
+- Andy Seaborne, The Apache Software Foundation
+- Gregory Todd Williams, Rensselaer Polytechnic Institute
+
+## 11 参考
+
+**SPARQL-XML-Result**
+
+> SPARQL Query Results XML Format (Second Edition), D. Beckett, J. Broekstra, Editors, W3C Recommendation, 21 March 2013, http://www.w3.org/TR/2013/REC-rdf-sparql-XMLres-20130321. Latest version available at http://www.w3.org/TR/rdf-sparql-XMLres. (See http://www.w3.org/TR/rdf-sparql-XMLres/.)
+
+**RDF-Schema**
+
+> RDF Vocabulary Description Language 1.0: RDF Schema , ed. Dan Brickley and R.V. Guha, W3C Recommendation 10 February 2004 (See http://www.w3.org/TR/rdf-schema/.)
+
+**RDF-MT**
+
+> RDF Semantics , ed. Pat Hayes, W3C Recommendation 10 February 2004 (See http://www.w3.org/TR/rdf-mt/.)
+
+**OWL2-Overview**
+
+> OWL 2 Web Ontology Language Document Overview, W3C OWL Working Group, W3C Recommendation 27 October 2009 (See http://www.w3.org/TR/owl2-overview/.)
+
+**RIF-Overview**
+
+> RIF Overview, ed. Michael Kifer and Harold Boley, W3C Working Group Note 22 June 2010 (See http://www.w3.org/TR/rif-overview/.)
+
+**Turtle**
+
+> Turtle - Terse RDF Triple Language, ed Eric Prud'hommeaux and Gavin Carothers, Working Draft 09 August 2011. (See http://www.w3.org/TR/turtle/.)
+
+**SPARQL10-Query**
+
+> SPARQL Query Language for RDF, ed. Eric Prud'hommeaux and Andy Seaborne, W3C Recommendation 15 January 2008 (See http://www.w3.org/TR/rdf-sparql-query/.)
+

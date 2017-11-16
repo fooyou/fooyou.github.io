@@ -1,0 +1,247 @@
+---
+layout: post
+title: 使用vim打造IDE 
+category: Document
+tags: vim 
+year: 2015
+month: 08
+day: 13 
+published: true
+summary: 使用vim打造IDE，其中的插件主要使用到NERDTree和CtrlP
+image: pirates.svg
+comment: true
+---
+
+> 参见：https://www.safaribooksonline.com/blog/2014/11/23/way-vim-ide/
+
+越来越喜欢vim，当然我还是很喜欢Sublime Text，但是最近一直在linux server上写代码，所以就开始用vim，等一些按键熟悉之后发现脱离鼠标后，使用键盘疯狂敲击真的是非常爽的事。
+
+### 所需vim插件
+
+     插件名  |       描述
+-------------|----------------------------
+ vundle      | 管理vim插件的插件，需要在.vimrc中增/删插件
+ NERDTree    | IDE的必需品，Tree目录结构，有许多子插件
+ ctrlp       | 类似Sublime Ctrl+P功能，极速检索目录树中的文件
+ neocomplcache | 自动补全的插件，最棒的，谁用谁知道
+ airline     | 状态bar，自认为很有用，显示当前文件状态，编码格式，等等
+
+还有很多美好的插件，不过对于我来说这些已经够用了。.vimrc配置文件如下，里面有说明。
+
+```
+"                                      通用设置 
+" -------------------------------------------------------------------------------------------
+set number                    " 显示行号
+set tabstop=4                 " Tab长度为4
+set softtabstop=4             " 
+set shiftwidth=4              "
+set expandtab                 " 空格代替Tab，否：set noexpandtab
+
+
+
+"                                  Vundle Vim插件管理
+" -------------------------------------------------------------------------------------------
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" 追上sublime text的 ctrp-p
+Plugin 'kien/ctrlp.vim'
+
+" 文件浏览插件
+Plugin 'scrooloose/nerdtree'
+
+" 灵活显示status/tabline的超轻量级插件
+Plugin 'bling/vim-airline'
+
+" 自动补全的终极插件-Neocomplcache
+Plugin 'Shougo/neocomplcache.vim'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+"                                 NERDTree 插件配置 
+" --------------------------------------------------------------------------------------------
+"  按下 Ctrol+n 显示/隐藏 NERDTree
+map <C-n> :NERDTreeToggle<CR>
+
+" 当前目录下打开NERDTree
+set autochdir
+let NERDTreeChDirMode=2
+nnoremap <leader>n :NERDTree .<CR>
+
+"                                 airline 插件配置 
+" --------------------------------------------------------------------------------------------
+set laststatus=2                " 默认打开airline
+" let g:airline#extensions#tabline#enabled = 1      " 打开tabline
+
+"                                 neocomplcache 插件配置 
+" --------------------------------------------------------------------------------------------
+"Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplcache.
+let g:neocomplcache_enable_at_startup = 1
+" Use smartcase.
+let g:neocomplcache_enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+
+" Enable heavy features.
+" Use camel case completion.
+"let g:neocomplcache_enable_camel_case_completion = 1
+" Use underbar completion.
+"let g:neocomplcache_enable_underbar_completion = 1
+
+" Define dictionary.
+let g:neocomplcache_dictionary_filetype_lists = {
+    \ 'default' : '',
+    \ 'vimshell' : $HOME.'/.vimshell_hist',
+    \ 'scheme' : $HOME.'/.gosh_completions'
+        \ }
+
+" Define keyword.
+if !exists('g:neocomplcache_keyword_patterns')
+    let g:neocomplcache_keyword_patterns = {}
+endif
+let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+
+" Plugin key-mappings.
+inoremap <expr><C-g>     neocomplcache#undo_completion()
+inoremap <expr><C-l>     neocomplcache#complete_common_string()
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return neocomplcache#smart_close_popup() . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>  neocomplcache#close_popup()
+inoremap <expr><C-e>  neocomplcache#cancel_popup()
+" Close popup by <Space>.
+"inoremap <expr><Space> pumvisible() ? neocomplcache#close_popup() : "\<Space>"
+
+" For cursor moving in insert mode(Not recommended)
+"inoremap <expr><Left>  neocomplcache#close_popup() . "\<Left>"
+"inoremap <expr><Right> neocomplcache#close_popup() . "\<Right>"
+"inoremap <expr><Up>    neocomplcache#close_popup() . "\<Up>"
+"inoremap <expr><Down>  neocomplcache#close_popup() . "\<Down>"
+" Or set this.
+"let g:neocomplcache_enable_cursor_hold_i = 1
+" Or set this.
+"let g:neocomplcache_enable_insert_char_pre = 1
+
+" AutoComplPop like behavior.
+"let g:neocomplcache_enable_auto_select = 1
+
+" Shell like behavior(not recommended).
+"set completeopt+=longest
+"let g:neocomplcache_enable_auto_select = 1
+"let g:neocomplcache_disable_auto_complete = 1
+"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" Enable heavy omni completion.
+if !exists('g:neocomplcache_force_omni_patterns')
+  let g:neocomplcache_force_omni_patterns = {}
+endif
+let g:neocomplcache_force_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+let g:neocomplcache_force_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+let g:neocomplcache_force_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+
+" For perlomni.vim setting.
+" https://github.com/c9s/perlomni.vim
+let g:neocomplcache_force_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+```
+
+### vim 工作区切换的快捷键
+
+     按键    |              描述
+-------------|-----------------------------
+ctrl + w + h | 光标Focus左侧树形目录
+ctrl + w + l | 光标Focus右侧文件显示窗口
+ctrl + w + w | 光标在多个split窗口间切换
+ctrl + w + r | 移动当前窗口的布局位置
+
+
+### NERDTree的常用快捷键
+
+ 按键 |   描述
+------|-----------------------
+ o    | 在已有窗口中打开文件、目录或书签，并Focus到该窗口
+ go   | 在已有窗口中打开文件、目录或书签，但不跳到该窗口
+ t    | 在新 Tab 中打开选中文件/书签，并跳到新 Tab
+ T    |  在新 Tab 中打开选中文件/书签，但不跳到新 Tab
+ i    |  split 一个新窗口打开选中文件，并跳到该窗口
+ gi   | split 一个新窗口打开选中文件，但不跳到该窗口
+ s    |  vsplit 一个新窗口打开选中文件，并跳到该窗口
+ gs   | vsplit 一个新 窗口打开选中文件，但不跳到该窗口
+ !    | 执行当前文件
+ O    | 递归打开选中 结点下的所有目录
+ x    | 合拢选中结点的父目录
+ X    | 递归 合拢选中结点下的所有目录
+ e    | 编辑当前路径
+      | 
+ <CR> | 同 o
+ 双击 | 同 o
+ 中击 | 对于文件同 i，对于目录同 e
+ D    | 删除当前书签
+      | 
+ P    | 跳到根结点
+ p    | 跳到父结点
+ K    | 跳到当前目录下同级的第一个结点
+ J    | 跳到当前目录下同级的最后一个结点
+ k    | 跳到当前目录下同级的前一个结点
+ j    | 跳到当前目录下同级的后一个结点
+      |
+ C    | 将选中目录或选中文件的父目录设为根结点
+ u    | 将当前根结点的父目录设为根目录，并变成合拢原根结点
+ U    | 将当前根结点的父目录设为根目录，但保持展开原根结点
+ r    | 递归刷新选中目录
+ R    | 递归刷新根结点
+ m    | 显示文件系统菜单
+ cd   | 将 CWD 设为选中目录
+      | 
+ I    | 切换是否显示隐藏文件
+ f    | 切换是否使用文件过滤器
+ F    | 切换是否显示文件
+ B    | 切换是否显示书签
+      | 
+ q    | 关闭 NerdTree 窗口
+ ?    | 切换是否显示 Quick Help
+      | 
+ ma   | 新建目录或文件

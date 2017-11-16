@@ -1,0 +1,18 @@
+---
+layout: post
+title: ACL-IJCNLP 2015议程术语指南
+category: Document
+tags: nlp
+year: 2015
+month: 07
+day: 08
+published: true
+summary: 第53届计算语言学协会年度会议和第7届自然语言处理亚洲联盟国际联席会 (ACL-IJCNLP) 本月末在北京国际会展中心召开，本文介绍一些参会演讲的时间地点以及术语对照。
+image: pirates.svg
+comment: true
+---
+
+
+__7月27日__
+
+
