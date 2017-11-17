@@ -26,8 +26,8 @@ search: true
 nightMode: true
 
 # Comments
-disqus: false
-disqus_url: ''  # 'https://meshinestar.disqus.com/embed.js'
+disqus: true
+disqus_url: 'https://meshinestar.disqus.com/embed.js'
 
 # Share
 social-share: true
