@@ -5,7 +5,7 @@ subtitle: 神经网络的崛起
 category: Document
 tags: ml neural
 date: 2017-11-17 13:11:56
-cover: ''
+cover: 'https://www.kdnuggets.com/wp-content/uploads/photo.jpg'
 ---
 
 本部分是我们关于神经网络和深度学习简史的终篇，我们将讲述 90 年代后期深度学习是如何在神经网络坍塌时发了自己的，以及自那以来它所取得的惊人的艺术成就。
@@ -13,6 +13,8 @@ cover: ''
 # 第四部分：神经网络的辉煌
 
 > “问问任何一个机器学习的人什么使得神经网络的研究得以继续，他们可能会提到以下三人中的一个或所有的名字：Geoffrey Hinton，接下来是 Yoshua Bengio 和 Yann LeCun（任职于Facebook 和纽约大学）”[^1]
+![](https://image.slidesharecdn.com/derinogrenmeab2016-03-160204212134/95/derin-renme-nedir-akademik-biliim-2016-sunumu-31-638.jpg?cb=1454621174)
+
 
 ## 深度学习的密谋
 
@@ -80,7 +82,8 @@ Dahl与Mohamed利用GPU打破记录是一个早期且相对有限的成功，但
 
 这并不是说公司这么做是为了慈善。这是他们所有人探索如何把技术商业化的开始，其中最为突出的是谷歌。但是也许并非Hinton，而是吴恩达造成了这一切，他促使公司成为世界最大的商业化采用者和技术用户者。在2011年，吴恩达在巡视公司时[偶遇](https://medium.com/backchannel/google-search-will-be-your-next-brain-5207c26e4523#.b3x9b7ods)到了传说中的谷歌人Jeff Dean，聊了一些他用谷歌的计算资源来训练神经网络所做的努力。这使Dean着迷，于是与吴恩达一起创建了谷歌大脑（Google Brain）——努力构建真正巨大的神经网络并且探索它们能做什么。这项工作引发了一个规模前所未有的无监督式神经网络学习——16000个CPU核，驱动高达10亿权重的学习（作为比较，Hinton在2006年突破性的DBN大约有100万权重）。神经网络在YouTube视频上被训练，完全无标记，并且学着在这些视频中去辨认最平常的物体——而神经网络对于猫的发现，引起了互联网的集体欢乐。
 
-![谷歌最著名的神经网络学习猫](https://mmbiz.qpic.cn/mmbiz_jpg/VYh0ayiawQ8ez3iahhLY6ENbvzBJJ63MCiaPwmibTnSZog3KXJLpHEMQHSGibFriaKjkVkwzhVY1rvvmjPCPN0jmL3vw/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1)
+![谷歌最著名的神经网络学习猫](https://draftin.com:443/images/34978?token=5YYsfXB4l7NfgnQSV-PHB3ctZ5NVQU0oc5W8MnG1LIDiO6wBW_f9C_hUixutvqV7N4fRH_P0W3ALuOdZbIGf_L4)
+
 *谷歌最著名的神经网络学习猫。这是输入到一个神经元中最佳的一张。*
 
 它很可爱，也很有用。正如他们常规发表的一篇论文中所报道的，由模型学习的特征能用来记录标准的计算机视觉基准的设置性能[^11]。这样一来，谷歌训练大规模的神经网络的内部工具诞生了，自此他们仅需继续发展它。深度学习研究的浪潮始于2006年，现在已经确定进入行业使用。
