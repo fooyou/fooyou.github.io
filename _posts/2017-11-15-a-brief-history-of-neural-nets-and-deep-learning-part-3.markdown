@@ -3,7 +3,7 @@ layout: post
 title: 神经网络和深度学习简史（三）
 subtitle: 神经网络 90 年代的寒冬
 category: Document
-tags: ml meural
+tags: ml neural
 date: 2017-11-16 19:11:04
 cover: 'https://draftin.com/images/34568?token=osHGQ5vZmlKI8wvUQDodyNnTzHvIIucFK6U0Z1ynSkEKrMZy1FEdoBrizZ7fujKpEWiYaC1-1fm8lMLh7GKKVuc'
 ---
