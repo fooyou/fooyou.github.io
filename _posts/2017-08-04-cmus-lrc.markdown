@@ -18,19 +18,19 @@ comment: true
 
 下载 `cmus-lrc` 到本地，然后移动到 `/usr/local/bin/` 下
 
-```
+```bash
 $ sudo mv cmus-lrc /usr/local/bin/
 ```
 
 然后打开 cmus 开始欣赏音乐
 
-```
+```bash
 $ cmus
 ```
 
 打开 cmus-lrc 就可以了
 
-```
+```bash
 $ cmus-lrc
 ```
 

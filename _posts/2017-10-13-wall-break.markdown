@@ -72,19 +72,19 @@ OpenDNS：
 
 Windows 系统：
 
-```
+```bash
 > notepad %SystemRoot%\system32\drivers\etc\hosts
 ```
 
 Unix-Linux 家族
 
-```
+```bash
 $ sudo vim /etc/hosts
 ```
 
 打开之后，把那些被封锁的网站的 IP 及域名加入 hosts 文件（每行一个）即可。比方说，上述提到的 Google Drive，它的 IP 是 74.125.227.198，那我们只要在 hosts 加入如下一行：
 
-```
+```vim
 74.125.227.198 drive.google.com
 ```
 

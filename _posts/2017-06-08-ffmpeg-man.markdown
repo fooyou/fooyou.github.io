@@ -14,7 +14,7 @@ ffmpeg 视频处理的终极神器，你值得学习！
 
 ## 语法
 
-```
+```bash
 $ ffmpeg [[infile options][-i infile]] ... {[outfile options] outfile} ...
 ```
 
@@ -24,7 +24,7 @@ options 修饰随后的指定文件，所以参数顺序很重要，同一个 op
 
 **设定输出文件的视频比特率(即码率)**
 
-```
+```bash
 $ ffmpeg -i input.mp4 -b 64k output.mp4
 ```
 
@@ -35,7 +35,7 @@ $ ffmpeg -i input.mp4 -b 64k output.mp4
 
 **设定输出文件的帧率**
 
-```
+```bash
 $ ffmpeg -i input.mp4 -r 24 output.mp4
 ```
 
@@ -45,7 +45,7 @@ $ ffmpeg -i input.mp4 -r 24 output.mp4
 
 **强制输入文件的帧率为 1，输出文件的帧率为 24**
 
-```
+```bash
 $ ffmpeg -r 1 -i input.m2v -r 24 output.mp4
 ```
 
@@ -80,7 +80,7 @@ $ ffmpeg -r 1 -i input.m2v -r 24 output.mp4
 
 显示可见编解码
 
-```
+```vim
 Codecs:
  D..... = Decoding supported
  .E.... = Encoding supported
