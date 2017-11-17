@@ -18,19 +18,19 @@ es: es 集群
 
 配置 'conf/titan-hbase-elasticsearch.properties' 增加 hbase 和 es 的 table 和 index-name 名：
 
-```
+```vim
 storage.hbase.table=hbase_es_test
 index.search.index-name=hbase_es_test
 ```
 打开 gremlin.sh :
 
-```
+```bash
 $ ./bin/gremlin.sh
 ```
 
 显示如下：
 
-```
+```bash
          \,,,/
          (o o)
 -----oOOo-(3)-oOOo-----
@@ -45,7 +45,7 @@ gremlin>
 
 加载配置项，创建 graph (不知道为啥出现了一个hdfs的异常，没有处理这个异常，但不影响后续操作)
 
-```
+```bash
 gremlin> graph = TitanFactory.open('conf/titan-hbase-es.properties')
 15:52:36 WARN  org.apache.hadoop.hbase.util.DynamicClassLoader  - Failed to identify the fs of dir hdfs://local
 host:9000/hbase/lib, ignored
@@ -66,7 +66,7 @@ gremlin>
 
 获取图的 traversal：
 
-```
+```bash
 gremlin> g = graph.traversal()
 ==>graphtraversalsource[standardtitangraph[hbase:[10.10.113.192, 10.10.113.193, 10.10.113.194]], standard]
 ```
@@ -77,37 +77,37 @@ gremlin> g = graph.traversal()
 
 ### Select all
 
-```
+```bash
 gremlin> g.V().hasLabel('category').valueMap()
 ```
 
 限制显示个数使用 limit(n):
 
-```
+```bash
 gremlin> g.V().hasLabel('category').limit(5).valueMap()
 ```
 
 统计个数使用 count():
 
-```
+```bash
 gremlin> g.V().hasLabel('Disease').count()
 ```
 
 ### 查询某键值
 
-```
+```bash
 gremlin> g.V().hasLabel('category').values('name')
 ```
 
 ### 查询节点某 label 的数量
 
-```
+```bash
 gremlin> g.V().hasLabel('category').count()
 ```
 
 ### 查询多个键值
 
-```
+```bash
 gremlin> g.V().hasLabel('category').values('name', 'description')
 ```
 
@@ -115,19 +115,19 @@ gremlin> g.V().hasLabel('category').values('name', 'description')
 
 Select calculated column
 
-```
+```bash
 gremlin> g.V().hasLabel('category').values('name').map{ it.get().length()}
 ```
 
 ### Distict
 
-```
+```bash
 gremlin> g.V().hasLabel('category').values('name').map {it.get().length()}.dedup()
 ```
 
 ### 最大最小值
 
-```
+```bash
 gremlin> g.V().hasLabel('category').values('name').map {it.get().length()}.max()
 ```
 
@@ -143,7 +143,7 @@ SELECT ProductName, UnitsInStock FROM Products WHERE UnitsInStock = 0
 
 Gremlin:
 
-```
+```bash
 gremlin> g.V().has('product', 'unitsInStock', 0).valueMap('name', 'unitsInStock')
 ```
 
@@ -157,7 +157,7 @@ SELECT ProductName, UnitsOnOrder FROM Products WHERE NOT(UnitsOnOrder = 0)
 
 Gremlin:
 
-```
+```bash
 gremlin> g.V().has('product', 'unitsOnOrder', neq(0)).valueMap('name', 'unitsOnOrder')
 ```
 
@@ -169,7 +169,7 @@ SQL:
 SELECT ProductName, UnitPrice FROM Products WHERE UnitPrice >= 5 AND UnitPrice < 10
 ```
 
-```
+```bash
 gremlin> g.V().has('product', 'unitPrice', between(5f, 10f)).valueMap('name', 'unitPrice')
 ```
 
@@ -185,7 +185,7 @@ SELECT ProductName, UnitsInStock FROM Products WHERE Discontinued = 1 AND UnitsI
 
 Gremlin:
 
-```
+```bash
 gremlin> g.V().has('product', 'discontinued', true).has('unitsInStock', neq(0)).ValueMap('name', 'unitsInStock')
 ```
 
@@ -200,14 +200,14 @@ SELECT ProductName, UnitPrice FROM Products ORDER BY UnitPrice DESC
 
 Gremlin:
 
-```
+```bash
 gremlin> g.V().hasLabel('product').order().by('unitPrice', incr).valueMap('name', 'unitPrice')
 gremlin> g.V().hasLabel('product').order().by('unitPrice', decr).valueMap('name', 'unitPrice')
 ```
 
 ## 分页
 
-```
+```bash
 gremlin> g.V().hasLabel("product').order().by('unitPrice', incr).range(5, 10).valueMap('name', 'UnitPrice')
 ```
 

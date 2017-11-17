@@ -29,7 +29,7 @@ Linux MacOS 使用 ssh 比较方便。下面介绍一下步骤：
 
 总之搜一个，注册一个，比如 fastssh.com，注册一个 7 天的用户，系统会给你如下信息：
 
-```
+```vim
 Your Username fastssh.com-qwerter has been successfully created !
 
 Username SSH : fastssh.com-qwerter
@@ -45,7 +45,7 @@ You allowed use this account up to two (2) multi-bitvise, else you will be autom
 
 另外 fastssh 提供了一个永久免费的账号，只是速度很慢。但我在写这篇日记时没有连接成功，账号如下：
 
-```
+```vim
 Username: fastssh.com
 Password: fastssh.com
 Host IP Addr: free.fastssh.com
@@ -54,7 +54,7 @@ Openssh Port: 22 & 143
 
 ## Step 2: 使用 ssh 绑定 ssh server 到 本地 
 
-```
+```bash
 $ ssh -fNC -D 7070 fastssh.com-qwerter@usa.serverip.co
 fastssh.com-qwerter@usa.serverip.co's password: 
 ```
@@ -65,13 +65,13 @@ fastssh.com-qwerter@usa.serverip.co's password:
 
 ## Step 3: 启动 chromium-browser
 
-```
+```bash
 $ chromium-browser --proxy-server="socks://localhost:7070"
 ```
 
 若是在 Mac 上，则如何启动
 
-```
+```bash
 $ open -a /Applications/Google\ Chrome.app --args --proxy-server="socks5://localhost:7070"
 ```
 

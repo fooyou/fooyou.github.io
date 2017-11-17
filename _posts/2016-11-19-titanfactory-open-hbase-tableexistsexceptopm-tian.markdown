@@ -16,7 +16,7 @@ comment: true
 
 一开始我找到 /tmp/ 目录下把 /hbase 目录删除了，然后在 gremlin 中重新 open 新图，却发生了如下异常：
 
-```
+```bash
 gremlin> graph = TitanFactory.open('conf/titan-hbase-es.properties')
 16:54:34 WARN  com.thinkaurelius.titan.diskstorage.hbase.HBaseStoreManager  - Unexpected exception during getDeployment()
 java.lang.RuntimeException: com.thinkaurelius.titan.diskstorage.TemporaryBackendException: Temporary failure in storage backend
@@ -164,7 +164,7 @@ java.lang.RuntimeException: com.thinkaurelius.titan.diskstorage.TemporaryBackend
 
 如果 Zookeeper 是使用的 Hbase 自带的，先确保 Hbase 运行，然后：
 
-```sh
+```bash
 $ ./bin/hbase zkcli
 zkcli> rmr /hbase
 ```

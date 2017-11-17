@@ -18,7 +18,7 @@ comment: true
 
 ### 1. 创建 hadoop 用户
 
-```sh
+```bash
 $ sudo useradd -m hadoop -s /bin/bash    # 创建可以登录的 Hadoop 用户，并使用 /bin/bash 做为 shell。
 $ sudo passwd hadoop                     # 设置密码
 ```
@@ -27,7 +27,7 @@ $ sudo passwd hadoop                     # 设置密码
 
 Cluster、单节点模式需要用到 SSH 登录，需要安装 SSH server：
 
-```sh
+```bash
 $ sudo apt-get install openssh-server openssh-client
 ```
 

@@ -16,13 +16,13 @@ comment: true
 
 使用:
 
-```sh
+```bash
 $ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple tensorflow
 ```
 
 修改 pip 默认的的配置，可新建 ~/.pip/pip.conf，并添加如下内容：
 
-```
+```vim
 [global]
 
 index-url=https://pypi.tuna.tsinghua.edu.cn/simple

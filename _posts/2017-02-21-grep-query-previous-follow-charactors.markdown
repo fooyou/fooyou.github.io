@@ -10,7 +10,7 @@ image: pirates.svg
 comment: true
 ---
 
-```
+```bash
 $ echo "some123_string_and_another" | grep -o -P '.{0,3}string.{0,4}'
 23_string_and
 ```

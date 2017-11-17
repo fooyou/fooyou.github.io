@@ -29,7 +29,7 @@ comment: true
 
 1. Java 8 环境，$JAVA_HOME 配置在环境变量中。
 2. ssh 免密登陆
-    ```
+    ```bash
     $ ssh-keygen -t dsa -P '' -f ~/.ssh/authorized_keys
     $ cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
     $ ssh localhost // 登陆测试
@@ -47,7 +47,7 @@ comment: true
 
 1. conf/core-site.xml
 
-    ```
+    ```vim
     <configuration>
         <!-- Hadoop 伪分布式配置 -->
         <!-- 使用 /opt/hadoop-1.2.1/tmp 做为 hdfs 的存储目录，默认为 /tmp 
@@ -66,7 +66,7 @@ comment: true
 
 2. conf/hdfs-site.xml
 
-    ```
+    ```vim
     <configuration>
         <property>
             <name>dfs.replication</name>
@@ -88,7 +88,7 @@ comment: true
 
 3. conf/mapred-site.xml
 
-    ```
+    ```vim
     <configuration>
         <property>
             <name>mapred.job.tracker</name>
@@ -101,14 +101,14 @@ comment: true
 
     将 JAVA_HOME 改为 JDK 目录
 
-    ```
+    ```bash
     export JAVA_HOME=`/usr/libexec/java_home`
     ```
 
 
 配置完成，进入 Hadoop-1.2.1 主目录：
 
-```
+```bash
 $ ./bin/Hadoop namenode -format // 格式化 Hadoop namenode
 $ ./bin/start-all.sh            // 启动 Hadoop 的各个监护进程，可通过 http://localhost:50070 和 http://localhost:50030 查看 namenode 和 jobtracker。
 $ jps                           // 查看 JVM 运行情况
@@ -121,7 +121,7 @@ $ ./bin/stop-all.sh             // 关闭 Hadoop 的各个监护进程
 
 1. conf/hbase-site.xml
 
-    ```
+    ```vim
     <configuration>
         <property>
             <name>hbase.rootdir</name>
@@ -137,14 +137,14 @@ $ ./bin/stop-all.sh             // 关闭 Hadoop 的各个监护进程
 
 2. conf/hbase-env.sh
 
-    ```
+    ```vim
     export JAVA_HOME=`/usr/libexec/java_home` # 自己的JAVA_HOME 主目录
     export HBASE_CLASSPATH=/opt/hadoop-1.2.1/conf # 自己的 HADOOP_HOME 主目录
     ```
 
     如果要使用 HBase 自带的 Zookeeper 则需要 `HBASE_MANAGES_ZK=true`，这时启动和关闭顺序为：
 
-    ```
+    ```bash
     启动 Hadoop -> 启动 Zookeeper 集群 -> 启动 HBase -> 停止 HBase -> 停止 Zookeeper 集群 -> 停止 Hadoop。
     ```
 完成以上步骤，Hadoop + HBase 伪分布式配置就完事了。
@@ -161,7 +161,7 @@ $ ./bin/stop-all.sh             // 关闭 Hadoop 的各个监护进程
 
 因为在 Mac 上，使用 homebrew 安装，但发现里面仅有 1.7 版本，所以就安装了 1.7，目前没发现什么问题，单最好是安装相同版本的。
 
-```
+```bash
 $ brew search elasticsearch
 elasticsearch homebrew/versions/elasticsearch17 homebrew/versions/elasticsearch24
 $ brew install elasticsearch17
@@ -177,7 +177,7 @@ $ elasticsearch         # 运行 elasticsearch
 
 启动顺序：
 
-```
+```bash
 $ ./hadoop-1.2.1/bin/start-all.sh
 $ ./hbase-0.98.23-hadoop1/bin/start-hbase.sh
 $ elasticsearch
@@ -186,7 +186,7 @@ $ ./titan-1.0.0-hadoop1/bin/gremlin.sh
 
 创建基于 hbase 和 elasticsearch 的图，并加载 titan 的测试数据：
 
-```
+```bash
 gremlin> graph = TitanFactory.open('conf/titan-hbase-es.properties')
 ==>standardtitangraph[cassandrathrift:[127.0.0.1]]
 gremlin> GraphOfTheGodsFactory.load(graph)
@@ -197,7 +197,7 @@ gremlin> g = graph.traversal()
 
 **全局图索引**
 
-```
+```bash
 gremlin> saturn = g.V().has('name', 'saturn').next()
 ==>v[256]
 gremlin> g.V(saturn).valueMap()
@@ -208,7 +208,7 @@ gremlin> g.V(saturn).in('father').in('father').values('name')
 
 停止顺序：
 
-```
+```bash
 $ (Ctrl + C 停止 gremlin)
 $ (Ctrl + C 停止 elasticsearch)
 $ /opt/hbase-0.98.23-hadoop1/bin/stop-hbase.sh  # 时间可能较长

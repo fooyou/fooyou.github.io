@@ -18,7 +18,7 @@ graph.io(IoCore.graphml()).writeGraph("graphml.xml");
 
 Neo4j 导入
 
-```sh
+```bash
 $ ./neo4j/bin/neo4j start
 $ ./neo4j/bin/neo4j-shell -host 127.0.0.1 # 如果 /etc/hosts 中没有指定 127.0.0.1 为 localhost
 neo4j-sh> import-graphml -i graphml.xml -t # -t 会加载 node 的 label，如果节点没有 labels 属性，需要修改为 labels
@@ -26,7 +26,7 @@ neo4j-sh> import-graphml -i graphml.xml -t # -t 会加载 node 的 label，如�
 
 如果 labels 还是没有显示出来，可以在 neo4j 的浏览器界面中用语句修改：
 
-```
+```vim
 MATCH (n)
 WHERE n.label='PAGE'
 SET n :PAGE

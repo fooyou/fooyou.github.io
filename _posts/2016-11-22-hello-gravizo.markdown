@@ -32,38 +32,37 @@ deactivate A;
 )
 
 
-![图2：智能诊断时序图](http://g.gravizo.com/g?
-@startuml;
+![](http://g.gravizo.com/svg?
+    @startuml;
+    actor User;
+    participant "问诊管理" as A;
+    participant "疾病推理" as B;
+    participant "图数据库" as C;
 
-actor User;
-participant "问诊管理" as A;
-participant "疾病推理" as B;
-participant "图数据库" as C;
+    User -> A: 输入症状;
+    activate A;
 
-User -> A: 输入症状;
-activate A;
+    A -> B: 输入症状群;
+    activate B;
 
-A -> B: 输入症状群;
-activate B;
+    B -> C: 获得图节点权重;
+    activate C;
 
-B -> C: 获得图节点权重;
-activate C;
+    C --> B: 返回;
+    deactivate C;
 
-C --> B: 返回;
-deactivate C;
+    B --> A: 返回;
+    deactivate B;
 
-B --> A: 返回;
-deactivate B;
+    A --> User: 完成;
+    deactivate A;
 
-A --> User: 完成;
-deactivate A;
-
-@enduml
+    @enduml
 )
 
 ## 画 graph
 
-```
+```vim
 ![Alt text](http://g.gravizo.com/svg?
   digraph G {
     aize ="4,4";
@@ -83,7 +82,7 @@ deactivate A;
 )
 ```
 
-![Alt text](http://g.gravizo.com/g?
+![Alt text](http://g.gravizo.com/svg?
   digraph G {
     aize ="4,4";
     main [shape=box];
@@ -104,7 +103,7 @@ deactivate A;
 
 ## 画 staruml 类图
 
-```
+```vim
 <img src='http://g.gravizo.com/g?
 /**
 *Structural Things
