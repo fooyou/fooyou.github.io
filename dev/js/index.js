@@ -232,7 +232,7 @@ $(document).ready(function(){
         var date = new Date(),
             hour = date.getHours();
 
-        if((hour >= 0 && hour <= 6) || hour === 23) {
+        if((hour >= 18 && hour <= 23) || (hour >= 0 && hour <= 6)) {
             el.addClass(className);
         }
     }
@@ -258,5 +258,4 @@ $(document).ready(function(){
             setClipboardData(txt);
         }
     });
-    
 });
