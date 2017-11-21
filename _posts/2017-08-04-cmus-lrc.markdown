@@ -4,7 +4,7 @@ title: cmus 播放器的歌词同步显示插件
 category: Document
 tags: linux
 date: 2017-08-04 14:08:31
-published: true
+cover: '/postimgs/cmus-lrc.jpg'
 summary: 自己写了个 cmus 的歌词显示插件，还比较满意
 mathjax: false
 highlight: true

@@ -6,8 +6,8 @@ tags: cmake c++
 date: 2016-04-05 15:04:57
 published: true
 summary: cmake 和 autotools 都得学啊，有人说 c 没落了？呵呵……
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 cmake 编译 C 和 C++ 工程，只需要编写一个 CMakeLists.txt 文件即可，过程很简单，所有的工作只要编写 CMakeLists.txt 文件上。本例列举最简单的一个可执行文件的编译过程。
