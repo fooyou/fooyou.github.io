@@ -4,10 +4,9 @@ title: vim常用快捷键
 category: Document
 tags: vim
 date: 2014-06-18
-published: true
 summary: vi linux程序员编写代码神器
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: false
 ---
 
 vi有三种模式：Normal、Visual、Edit模式。

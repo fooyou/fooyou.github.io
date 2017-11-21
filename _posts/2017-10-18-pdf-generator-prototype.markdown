@@ -6,8 +6,8 @@ tags: linux
 date: 2017-10-19 10:10:10
 published: true
 summary: 使用 C 编写 pdf 生成模块的投标方案
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 ## 我们的优势

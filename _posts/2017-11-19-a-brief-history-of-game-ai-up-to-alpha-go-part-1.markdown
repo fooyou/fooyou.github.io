@@ -7,6 +7,8 @@ tags: ml neural
 date: 2017-11-19 09:11:32
 summary: 
 cover: 'http://www.andreykurenkov.com/writing/images/2016-4-15-a-brief-history-of-game-ai/0-history.png'
+mathjax: false
+highlight: false
 ---
 
 本节介绍 AI 的诞生及在数字计算机上运行的首个 AI 游戏。

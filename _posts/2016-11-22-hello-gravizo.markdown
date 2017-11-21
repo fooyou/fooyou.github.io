@@ -6,8 +6,8 @@ tags: gravizo
 date: 2016-11-22 20:13:03
 published: true
 summary: 如何使用 git log 命令查看历史 commit 的详细信息
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 ![Alt text](http://g.gravizo.com/svg?

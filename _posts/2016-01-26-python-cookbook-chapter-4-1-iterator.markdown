@@ -6,8 +6,8 @@ tags: python
 date: 2016-01-26 15:01:19
 published: true
 summary: 迭代器是 python 最强大的特性。在高级层你可以简单的使用迭代器遍历序列中的元素，但是迭代器的强大远不止这些，你可以创建自己的迭代器对象，应用迭代器式样，制作产生器函数，等等。
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 ## 问题 

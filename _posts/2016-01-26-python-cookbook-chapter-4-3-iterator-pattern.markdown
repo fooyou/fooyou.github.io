@@ -6,8 +6,8 @@ tags: python
 date: 2016-01-26 16:01:33
 published: true
 summary: 创建自己的迭代式样
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 ## 问题
@@ -35,7 +35,7 @@ for n in frange(0, 4, 0.2):
 
 结果如下：
 
-```
+```vim
 0
 0.2
 0.4
@@ -66,7 +66,7 @@ list(frange(0, 1, 0.125))
 
 结果如下：
 
-```
+```python
 [0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875]
 ```
 

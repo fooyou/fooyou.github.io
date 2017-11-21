@@ -4,10 +4,9 @@ title: git tag 导出
 category: Document
 tags: git
 date: 2014-06-23
-published: true
 summary: git的tag标签操作
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 ## git tag 操作

@@ -6,9 +6,8 @@ tags: neural
 date: 2015-10-13 10:45:14
 published: true
 summary:
-image: pirates.svg
-comment: true
-latex: false
+mathjax: false
+highlight: false
 ---
 
 Convolutional Network 卷积网络

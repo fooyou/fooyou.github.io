@@ -3,13 +3,11 @@ layout: post
 title: Flask系列教程之一：Hello World
 category: Document
 tags: flask
-year: 2015
-month: 06
-day: 11
+date: 2015-06-11
 published: true
 summary: 跟随大师 Miguel Grinberg 的脚步学习Flask，系列教程一认识Flask。
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 *Miguel Grinberg是个很牛的软件工程师，尤其网络工程师，用过很多的语言编写过web app，包括PHP、Ruby、Smalltalk，甚至是C++，他认为Python/Flask相接合是其中最灵活易用的组合（我也这么认为，至少现在），他还编写了一本书叫做《Flask Web Development》都是在开发中总结的技术经验，2014年出版（[点我下载](http://cdn4.filepi.com/g/bDQKMSb/1434087411/4cdb09017d4e0bc7048aa7c0eb437cb4)）。*
@@ -50,51 +48,51 @@ microblog将逐渐涵盖以下内容：
 
 如果你使用Python3.4+，那么其已内置了vitual evn，直接在根目录下执行：
 
-```
+```bash
 $ python -m venv flask
 ```
 
 其他版本的Python的安装，如果在Mac上可以：
 
-```
+```bash
 $ sudo easy_install virtualenv
 ```
 
 如果在linux上，比如ubuntu，可以：
 
-```
+```bash
 $ sudo apt-get install python-virtualenv
 ```
 
 Windows用户最让人头痛，所以最好安装Python3.4，否则最好安装pip，然后在命令行，这样安装：
 
-```
+```bash
 pip install virtualenv
 ```
 
 等安装完毕后，在根目录下使用以下命令创建虚拟环境：
 
-```
+```bash
 $ virtualenv flask
 ```
 
 然后到flask/bin目录下，激活虚拟环境：
 
-```
+```bash
 $ source flask/bin/activate
 ```
 
 _注：关闭虚拟环境直接使用deactivate_
 
-```
-$ deactivate
+```bash
+$ (flask) deactivate
 ```
 
 开始安装：
 
 Linux, OS X, 或者Cygwin,通过以下命令安装flask和其扩展，一个一个安装：
 
-```
+```bash
 $ flask/bin/pip install flask
 $ flask/bin/pip install flask-login
 $ flask/bin/pip install flask-openid
@@ -111,7 +109,7 @@ $ flask/bin/pip install coverage
 
 Windows上，有点不同：
 
-```
+```bash
 $ flask\Scripts\pip install flask
 $ flask\Scripts\pip install flask-login
 $ flask\Scripts\pip install flask-openid

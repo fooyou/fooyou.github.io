@@ -6,8 +6,8 @@ tags: Semantic-Web SPARQL
 date: 2014-09-29
 published: true
 summary: 代表 Web 未来的语义 Web 是一个以知识为中心的模型，除了人类可读的文档和 XML 消息格式之外，它还增加了机器可以理解和处理的数据。SPARQL Protocol and RDF Query Language (SPARQL) 对于语义 Web 就像 SQL 对于关系数据库一样重要。它允许应用程序对分布式 RDF 数据库进行复杂的查询，并得到了互相竞争的多种框架的支持。本教程通过一家虚拟公司的团队跟踪和日志系统演示了它的用法。
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 *作者：Andrew Matthews*

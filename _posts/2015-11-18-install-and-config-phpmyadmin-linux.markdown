@@ -6,9 +6,8 @@ tags: linux
 date: 2015-11-18 18:37:10
 published: true
 summary: 安装和配置linux PHP开发环境时，想安装phpmyadmin却不知道怎么都特么不好用……
-image: pirates.svg
-comment: true
-latex: false
+mathjax: false
+highlight: true
 ---
 
 安装和配置linux PHP开发环境时，想安装phpmyadmin却不知道怎么都特么不好用……，后来终于在ubuntu论坛上找到了解决方法：
@@ -17,7 +16,7 @@ latex: false
 
 1. 执行命令：
 
-```
+```bash
 $ sudo a2enconf phpmyadmin
 $ sudo /etc/init.d/apache2 reload
 ```

@@ -3,13 +3,11 @@ layout: post
 title: 2015年最棒的11个linux操作系统
 category: Document
 tags: linux
-year: 2015
-month: 07
-day: 24
+date: 2015-07-24
 published: true
 summary: Makefile
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: false
 ---
 
 正像参考的文章中的作者在2005年开始使用linux，我是在2008年开始使用ubuntu的，记得那时的ubuntu刚刚到9.04版本，从那时起我变逐渐离开Windows开始进入linux的世界。一晃间，那么多年头过去了，今天的linux世界不再那么孤立了，linux系统层出不穷，本文介绍2015年原作者发现的11个“好”的linux系统。

@@ -4,10 +4,9 @@ title: Windows下使用LESS和SASS的集成环境
 category: Document
 tags: less sass windows
 date: 2014-06-23
-published: true
 summary: 为什么要less和sass？互联网风吹
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 

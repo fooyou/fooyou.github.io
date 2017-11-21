@@ -3,14 +3,14 @@ layout: post
 title: Jinja2学习记录
 category: Document
 tags: python html jinja2
-year: 2015
-month: 06
-day: 04
+date: 2015-06-04
 published: true
 summary: 特别想要个东西，能快速的把数据转化为html，像dot.js之类的东东太前端了，结果发现Jinja是个不错的选择，记录一下。
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: false
 ---
+
+特别想要个东西，能快速的把数据转化为html，像dot.js之类的东东太前端了，结果发现Jinja是个不错的选择，记录一下。
 
 *TODO: 增加Jinja2的介绍和预备知识*
 官网：http://github.com/mitsuhiko/jinja2/

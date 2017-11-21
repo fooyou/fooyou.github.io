@@ -6,8 +6,8 @@ tags: bigdata
 date: 2016-12-09 10:12:49
 published: true
 summary: 几种数据库存储方案的对比
-image: pirates.svg
-comment: true 
+mathjax: false
+highlight: false
 ---
 
 数据变大，数据不够结构化，数据间有千丝万缕的连接，如何建立数据模型？

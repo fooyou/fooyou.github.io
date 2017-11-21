@@ -6,8 +6,8 @@ tags: ai
 date: 2016-12-12 16:12:09
 published: true
 summary: 
-image: pirates.svg
-comment:  true
+mathjax: false
+highlight: false
 ---
 
 1930~1940: Wiener、佛雷治、罗素的数理逻辑 + Church、图灵的数学功用 + 计算机处理 ---> AI

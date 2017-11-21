@@ -8,8 +8,8 @@ month: 06
 day: 17
 published: true
 summary: Python的Web开发工具和框架，不看不知道，实在太强悍了。
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: false
 ---
 
 ## Scrapy 网络爬虫

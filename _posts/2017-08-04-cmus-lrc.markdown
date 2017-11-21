@@ -6,8 +6,8 @@ tags: linux
 date: 2017-08-04 14:08:31
 published: true
 summary: 自己写了个 cmus 的歌词显示插件，还比较满意
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 一直用 cmus 边码代码边听音乐，但是 cmus 无法向 GUI 播放器那样可以动态查看歌词，所以昨天用 python3 写了个插件支持动态显示。

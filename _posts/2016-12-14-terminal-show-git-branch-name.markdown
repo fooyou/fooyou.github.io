@@ -6,8 +6,8 @@ tags: git macos linux
 date: 2016-12-14 20:12:02
 published: true
 summary: 
-image: pirates.svg
-comment: true 
+mathjax: false
+highlight: true
 ---
 
 MacOS

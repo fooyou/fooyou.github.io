@@ -1,13 +1,13 @@
 ---
 layout: post
-title: 使用libreoffice把*.[odt|xls|doc|docx|xlsx]转化成html
+title: 使用libreoffice把\*.[odt|xls|doc|docx|xlsx]转化成html
 category: Document
 tags: doc office html
 date: 2015-11-30 16:11:19
 published: true
 summary: 有许多还不知道的 linux 系统已经集成好的功能，比如 libreoffice 提供的这个功能，可以把 office 文档或者表格转化成 html。
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 > 需求驱动技术更新。
@@ -20,7 +20,7 @@ comment: true
 
 google了一下，居然发现 libreoffice 封装了个 `soffice` 命令，可以把doc，odt，xls等转化成 html，这不就好了么。
 
-```
+```bash
 soffice --headless --convert-to output_file_extension[:output_filter_name] [--outdir output_dir] files
 ```
 
@@ -30,7 +30,7 @@ output_file_extension[:output_filter_name]: 要生成的文件扩展和过滤器
 
 比如要转换`xxxxxxx.docx`文档为html，就可以这样：
 
-```
+```bash
 $ soffice --headless --convert-to html:HTML xxxxxxx.docx
 ```
 

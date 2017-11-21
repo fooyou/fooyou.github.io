@@ -6,15 +6,15 @@ tags: linux
 date: 2017-03-03 12:03:39
 published: true
 summary: 查看 Linux 进程内存的命令
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 top、ps、pmap
 
 ## (一): ps 查看进程内存等信息
 
-```
+```bash
 $ ps -e -o 'pid,comm,args,pcpu,rsz,vsz,stime,user,uid'
 ```
 

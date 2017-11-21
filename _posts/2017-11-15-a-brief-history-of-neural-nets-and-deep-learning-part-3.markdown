@@ -6,6 +6,8 @@ category: Document
 tags: ml neural
 date: 2017-11-16 19:11:04
 cover: 'https://draftin.com/images/34568?token=osHGQ5vZmlKI8wvUQDodyNnTzHvIIucFK6U0Z1ynSkEKrMZy1FEdoBrizZ7fujKpEWiYaC1-1fm8lMLh7GKKVuc'
+mathjax: false
+highlight: false
 ---
 
 本部分，我们将继续讨论 90 年代神经网络的研究成果，看看为什么神经网络最终失去了人们起于 60 年代后期的青睐。

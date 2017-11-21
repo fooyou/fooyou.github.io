@@ -6,8 +6,8 @@ tags: python
 date: 2016-01-26 16:01:22
 published: true
 summary: 
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 ## 问题
@@ -50,7 +50,7 @@ if __name__ == '__main__':
 
 输出为：
 
-```
+```vim
 Node(1)
 Node(2)
 ```

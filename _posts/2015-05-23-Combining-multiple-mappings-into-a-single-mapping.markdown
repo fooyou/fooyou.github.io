@@ -2,14 +2,12 @@
 layout: post
 title: 合并多个Map至一个
 category: Document
-tags: python pythoncookbook
-year: 2015
-month: 05
-day: 04
+tags: python
+year: 2015-05-04
 published: true
-summary: 生活本就酸甜苦辣咸，有些甜需要秀，有些甜不能秀，有些苦需要吐，有些苦不能吐……
-image: pirates.svg
-comment: true
+summary: 
+mathjax: false
+highlight: true
 ---
 
 ## 问题

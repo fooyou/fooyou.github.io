@@ -6,8 +6,8 @@ tags: c++
 date: 2016-02-18 15:02:00
 published: true
 summary: C++对象模型的复习
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 好多年以前学习过候杰老师翻译的《深度探索C++对象模型》，现在抽空复习一边。
@@ -55,7 +55,7 @@ C++中有两种 class data members：
 
 C++ 单一继承：
 
-```C++
+```cpp
 class ios {};
 class istream : public ios {};
 class iostream : public istream {};
@@ -63,7 +63,7 @@ class iostream : public istream {};
 
 C++ 多重继承：
 
-```C++
+```cpp
 class iostream : 
     public istream,
     public ostream {};
@@ -71,7 +71,7 @@ class iostream :
 
 C++ 虚拟继承：
 
-```C++
+```cpp
 class istream : virtual public ios {};
 class ostream : virtual public ios {};
 ```

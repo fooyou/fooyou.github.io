@@ -6,8 +6,8 @@ tags: linux
 date: 2016-10-11 17:10:02
 published: true
 summary: 我的翻墙选择
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 先是下载 deb 文件，安装一大推依赖没解决，烦！
@@ -15,7 +15,7 @@ comment: true
 然后使用 gdebi 安装（自动安装依赖），正高兴呢，处错误了
 
 
-```
+```bash
 # gdebi sogoupinyin_2.0.0.0078_amd64.deb 
 Reading package lists... Done
 Building dependency tree        
@@ -48,7 +48,7 @@ No such key 'Gtk/IMModule' in schema 'org.gnome.settings-daemon.plugins.xsetting
 
 查看一下 /usr/share/glib-2.0/schemas/50_sogoupinyin.gschema.override. 据说应该是：
 
-```
+```bash
 [org.gnome.settings-daemon.plugins.keyboard]
 active=false
 [org.gnome.settings-daemon.plugins.xsettings]
@@ -59,7 +59,7 @@ visible=false
 
 而这个包里的却是：
 
-```
+```bash
 [org.gnome.settings-daemon.plugins.keyboard]
 active=false
 [org.gnome.settings-daemon.plugins.xsettings]

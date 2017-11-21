@@ -6,8 +6,8 @@ tags: vim
 date: 2016-02-05 11:02:28
 published: true
 summary: 工欲善其事必先利其器，vi/vim 中可以使用：s 命令来替换字符串。该命令有很多种不同细节使用方法，可以实现复杂的功能。
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 *vi/vim 中可以使用：s 命令来替换字符串。该命令有很多种不同细节使用方法，可以实现复杂的功能，记录几种在此，方便以后查询。*
@@ -29,12 +29,12 @@ vim也有替换确认，需要在后面加上命令 `c` （confirm），例如�
 
 替换当前所有 vivian 为 sky：
 
-```
+```vim
 : s/vivian/sky/g
 ```
 
 加上 `c` 后就会有确认提醒：
 
-```
+```vim
 : s/vivian/sky/gc
 ```

@@ -3,13 +3,11 @@ layout: post
 title: jekyll博客的分页实现
 category: Document
 tags: jekyll blog
-year: 2015
-month: 07
-day: 24
+date: 2015-07-24
 published: true
 summary: jekyll本身支持分页功能
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 > 引用：http://segmentfault.com/a/1190000000406015
@@ -19,7 +17,7 @@ comment: true
 
 首先我们需要在jekyll中开启分页功能，在jekyll的_config.yml中加入分页配置：
 
-```
+```vim
 paginate: 5
 paginate_path: "page:num"
 ```

@@ -6,9 +6,8 @@ tags: vim
 date: 2015-11-27 13:05:10
 published: true
 summary: sublime里有个插件叫fileheader非常赞，可为文件自动添加文件头和一些信息，在vim里也能简单实现。
-image: pirates.svg
-comment: true
-latex: false
+mathjax: false
+highlight: true
 ---
 
 
@@ -16,7 +15,7 @@ latex: false
 
 vim 的 autocmd 命令可以在 vim 读写文件或进入离开缓冲区或者窗口的时候执行，从而可以使用`autocmd`命令对文件自动添加文件头，autocmd 声明如下：
 
-```
+```bash
 autocmd {event} {pattern} {cmd}
 ```
 
@@ -42,7 +41,7 @@ autocmd {event} {pattern} {cmd}
 
 在~/.vimrc中添加以下几行代码：
 
-```
+```vim
 autocmd bufnewfile *.{cpp,c,h,cc,hpp,cs,js,go} so /home/joshua/Documents/fileheader/vim/C.tmpl
 autocmd bufnewfile *.{cpp,c,h,cc,hpp,cs,js,go} exe "1," . 7 . "g/File Name:.*/s//File Name: " .expand("%")
 autocmd bufnewfile *.{cpp,c,h,cc,hpp,cs,js,go} exe "1," . 7 . "g/Create Date:.*/s//Create Date: " .strftime("%Y-%m-%d %H:%m:%S")
@@ -72,7 +71,7 @@ $ vim hello.c
 
 w保存后，将看到修改日期
 
-```
+```c
 /**
  * @File Name: hello.c
  * @Author:

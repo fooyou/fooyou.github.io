@@ -4,10 +4,9 @@ title: SPARQL 1.1概述
 category: Document
 tags: Semantic-Web SPARQL
 date: 2014-09-30
-published: true
 summary: 本文档是SPARQL 1.1的概览。它介绍了一套W3C的规范，以便于在Web或在RDF存储上查询和操作RDF图的内容。
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 *W3C推荐标准2013年3月21日*

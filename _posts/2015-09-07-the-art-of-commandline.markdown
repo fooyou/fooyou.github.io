@@ -6,9 +6,8 @@ tags: linux
 date: 2015-09-07 10:42:27
 published: true
 summary: 命令行的艺术
-image: pirates.svg
-comment: true
-latex: false
+mathjax: false
+highlight: true
 ---
 
 # 命令行的艺术

@@ -6,8 +6,8 @@ tags: mail linux mutt fetchmail msmtp
 date: 2016-03-29 10:03:35
 published: true
 summary: 使用 mutt 搭建 linux 邮件客户端
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 *喜欢它，爱屋及乌，发现乌鸦也很棒。*
@@ -25,7 +25,7 @@ comment: true
 
 ## 发送邮件配置： .msmtprc
 
-```
+```bash
 ## Description: ~/.msmtprc of msmtp
 ## Author: Joshua Liu
 ## Settings: chmod 600 .msmtprc
@@ -58,7 +58,7 @@ account gmail
 
 **获取 tls_fingerprint 或者 tls_certfile**
 
-```
+```bash
 $ msmtp --serverinfo --host=smtp.gmail.com --tls=on --tls-certcheck=off
 SMTP server at smtp.gmail.com (ig-in-x6c.1e100.net [2607:f8b0:4001:c05::6c]), po
     mx.google.com ESMTP ga10sm76109igd.0 - gsmtp
@@ -93,20 +93,20 @@ Capabilities:
 
 可以得到证书指纹和证书的发布者名称 “Google Internet Authority G2” 可检索[下载](https://pki.google.com/GIAG2.crt)到证书，然后转换一下证书成可读格式：
 
-```
+```bash
 $ openssl x509 -inform DER -in GIAG2.crt -outform PEM -out gmail-smtp.crt
 ```
 
 下面的指令能成功登录：
 
-```
+```bash
 $ msmtp --serverinfo --host=smtp.gmail.com --tls=on --tls-trust-file=gmail-smtp.crt
 ```
 
 
 ## 收取邮件：.fetchmailrc
 
-```
+```vim
 ## Description: ~/.fetchmailrc for fetchmail
 ##      More info: man fetchmail
 ## Author: Joshua Liu
@@ -138,7 +138,7 @@ poll smtp.gmail.com with proto POP3
 
 **获取发件证书**
 
-```
+```bash
 $ openssl s_client -connect pop.gmail.com:995
 or
 $ openssl s_client -host pop.gmail.com -port 995
@@ -149,7 +149,7 @@ $ openssl s_client -host pop.gmail.com -port 995
 
 ## 邮件处理：.procmail
 
-```
+```vim
 ## Description: ~/.procmailrc of procmail
 ##              处理邮件
 ## Author: Joshua Liu
@@ -180,7 +180,7 @@ default
 
 ## 邮件管理：.muttrc
 
-```
+```vim
 ## Description: ~/.muttrc of mutt
 ##              管理邮件
 ## Author: Joshua Liu
@@ -327,7 +327,7 @@ charset-hook !utf-8 gb2312          # 把非 utf-8 编码映射到 gb2312
 
 ## 附件浏览：.mailcap
 
-```
+```vim
 ## Description: View the attachments of mutt.
 ## Functions: (1) Convert *.doc to *.html by wvHtml;
 ##            (2) Use w3m to read *.doc and *.html in Mutt;

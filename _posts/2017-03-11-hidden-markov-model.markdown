@@ -6,8 +6,8 @@ tags:
 date: 2017-03-29 12:03:20
 published: true
 summary: 
-image: pirates.svg
-comment: true
+mathjax: true
+highlight: true
 ---
 
 ### 隐马尔可夫模型的定义

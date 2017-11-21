@@ -6,8 +6,8 @@ tags: gremlin
 date: 2017-01-02 17:01:50
 published: true
 summary: titan 使用 gremlin 查询体验
-image: pirates.svg
-comment: true 
+mathjax: false
+highlight: true
 ---
 
 使用 titan + hbase + elasticsearch

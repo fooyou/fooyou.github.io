@@ -6,8 +6,8 @@ tags: web
 date: 2017-10-13 09:10:14
 published: true
 summary: TG为什么设墙，只要翻出去就能知道，本人坚决支持。在FB和Twitter上和傻逼港独台独轮子六四余孽征战了多年，发现绝大部分出去的兔子们都是好兔子，当然也有反水的，被六独轮洗脑的。无论如何能翻出去的智商都还可以吧，大家出去后不要弱了我强汉威风！
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 **跨墙，帝吧出征！**

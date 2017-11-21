@@ -6,8 +6,8 @@ tags: linux
 date: 2015-07-24
 published: true
 summary: /etc/fstab文件用来声明磁盘分区、移动文件系统或者其他设备如何挂载到文件系统中。
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 ### 文件系统

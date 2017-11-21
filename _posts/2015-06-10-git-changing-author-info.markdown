@@ -3,13 +3,11 @@ layout: post
 title: 使用脚本修改git提交后的user-email信息
 category: Document
 tags: git
-year: 2015
-month: 06
-day: 10
+date: 2015-06-10
 published: true
 summary: Git提交后信息修改。
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 ## 修改提交者信息
@@ -35,7 +33,7 @@ _注意：运行词脚本将重写整个仓库的历史记录。完成修改后�
 1. 打开终端
 2. 创建新的，bare复制要修改的仓库：
 
-    ```
+    ```git
     $ git clone --bare https://github.com/usr/repo.git
     $ cd repo.git
     ```
@@ -44,7 +42,7 @@ _注意：运行词脚本将重写整个仓库的历史记录。完成修改后�
     - CORRECT_NAME
     - CORRECT_EMAIL
 
-    ```sh
+    ```bash
     #!/bin/sh
 
     git filter-branch --env-filter '
@@ -68,12 +66,12 @@ _注意：运行词脚本将重写整个仓库的历史记录。完成修改后�
 5. 查看新的仓库历史记录是否有错误
 6. push 正确的历史记录到远程仓库：
 
-    ```
+    ```git
     $ git push --force --tags origin 'refs/heads/*'
     ```
 7. 清楚临时仓库
 
-    ```
+    ```bash
     $ cd ..
     $ rm -rf repo.git
     ```

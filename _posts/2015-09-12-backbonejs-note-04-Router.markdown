@@ -6,9 +6,8 @@ tags: backbone
 date: 2015-09-12 11:14:36
 published: true
 summary: router——路由的意思，显然是能够控制url指向哪个函数的。具体是怎么做的一会通过几个实例来看看。
-image: pirates.svg
-comment: true
-latex: false
+mathjax: false
+highlight: true
 ---
 
 前面介绍了Model和Collection，基本上属于程序中静态的数据部分。这一节介绍Backbone中的router，属于动态的部分，见名知意，router——路由的意思，显然是能够控制url指向哪个函数的。具体是怎么做的一会通过几个实例来看看。

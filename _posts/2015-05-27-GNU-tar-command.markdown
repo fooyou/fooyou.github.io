@@ -3,13 +3,11 @@ layout: post
 title: linux压缩/解压缩命令
 category: Document
 tags: linux compress
-year: 2015
-month: 05
-day: 27
+date: 2015-05-27
 published: true
 summary: 介绍linux下压缩命令的使用。
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: false
 ---
 
 *linux 常用解压命令：*

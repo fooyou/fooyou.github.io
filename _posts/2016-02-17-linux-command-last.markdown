@@ -6,19 +6,19 @@ tags: linux
 date: 2016-02-17 19:02:15
 published: true
 summary: 突然想知道我的 elementary os 今天的开关机情况，如何办，使用 last 命令
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 ## last 命令
 
-```
+```vim
 $ last
 ```
 
 显示如下：
 
-```
+```vim
 joshua   tty1                          Wed Feb 17 19:21   still logged in
 joshua   pts/1        :0               Wed Feb 17 19:15 - 19:20  (00:05)
 joshua   :0           :0               Wed Feb 17 18:56   still logged in

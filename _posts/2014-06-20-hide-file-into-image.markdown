@@ -4,10 +4,9 @@ title: 将文件隐藏在图片中的方法（linux/windows）
 category: Document
 tags: image
 date: 2014-06-20
-published: true
 summary: 为什么要把文件隐藏在图片里？潜入
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 ## linux

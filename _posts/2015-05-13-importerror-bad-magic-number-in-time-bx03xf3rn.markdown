@@ -3,13 +3,11 @@ layout: post
 title: "ImportError: bad magic number in 'time': b'x03xf3rn'"
 category: Document
 tags: python
-year: 2015
-month: 05
-day: 04
+date: 2015-05-04
 published: true
 summary: Python import模块出现如是错误时，不要着急，把.pyc删掉就可以了
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 编写的Python脚本，用Python3一直好用，有时用Python2.7调用也好用，但今天竟然发生了这个错误：

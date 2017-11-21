@@ -3,20 +3,18 @@ layout: post
 title: 为git仓库添加多个远程url地址
 category: Document
 tags: git
-year: 2015
-month: 06
-day: 09
+date: 2015-06-09
 published: true
 summary: 有时git仓库需要push到多个git server上，比如同时推送到github和bitbucket上，本文将讲述如何做。
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 ## 前言
 
 一般来说，我们为git增加远程库，一般都是:
 
-```
+```git
 git remote add origin <url>
 ```
 
@@ -24,7 +22,7 @@ git remote add origin <url>
 
 有人可能会用两个甚至多个远程库，即再添加一个远程库
 
-```
+```git
 git remote add origin2
 ```
 
@@ -49,19 +47,19 @@ https://github.com/shede333/CoreAnimationTestSW.git
 
 首先，先增加第一个地址:
 
-```
+```git
 git remote add origin <url1> 
 ```
 
 然后增加第二个地址:
 
-```
+```git
 git remote set-url --add origin <url2> 
 ```
 
 增加第三个地址:
 
-```
+```git
 git remote set-url --add origin <url3> 
 ```
 
@@ -72,7 +70,7 @@ git remote set-url --add origin <url3>
 
 ## 原理解析
 
-```
+```git
 git remote set-url --add origin
 ```
 

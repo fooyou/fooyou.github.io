@@ -6,9 +6,8 @@ tags: linux
 date: 2015-09-08 09:12:40
 published: true
 summary: 本文介绍bash命令一些常用的基本命令
-image: pirates.svg
-comment: true
-latex: false
+mathjax: false
+highlight: false
 ---
 
 ## 文档帮助类命令

@@ -6,8 +6,8 @@ tags: c++ debug gdb
 date: 2016-04-12 09:04:38
 published: true
 summary: gdb c++ 入门级简单调试
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 切换到 linux 以来，作为一个 c/c++ 程序员首次回归到 c++ 有点小兴奋，尽管现在多使用脚本或 java，但回归到 c++ 仍然是十分惬意的。
@@ -20,7 +20,7 @@ comment: true
 为使用 gdb 调试先写段有问题的求阶乘的代码：
 
 
-```c++
+```cpp
 $ vim factorial.c
 #include <stdio.h>
 
@@ -51,7 +51,7 @@ $ cc -g factorial.c
 
 ## Step 2：使用 gdb 加载 a.out
 
-```
+```bash
 $ gdb a.out
 Reading symbols from a.out...done.
 (gdb)
@@ -61,7 +61,7 @@ Reading symbols from a.out...done.
 
 语法：
 
-```
+```bash
 (b)reak line_number
 (b)reak [file_name]:line_number
 (b)reak [file_name]:func_name
@@ -69,7 +69,7 @@ Reading symbols from a.out...done.
 
 设置断点后，就可以在执行时中断并调试了
 
-```
+```bash
 (gdb) b 10
 Breakpoint 1 at 0x4005d1: file factorial.c, line 10.
 ```
@@ -78,14 +78,14 @@ Breakpoint 1 at 0x4005d1: file factorial.c, line 10.
 
 语法：
 
-```
+```bash
 run [args]
 args: 执行时参数
 ```
 
 执行
 
-```
+```bash
 (gdb) run
 Starting program: /media/joshua/My_Resource/Exercise/C++/gdb/a.out
 
@@ -100,13 +100,13 @@ Breakpoint 1, main () at factorial.c:10
 
 语法：
 
-```
+```bash
 (p)rint {variable}
 ```
 
 举例：
 
-```
+```bash
 (gdb) p i
 $1 = 0
 (gdb) p j
@@ -141,13 +141,13 @@ $3 = 3
 有时候调试时找到问题点了，想修改某个变量值来验证是不是好用，这样会节省很多时间，在 gdb里可以这么做：
 
 1. 使用 set variable ：
-    ```
+    ```bash
     (gdb) set variable j = 1
     (gdb) p j
     $1 = 1
     ```
 2. 直接修改变量内存地址中的内容：
-    ```
+    ```bash
     (gdb) set {int}0x7fffffffe37c = 0
     (gdb) p j
     $10 = 0
@@ -157,19 +157,19 @@ $3 = 3
 
 查看所有断点
 
-```
+```bash
 (gdb) info b
 ```
 
 查看某个断点
 
-```
+```bash
 (gdb) info b [n]
 ```
 
 ### c). 删除某个断点
 
-```
+```bash
 clear：删除在选中 stack frame 即将执行的任何断点，最适合应用在中断后删除当前断点；
 clear function
 clear linenum

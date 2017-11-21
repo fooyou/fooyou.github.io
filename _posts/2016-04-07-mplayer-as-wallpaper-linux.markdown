@@ -6,13 +6,13 @@ tags: mplayer linux
 date: 2016-04-07 16:04:25
 published: true
 summary: 没有毛用，但是很 Cool
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 Ubuntu 上：
 
-```
+```bash
 # 不让 GNOME 处理 Desktop
 gconftool-2 -type bool -set /apps/nautilus/preferences/show_desktop false
 # 在根窗口上全屏播放视频

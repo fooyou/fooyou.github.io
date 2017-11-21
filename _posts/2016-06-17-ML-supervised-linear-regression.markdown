@@ -6,6 +6,10 @@ tags: ml
 date: 2016-06-17 13:06:35
 published: true
 summary: 线性回归是机器学习中最简单的监督学习模型
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: false
 ---
+
+线性回归是机器学习中最简单的监督学习模型
+
+TODO: 待补

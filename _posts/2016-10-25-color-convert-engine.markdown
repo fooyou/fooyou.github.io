@@ -6,8 +6,8 @@ tags: color
 date: 2016-10-25 14:10:48
 published: true
 summary: 制图打印时发生误差，原来是 RGB 到 CMYK 转换时使用了不一样的 ICC 文件......
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: false
 ---
 
 ## 颜色空间（Color Space）

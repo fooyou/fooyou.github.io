@@ -6,27 +6,27 @@ tags: ffmpeg
 date: 2015-12-03 12:12:42
 published: true
 summary: 有很多修改mp3 ID3 tag的工具，著名的有GNU的easytag，puddletag等，但万能的ffmpeg可不可以呢？当然可以。
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 ## 基本用法
 
 1. 使用 `-metadata` 后面跟 <key>=<value> 就可以修改相应的tag了。
 
-    ```
+    ```bash
     $ ffmpeg -i track12.mp3 -metadata album="Closer" You\ Raise\ Me\ Up.mp3
     ```
 
 2. 重复使用`-metadata`加 key/value 修改多个tag
 
-    ```
+    ```bash
     $ ffmpeg -i track12.mp3 -metadata album="Closer" -metadata artist="Josh Groban" You\ Raise\ Me\ Up.mp3
     ```
 
 3. 把value置空来删除某个标签，比如删掉 genre 标签
 
-    ```
+    ```bash
     $ ffmpeg -i track12.mp3 -metadata genre="" You\ Raise\ Me\ Up.mp3
     ```
 
@@ -63,18 +63,18 @@ comment: true
 
 1. 清除音乐文件所有的tag信息(`-map_metadata -1`可清除所有metadata信息)：
 
-    ```
+    ```bash
     $ ffmpeg -i track12.mp3 -map_metadata -1 out.mp3
     ```
 
 2. 把音乐文件的metadata信息导出到文件里：
 
-    ```
+    ```bash
     $ ffmpeg -i track12.mp3 -f ffmetadata metadata.txt
      ```
     可对输出的 metadata.txt 进行修改，完事后重新写入到文件里。ffmetadata文件的格式如下：
 
-    ```
+    ```vim
     ;FFMETADATA1
     title=You Raise Me Up
     ;逗号可以添加注释
@@ -93,7 +93,7 @@ comment: true
 
 3. 把 metadata.txt 文件写入音乐文件
 
-    ```
+    ```bash
     $ ffmpeg -i track12.mp3 -i metadata.txt -map_metadata 1 -c:a copy -id3v2_version 3 -write_id3v1 1 out.mp3
     ```
 
@@ -107,7 +107,7 @@ comment: true
 
 除了ffmpeg还有诸多的工具，`lame`还可以向音乐文件里插入图片：
 
-```
+```bash
 $ lame --ai <path/to/*.[jpg|png|gif]> <*.mp3> [out.mp3]
 ```
 

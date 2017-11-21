@@ -6,6 +6,8 @@ category: Document
 tags: ml neural
 date: 2017-11-17 13:11:56
 cover: 'https://www.kdnuggets.com/wp-content/uploads/photo.jpg'
+mathjax: false
+highlight: false
 ---
 
 本部分是我们关于神经网络和深度学习简史的终篇，我们将讲述 90 年代后期深度学习是如何在神经网络坍塌时发了自己的，以及自那以来它所取得的惊人的艺术成就。

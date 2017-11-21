@@ -6,9 +6,8 @@ tags: git
 date: 2015-10-21 09:13:58
 published: true
 summary: So, 不管代码托管有多安全，还是要备份的
-image: pirates.svg
-comment: true
-latex: false
+mathjax: false
+highlight: true
 ---
 
 ## Federation Client
@@ -32,7 +31,7 @@ __gitblit server端__
 3. 重启tomcat
 4. 在tomcat/logs/catalina.out中搜索`token`，就会找到类似如下信息（官方说web ui里用admin也能看到，不过没找到地方）
 
-    ```
+    ```vim
     2015-10-21 13:35:19 [INFO ] Federation ALL token = 6d8s9ab981a0c9ccaaa5373f68af20f00222a938
     2015-10-21 13:35:19 [INFO ] Federation USERS_AND_REPOSITORIES token = 7xc92d8aad61f204dc2517057405ece157a5c1df6
     2015-10-21 13:35:19 [INFO ] Federation REPOSITORIES token = cffea3979020a588d9w0b7c3ede9bf6c8b17d522

@@ -6,8 +6,8 @@ tags: network
 date: 2016-10-10 18:09:03
 published: true
 summary: 很久很久没用 svn 了，我是 git 粉，今天用 svn 竟然遇到这个错误
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 ## 问题描述：
@@ -18,7 +18,7 @@ comment: true
 
 使用 SQLiteSpy 打开 svn 根木下下的 .svn/wc.db，然后 Tables -> WC\_LOCK，双击WC\_LOCK 查看里面有无东西（一般这时肯定有），然后别客气删掉：
 
-```
+```bash
 delete from WC_LOCK
 ```
 

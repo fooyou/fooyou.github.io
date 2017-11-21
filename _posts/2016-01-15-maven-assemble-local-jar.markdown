@@ -6,8 +6,8 @@ tags: maven
 date: 2016-01-15 18:01:25
 published: true
 summary: 原型、验证，总是需要把当前的工程做成一个无依赖的可执行jar包以方便测试，maven库的依赖使用 maven-assembly-plugin jar-with-dependences 就可以了，可是对于本地依赖怎么打包唻？
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 本文只记录如何做？至于为什么没有探究。
@@ -98,7 +98,7 @@ _最好是把本地jar包安装到本地maven仓库里去_
 
 然后，编译就行了：
 
-```
+```bash
 $ maven assembly:assembly
 ```
 

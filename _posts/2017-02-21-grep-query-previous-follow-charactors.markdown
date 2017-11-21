@@ -6,8 +6,8 @@ tags: linux
 date: 2017-02-21 11:02:20
 published: true
 summary: 
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 ```bash

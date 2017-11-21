@@ -6,8 +6,8 @@ tags: vim
 date: 2015-12-01 13:12:37
 published: true
 summary: sublime text中在某个工程目录右键有个在当前目录下搜索的功能，很实用，尤其在阅读代码的时候，那么在vim里怎么实现呢？
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 文本编辑器一个很使用的功能就是在对个文件中搜索文本（可以使用正则搜索），vim当然也有这个功能，只是不容易被发现它有这个功能，其实vim之所以能成为最好的文本编辑器，除了快捷外还有功能齐全和易扩展。

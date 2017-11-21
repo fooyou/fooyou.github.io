@@ -6,9 +6,8 @@ tags: linux
 date: 2015-11-13 15:37:10
 published: true
 summary: linux上总要使用Terminal和file explorer，在ubuntu上安装"Open in terminal"后，可以方便切换，但eos上如何呢？
-image: pirates.svg
-comment: true
-latex: false
+mathjax: false
+highlight: true
 ---
 
 ## Ubuntu上
@@ -21,7 +20,7 @@ latex: false
 
 在终端输入以下就可以了（不要忘记后面的那个点和nautilus还有个空格）：
 
-```
+```bash
 $ nautilus .
 ```
 
@@ -29,25 +28,25 @@ $ nautilus .
 
 这一招到E-OS上不好用了，因为文件浏览器换成了pantheon-files，所以得用她来替换nautilus
 
-```
+```bash
 $ pantheon-files .
 ```
 
 但已经习惯了ubuntu的nautilus命令，所以别名一下
 
-```
+```bash
 $ vim ~/.bashrc
 ```
 
 在里面加上alias：
 
-```
+```bash
 alias nautilus="pantheon-files"
 ```
 
 使其立即生效
 
-```
+```bash
 $ source ~/.bashrc
 ```
 

@@ -6,8 +6,8 @@ tags: datarecovery linux
 date: 2016-04-19 10:04:45
 published: true
 summary: 误删了文件怎么办？误删了磁盘怎么办？电脑重装了，但突然想起磁盘上还有重要的文件，怎么办？
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 ## 恢复分区
@@ -22,13 +22,13 @@ A：使用 `parted` 命令。parted 命令是 ubuntu 内置的命令。
 
 当 liveCD 启动后，使用 `swapoff -a` 命令取消所有设备页面和交换功能，然后就可以使用 `parted` 恢复有问题的磁盘了，假如 /dev/sda 有问题，则：
 
-```
+```bash
 $ parted /dev/sda
 ```
 
 然后使用 rescue 选项：
 
-```
+```bash
 $ rescue START END
 ```
 
@@ -39,7 +39,7 @@ START 是分区开始的偏移值， END 同理，如果 parted 命令找到潜�
 
 恢复分区的另一个工具名叫 testdisk ，运行它将扫描整个媒体设备并提供菜单驱动的方式来恢复分区。
 
-```
+```bash
 $ sudo testdisk
 ```
 
@@ -48,13 +48,13 @@ $ sudo testdisk
 
 GPart 使用“猜测”方式扫描并重建分区表，以下命令将以默认方式扫描第一磁盘：
 
-```
+```bash
 $ sudo gpart /dev/sda
 ```
 
 你可以通过以下命令恢复“猜测”出来的分区表，注意，在使用前你必须确认“猜测”来的分区表是否正确，否则后果很严重。
 
-```
+```bash
 $ sudo gpart -W /dev/sda /dev/sda
 ```
 
@@ -67,7 +67,7 @@ $ sudo gpart -W /dev/sda /dev/sda
 
 比如你的 PC 的硬盘分区 `/dev/sda3` 坏掉了，你可以把它镜像到 USB 磁盘中（如果/dev/sda3 大于4G，那么 USB 磁盘格式不能为 MSDOS（VFAT），请使用 ext3 格式化 U 盘），救援命令如下：
 
-```
+```bash
 $ ddrescue -r 3 /dev/sda3 /media/usbdrive/image /media/usbdrive/logfile
 ```
 
@@ -75,7 +75,7 @@ $ ddrescue -r 3 /dev/sda3 /media/usbdrive/image /media/usbdrive/logfile
 
 或者连续读取：
 
-```
+```bash
 $ ddrescue -r 3 -C /dev/sda3 /media/usbdrive/image /media/usbdrive/logfile
 ```
 
@@ -83,19 +83,19 @@ $ ddrescue -r 3 -C /dev/sda3 /media/usbdrive/image /media/usbdrive/logfile
 
 1. 拷贝尽可能多的数据，不进行重试和存储扇面分割：
 
-    ```
+    ```bash
     $ ddrescue --no-split /dev/sda3 imagefile logfile
     ```
 
 2. 然后使用非缓存读，重试先前出错的地方3次：
 
-    ```
+    ```bash
     $ ddrescue --direct --max-retires=3 /dev/sda3 imagefile logfile
     ```
 
 3. 如果还是失败，那么使用 direct 和 retrim 参数重新读取所有的扇区：
 
-    ```
+    ```bash
     $ ddrescue --direct --retrim --max-retires=3 /dev/sda3 imagefile logfile
     ```
 
@@ -104,7 +104,7 @@ $ ddrescue -r 3 -C /dev/sda3 /media/usbdrive/image /media/usbdrive/logfile
 
 **例子一：把 ext2 格式的分区 `/dev/hda2`  救援到 `/dev/hdb2`**
 
-    ```
+    ```bash
     $ ddrescue -r3 /dev/hda2 /dev/hdb2 logfile
     $ e2fsck -v -f /dev/hdb2
     $ mount -t ext2 -o ro /dev/hdb2 /mnt
@@ -112,7 +112,7 @@ $ ddrescue -r 3 -C /dev/sda3 /media/usbdrive/image /media/usbdrive/logfile
 
 **例子二：救援 CD-ROM（`/dev/cdrom`）**
 
-    ```
+    ```bash
     $ ddrescue -b 2048 /dev/cdrom cdimage logfile
     ```
 
@@ -122,7 +122,7 @@ $ ddrescue -r 3 -C /dev/sda3 /media/usbdrive/image /media/usbdrive/logfile
 
 使用 gnu ddrescue 的 logfile，你可以把镜像做到多个驱动盘中，然后再合并起来，以下是合并碎片的命令行：
 
-```
+```bash
 $ sudo losetup /dev/loop1 /media/Drive1/image
 $ sudo losetup /dev/loop2 /media/Drive2/image
 $ sudo mdadm -B /dev/md0 -l linear -n 2 /dev/loop1 /dev/loop2
@@ -130,7 +130,7 @@ $ sudo mdadm -B /dev/md0 -l linear -n 2 /dev/loop1 /dev/loop2
 
 合并后的镜像在 /dev/md0，然后：
 
-```
+```bash
 $ sudo mdadm -S /dev/md0
 $ sudo losetup -d /dev/loop1
 $ sudo losetup -d /dev/loop2
@@ -146,13 +146,13 @@ $ sudo losetup -d /dev/loop2
 
 即便不能从救援镜像中恢复文件系统，也可以视图从中恢复文件。如果你镜像了整个驱动，你可以把镜像中独立的分区使用`offset`选项挂载到正在运行的文件系统中。SleuthKit 命令可以帮忙。
 
-```
+```bash
 $ sudo apt-get install sleuthkit
 ```
 
 mmls 命令可以帮助查看镜像中的分区情况：
 
-```
+```bash
 $ mmls file -b
 DOS Partition Table
 Offset Sector: 0
@@ -167,7 +167,7 @@ Units are in 512-byte sectors
 
 假如我们要挂载偏移量为 32 的 DOS 分区，乘以 512 计算字节数：
 
-```
+```bash
 $ bc
 bc 1.06
 Copyright 1991-1994, 1997, 1998, 2000 Free Software Foundation, Inc.
@@ -180,13 +180,13 @@ quit
 
 挂载分区：
 
-```
+```bash
 $ sudo mount -o loop,offset=16384 file mnt
 ```
 
 若要挂载经典的 NTFS 格式的分区，使用：
 
-```
+```bash
 $ sudo mount -t ntfs -o r,force,loop,offset=32256 file mnt
 ```
 
@@ -198,38 +198,38 @@ Foremost 可以众多的文件系统中恢复文件，包括 fat, ext3, NTFS，�
 
 假设在 hda 上你丢失了文件，那么首先从其他磁盘或分区中创建一个可写的文件夹用来恢复文件(假设有一个大存储的 sdb)：
 
-```
+```bash
 $ sudo mount /dev/sdb1 /recovery
 $ sudo mkdir /recovery/foremost
 ```
 
 然后运行 foremost
 
-```
+```bash
 $ sudo foremost -i /dev/hda -o /recovery/foremost
 ```
 
 如果是恢复救援镜像：
 
-```
+```bash
 $ sudo foremost -i image -o /recovery/foremost
 ```
 
 恢复的文件将被 root 所拥有，所以改变它们的关系来使用它们：
 
-```
+```bash
 $ sudo chown -R yourname:yourname /recovery/foremost
 ```
 
 使用 -w 来切换到恢复文件只有一个 audit ：
 
-```
+```bash
 $ sudo foremost -w -i /dev/hda -o /recovery/foremost
 ```
 
 只恢复一种类型的文件，可使用 -t 指定类型：
 
-```
+```bash
 $ sudo foremost -t jpg -i /dev/hda /recovery/foremost
 ```
 
@@ -259,7 +259,7 @@ $ sudo foremost -t jpg -i /dev/hda /recovery/foremost
 
 Scalpel 和 foremost 类似，但有一些改进。它从镜像文件或者 raw device 中直接把符合头尾定义的文件解压出来，默认的文件头尾定义存放在 /etc/scalpel/scalpel.conf 中，如果想指定恢复的文件，你得修改这个文件。
 
-```
+```bash
 $ sudo scalpel FILE -o Directory
 ```
 
@@ -271,7 +271,7 @@ Note：大多数的文件类型需要安装其他软件，请阅读 /usr/share/m
 
 例子：加入你刚从 /dev/sda1 上误删了一个美女的写真集，有 gzip 压缩包和 png 文件，那么你可以这样恢复：
 
-```
+```bash
 $ mkdir ~/recover
 $ sudo magicrescue -r gzip -r png -d ~/recover /dev/sda1
 ```
@@ -285,13 +285,13 @@ Photorec 最初被设计成从数字照相机存储卡中恢复图片文件的�
 
 在镜像文件上运行 photorec：
 
-```
+```bash
 $ sudo photorec imagefilename
 ```
 
 从设备上直接恢复文件，直接运行 photorec，会获得一个可见设备的菜单
 
-```
+```bash
 $ sudo photorec
 ```
 

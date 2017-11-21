@@ -6,8 +6,8 @@ tags: virtualbox
 date: 2016-09-27 11:39:25
 published: true
 summary: VirtualBox 在 Linux 平台下的使用拾零，包括 USB 的使用和 VDI 磁盘扩容等。
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 *工作需要从心爱的 elementary os 又迁到了 Win 7 系统，不甘心的我因为开发机比较强悍，所以果断安装了 eos，然后用 VirtualBox 虚拟 Win 7 开发，老长时间不用了一些小技巧又忘了，笔记一下吧*
@@ -20,7 +20,7 @@ comment: true
 
 2. Linux 端需要把当前用户添加到 vboxusers 用户组里，否则 VBox 没有访问 USB 口的权限：
 
-	```
+	```bash
 	$ sudo usermod -G vboxusers -a joshua
 	```
 	把 joshua 替换为当前用户。
@@ -38,7 +38,7 @@ MACOS 的以下命令在 /Applications/VirtualBox.app/Contents/MacOS/ 下，可�
 
 1. 查看虚拟磁盘命令：
 
-	```
+	```bash
 	$ vboxmanage list hdds
 	UUID:           a2502312-474c-4684-a59f-5ac624f87127
 	Parent UUID:    base
@@ -54,7 +54,7 @@ MACOS 的以下命令在 /Applications/VirtualBox.app/Contents/MacOS/ 下，可�
 
 2. 扩容命令：
 
-	```
+	```bash
 	$ vboxmanage modifyhd a2502312-474c-4684-a59f-5ac624f87127 --resize 102400(M)
 	```
 
@@ -86,7 +86,7 @@ MACOS 的以下命令在 /Applications/VirtualBox.app/Contents/MacOS/ 下，可�
 
 修改 VDI 磁盘位置后，虚拟机不能工作，除了新建虚拟机还可修修改虚拟机的配置文件，比如 linux 下其默认配置文件在 ~/VirtualBox MS，比如我的 Win 7 的配置文件名叫 Win7.vbox：
 
-```
+```vim
 └── Win7
     ├── Logs
     │   ├── VBox.log

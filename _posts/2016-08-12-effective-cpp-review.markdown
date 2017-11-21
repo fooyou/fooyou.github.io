@@ -6,8 +6,8 @@ tags: cpp
 date: 2016-08-12 13:08:17
 published: true
 summary: 要跳槽了，复习一下 C++。
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 # C 到 C++

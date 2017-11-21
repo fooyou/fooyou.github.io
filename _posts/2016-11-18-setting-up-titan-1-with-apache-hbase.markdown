@@ -6,8 +6,8 @@ tags: bigdata
 date: 2016-11-18 13:11:41
 published: true
 summary: 最近在研究图数据库，而 Titan 当前被认为是图数据库的引领者，Titan内部集成了 Aapache TinkerPop 的图协议栈，所以计划测试一下使用 Hadoop Hbase 做为存贮后端的 Titan 1.0。
-image: pirates.svg
-comment: true 
+mathjax: false
+highlight: true
 ---
 
 尽管 [Titan 官方文档](http://s3.thinkaurelius.com/docs/titan/1.0.0/) 已相当丰富并且有大量好的资源帮助你了解它是如何工作的，但这些示例相当普通，在如何选择和配置后端数据库上并没有提供一个完整清晰的配置和操作过程，而只提供了一些片段。（尤其对于HBase 的小白来说）。
@@ -47,7 +47,7 @@ comment: true
 
 1. conf/core-site.xml
 
-    ```vim
+    ```xml
     <configuration>
         <!-- Hadoop 伪分布式配置 -->
         <!-- 使用 /opt/hadoop-1.2.1/tmp 做为 hdfs 的存储目录，默认为 /tmp 
@@ -66,7 +66,7 @@ comment: true
 
 2. conf/hdfs-site.xml
 
-    ```vim
+    ```xml
     <configuration>
         <property>
             <name>dfs.replication</name>
@@ -88,7 +88,7 @@ comment: true
 
 3. conf/mapred-site.xml
 
-    ```vim
+    ```xml
     <configuration>
         <property>
             <name>mapred.job.tracker</name>
@@ -121,7 +121,7 @@ $ ./bin/stop-all.sh             // 关闭 Hadoop 的各个监护进程
 
 1. conf/hbase-site.xml
 
-    ```vim
+    ```xml
     <configuration>
         <property>
             <name>hbase.rootdir</name>
@@ -137,7 +137,7 @@ $ ./bin/stop-all.sh             // 关闭 Hadoop 的各个监护进程
 
 2. conf/hbase-env.sh
 
-    ```vim
+    ```bash
     export JAVA_HOME=`/usr/libexec/java_home` # 自己的JAVA_HOME 主目录
     export HBASE_CLASSPATH=/opt/hadoop-1.2.1/conf # 自己的 HADOOP_HOME 主目录
     ```

@@ -6,8 +6,8 @@ tags: lucene
 date: 2015-12-09 16:12:36
 published: true
 summary: lucene支持的Query里面有Proximity查询，却没有同句或同在的查询，要实现同在查询的话就得自己扩展QueryParser了。
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: false
 ---
 
 调查整理了一番，主要有以下几种实现方案：

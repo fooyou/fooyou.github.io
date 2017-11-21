@@ -3,13 +3,11 @@ layout: post
 title: 油盐酱醋谈生活
 category: Document
 tags: spiritual christian
-year: 2015
-month: 05
-day: 04
+date: 2015-05-04
 published: true
 summary: 生活本就酸甜苦辣咸，有些甜需要秀，有些甜不能秀，有些苦需要吐，有些苦不能吐……
-image: life.svg
-comment: false
+mathjax: false
+highlight: false
 ---
 
 > *生活本无事，庸人自扰之*

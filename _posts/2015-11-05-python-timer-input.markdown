@@ -6,9 +6,8 @@ tags: python
 date: 2015-11-05 10:38:10
 published: true
 summary: 使用signal的signal和alarm方法产生异常来中断input()，ffplay命令的使用
-image: pirates.svg
-comment: true
-latex: false
+mathjax: false
+highlight: true
 ---
 
 VLC、Media Player、etc，but I love ffmpeg the best.
@@ -99,7 +98,7 @@ if __name__ == '__main__':
 
 配置脚本，音乐库目录
 
-```
+```vim
 #!/usr/bin/env python
 #! codeing: utf8
 

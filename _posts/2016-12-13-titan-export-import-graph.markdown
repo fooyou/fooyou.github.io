@@ -6,8 +6,8 @@ tags: graph
 date: 2016-12-13 18:12:48
 published: true
 summary: titan 没有提供可视化的图浏览工具，只能导出到 neo4j 等工具中查看
-image: pirates.svg
-comment: true 
+mathjax: false
+highlight: true
 ---
 
 Titan Graph 导出，Java 代码导出成 graphml(当然也能导出成 csv 等其他格式)：

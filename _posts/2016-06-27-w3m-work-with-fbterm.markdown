@@ -6,8 +6,8 @@ tags: linux w3m fbterm
 date: 2016-06-27 16:06:16
 published: true
 summary: tty 使用 framebuffer 显示图片播放视频等，w3m 也可用其显示图片，但由于版本问题一直没有官方的更新。
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 ## 问题的由来
@@ -16,7 +16,7 @@ comment: true
 
 由于版本问题 w3m 使用 framebuffer 显示图片时，指定的 fb 为 jfbterm（比较老的版本），可修改指定 fb 的代码 ./w3mimg/fb/fb_w3mimg.c 175 行的代码：
 
-```
+```vim
     --- if (!check_tty_console(getenv("W3M_TTY")) && strcmp("jfbterm", getenv("TERM")) != 0) {
     +++ if (!check_tty_console(getenv("W3M_TTY")) && (check_TERM(getenv("TERM")) == 0)) {
 ```
@@ -33,7 +33,7 @@ w3m-0.5.3 的代码中的几个编译错误需要修改的：
 
     a. 使用 sed 命令
 
-    ```
+    ```bash
     sed -i -e "s/file_handle/w3m_file_handle/g" istream.?
     ```
 
@@ -41,7 +41,7 @@ w3m-0.5.3 的代码中的几个编译错误需要修改的：
 
 2. make 时如果遇到 GC_proc_set_param() 返回值为 void 的错误，请修改文件 main.c，API 升级导致的接口错误：
 
-    ```
+    ```bash
     314: else if (orig_GC_warn_proc)
     修改为：
     314: else if (orig_GC_warn_proc = GC_get_warn_proc())
@@ -53,7 +53,7 @@ w3m-0.5.3 的代码中的几个编译错误需要修改的：
 
 3. make 时如果遇到 ld 返回错误，请修改 Makefile.in 文件
 
-    ```
+    ```bash
     Index: w3m-0.5.3/Makefile.in
     ===================================================================
     --- w3m-0.5.3.orig/Makefile.in  2010-12-03 09:38:54.699796002 +0100

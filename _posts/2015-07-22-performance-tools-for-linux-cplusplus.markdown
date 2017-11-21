@@ -3,13 +3,11 @@ layout: post
 title: C/C++性能测试工具 GNU gprof
 category: Document
 tags: c++ performance
-year: 2015
-month: 07
-day: 22
+date: 2015-07-22
 published: true
 summary: linux下的c/c++性能分析工具，用到了graphicviz绘图。
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 ## 代码剖析（Code profiling）
@@ -92,13 +90,13 @@ gcc文档中对`-pg`的描述：
 
 也就是，在编译和链接的时候都要使用`-pg`标识，所以，一起用吧：
 
-```
+```bash
 $ gcc -Wall -pg test.c func.c -o test
 ```
 
 #### Step 2: 运行程序
 
-```
+```bash
 $ ls
 func.c  makefile  test  test.c
 
@@ -120,13 +118,13 @@ gprof可以把gmon.out以人可读的方式解析出来，解析出的内容包�
 
 把这两个表重定向到analysis.txt：
 
-```
+```bash
 $ gprof test gmon.out > analysis.txt
 ```
 
 得到analysis.txt：
 
-```
+```vim
 Flat profile:
 
 Each sample counts as 0.01 seconds.
@@ -289,19 +287,19 @@ Index by function name
 
 1. 使用`-a`参数屏蔽静态（私有）函数信息：
 
-```
+```bash
 $ gprof -a test gmon.out > analysis.txt
 ```
 
 2. 使用`-b`参数屏蔽冗余信息：
 
-```
+```bash
 $ gprof -b test gmon.out > analysis.txt
 ```
 
 得到如下信息：
 
-```
+```vim
 Flat profile:
 
 Each sample counts as 0.01 seconds.
@@ -345,7 +343,7 @@ Index by function name
 
 3. 使用`-p`参数只打印flat profile信息：
 
-```
+```bash
 $ gprof -p test gmon.out > analysis.txt
 ```
 
@@ -353,19 +351,19 @@ $ gprof -p test gmon.out > analysis.txt
 
 只打印函数`a()`的flat profile信息
 
-```
+```bash
 $ gprof -pa test gmon.out > analysis.txt
 ```
 
 5. 使用`-P`参数屏蔽flat profile信息：
 
-```
+```bash
 $ gprof -P test gmon.out > analysis.txt
 ```
 
 6. 使用`-q`参数只打印call graph信息：
 
-```
+```bash
 $ gprof -q test gmon.out > analysis.txt
 ```
 
@@ -373,13 +371,13 @@ $ gprof -q test gmon.out > analysis.txt
 
 只打印函数`a()`的call graph信息
 
-```
+```bash
 $ gprof -qa test gmon.out > analysis.txt
 ```
 
 8. 使用`-Q`参数屏蔽call graph信息：
 
-```
+```bash
 $ gprof -Q test gmon.out > analysis.txt
 ```
 

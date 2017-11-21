@@ -4,10 +4,9 @@ title: vim/vi加密解密文件
 category: Document
 tags: vim
 date: 2014-09-19
-published: true
 summary: Vim简单加解密文件
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 

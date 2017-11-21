@@ -8,8 +8,8 @@ month: 04
 day: 08
 published: true
 summary: ubutnu中使用动态链接库的场景 
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 ##问题

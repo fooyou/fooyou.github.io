@@ -6,20 +6,19 @@ tags: linux
 date: 2015-10-21 13:20:10
 published: true
 summary: 可用"/dev/urandom"生成
-image: pirates.svg
-comment: true
-latex: false
+mathjax: false
+highlight: true
 ---
 
 ## 生成全字符字符串
 
-```
+```bash
 $ cat /dev/urandom | strings -n C | head -n L
 ```
 
 ## 生成数字加字母的随机字符串
 
-```
+```bash
 $ cat /dev/urandom | sed 's/[^a-zA-Z0-9]//g' | strings -n C | head -n L
 ```
 

@@ -6,8 +6,8 @@ tags: linux
 date: 2016-10-11 17:10:02
 published: true
 summary: 我的翻墙选择
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 Windows 上翻墙使用 freegate 或者 psiphone3 很方便。

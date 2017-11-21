@@ -6,8 +6,8 @@ tags: network
 date: 2016-09-04 20:09:03
 published: true
 summary: 有时急需上网，但是自家的网络不好用，那么如何不道德的盗用邻居家的 WiFi 呢？
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: false
 ---
 
 现在的 WiFi 密码一般都采用 WPA/WPA2 进行加密，它使用非常强壮的密码存储机制可以显著的减慢自动破解程序的速度，使用 PBKDF2 解密函数来解密通过 4096 次迭代的加密哈希算法加密过的密码，在2012年测试只需几分钟即可破解，但若用它来破解 WPA/WPA2 加密的 WiFi 密码则需要几天或者几周或者几月。

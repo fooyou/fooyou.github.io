@@ -6,8 +6,8 @@ tags: ffmpeg
 date: 2017-06-08 14:06:33
 published: true
 summary: 超赞，超爱 ffmpeg 有木有？
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 ffmpeg 视频处理的终极神器，你值得学习！

@@ -6,6 +6,8 @@ category: Document
 tags: algorithm
 date: 2017-11-18 17:11:05
 cover: 
+mathjax: true
+highlight: true
 ---
 
 # 0.皮亚诺公理

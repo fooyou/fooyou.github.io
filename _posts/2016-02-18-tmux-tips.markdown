@@ -6,14 +6,14 @@ tags: tmux
 date: 2016-02-18 14:02:16
 published: true
 summary: 感谢不断卡死的 gnome 桌面，使我不得不在 tty 下工作，今天边看文档边写文档想在 tmux 下调整下 pane 大小却不知道怎么调整，后来直接用命令解决了
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 先看一下 tmux 的快捷键，C-b 然后 ?，出现快捷键说明：
 
 
-```
+```vim
 bind-key        C-b send-prefix
 bind-key        C-o rotate-window
 bind-key        C-z suspend-client
@@ -96,7 +96,7 @@ bind-key -r C-Right resize-pane -R
 所以还是用命令解决吧，C-b : 进入命令行模式，然后输入：
 
 
-```
+```bash
 resize-pane -R 20
 ```
 

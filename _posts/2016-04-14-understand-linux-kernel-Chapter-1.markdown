@@ -6,15 +6,15 @@ tags: linux
 date: 2016-04-14 14:04:07
 published: true
 summary: 有些事情既然已经列为人生必须要做的事，那么现在就开始做吧，否则就真没有机会了。有些好书曾经特别想读的现在就开始读吧！
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 # 第一章 绪论
 
 linux 系统是类 Unix 操作系统，其他类 Unix 系统参照下图。
 
-```
+```bash
 
                              .-----------.                .------------------.
                               SVR4 | AT&T <-收费系统鼻祖-> 4.4BSD | 加州大学伯克利分校 

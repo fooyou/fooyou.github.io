@@ -6,9 +6,8 @@ tags: solr
 date: 2015-10-22 10:51:10
 published: true
 summary: 以前玩过4.9，转眼间都到5.3了，后悔以前没有做笔记，现在记录一下吧。
-image: pirates.svg
-comment: true
-latex: false
+mathjax: false
+highlight: true
 ---
 
 以前用4.x的时候，用tomcat相当方便，官方有solr.war包，直接放到webapps下，运行tomcat搞定。现在一看solr5.3里没有了war包，不知道为什么，只有自己动手了。
@@ -33,7 +32,7 @@ Solr包解压位置：~/Downloads/solr-5.3.1 = SR
 5. 将 solr 压缩包中 solr-5.3.1/server/solr 目录复制到计算机某个目录下，如~/solr_home
 6. 打开Tomcat/webapps/solr/WEB-INF下的web.xml，找到如下配置内容（初始状态下该内容是被注释掉的）：
 
-    ```
+    ```xml
     <env-entry>
         <env-entry-name>solr/home</env-entry-name>
         <env-entry-value>/put/your/solr/home/here</env-entry-value>
@@ -56,7 +55,7 @@ Core Admin里的创建Core是不好用的，必须先创建solrconfig.xml和sche
 
     cd到solr解压包位置，cd SR
 
-    ```
+    ```bash
     $ bin/solr start                    # 启动solr
     $ bin/solr create -c films          # 创建Core films
     ```
@@ -65,7 +64,7 @@ Core Admin里的创建Core是不好用的，必须先创建solrconfig.xml和sche
 
 2. 添加两个字段的schema：
 
-    ```
+    ```bash
     $ curl http://localhost:8080/solr/films/schema -X POST -H 'Content-type:application/json' --data-binary '{
         "add-field": {
             "name": "name",

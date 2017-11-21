@@ -6,21 +6,21 @@ tags: vim terminal
 date: 2015-08-19 16:55:03
 published: true
 summary:
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: false
 ---
 
 有很多方法，我最喜欢这个：
 
 vim工作环境中，启动Terminal：
 
-```
+```bash
 :sh
 ```
 
 返回Terminal在当前vim工作目录，再次切回vim使用`Ctrl + d`
 
-```
+```bash
 $ <Ctrl + d>
 ```
 

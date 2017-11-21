@@ -3,13 +3,11 @@ layout: post
 title: 使用vim打造IDE 
 category: Document
 tags: vim 
-year: 2015
-month: 08
-day: 13 
+date: 2015-08-13
 published: true
 summary: 使用vim打造IDE，其中的插件主要使用到NERDTree和CtrlP
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 > 参见：https://www.safaribooksonline.com/blog/2014/11/23/way-vim-ide/
@@ -28,7 +26,7 @@ comment: true
 
 还有很多美好的插件，不过对于我来说这些已经够用了。.vimrc配置文件如下，里面有说明。
 
-```
+```vim
 "                                      通用设置 
 " -------------------------------------------------------------------------------------------
 set number                    " 显示行号

@@ -6,9 +6,8 @@ tags: linux
 date: 2015-09-08 10:55:01
 published: true
 summary: bash中文文档
-image: pirates.svg
-comment: true
-latex: false
+mathjax: false
+highlight: false
 ---
 
 BASH(1)                                                                     BASH(1)

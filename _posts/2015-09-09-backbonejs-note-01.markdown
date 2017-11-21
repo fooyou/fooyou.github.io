@@ -6,9 +6,8 @@ tags: backbone
 date: 2015-09-09 11:11:13
 published: true
 summary: Backbone概要介绍
-image: pirates.svg
-comment: true
-latex: false
+mathjax: false
+highlight: true
 ---
 
   术语  |  描述

@@ -3,13 +3,11 @@ layout: post
 title: 网站压力测试之——如何生成百万级的http请求
 category: Document
 tags: webtest
-year: 2015
-month: 07
-day: 21
+year: 2015-07-21
 published: true
 summary: 每秒处理3百万请求的高性能Web集群的方法。
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 > 文章选自：http://blog.jobbole.com/87509/
@@ -28,7 +26,7 @@ _负载生成器是一些生成用于测试的流量的程序。它们可以向�
 
 它以每秒 1,000 个的速率创建了 100,000 个会话（session）。每次会话发起 5 次请求，时间间隔为 2 秒。
 
-```
+```vim
 httperf --hog --server=192.168.122.10 --wsess=100000,5,2 --rate 1000 --timeout 5
 
 Total: connections 117557 requests 219121 replies 116697 test-duration 111.423 s
@@ -52,7 +50,7 @@ Net I/O: 467.5 KB/s (3.8*10^6 bps)
 
 最终，我使用这些设置达到了每秒 6,622 个连接：
 
-```
+```bash
 httperf --hog --server 192.168.122.10 --num-conn 100000 --ra 20000 --timeout 5
 ```
 
@@ -80,19 +78,19 @@ httperf --hog --server 192.168.122.10 --num-conn 100000 --ra 20000 --timeout 5
 
 首先，你要安装（Erlang 需要的） EPEL 源。因此，在进行下一步之前要把它安装好。安装完后，继续安装你用来产生负载的每个节点需要的包。如果你还没有在节点之间建立无密码 SSH 密钥（passwordless SSH key），那么请建立之。
 
-```
+```bash
 yum -y install erlang perl perl-RRD-Simple.noarch perl-Log-Log4perl-RRDs.noarch gnuplot perl-Template-Toolkit firefox
 ```
 
 从 Github 或者 Tsung 的官网上下载最新的 Tsung。
 
-```
+```bash
 wget http://tsung.erlang-projects.org/dist/tsung-1.4.2.tar.gz
 ```
 
 解压并且编译。
 
-```
+```bash
 tar zxfv  tsung-1.4.2.tar.gz
 cd tsung-1.4.2
 ./configure && make && make install
@@ -100,7 +98,7 @@ cd tsung-1.4.2
 
 把示例配置复制到 ~/.tsung 目录里。这是 Tsung 的配置文件和日志文件的存放地方。
 
-```
+```bash
 cp /usr/share/doc/tsung/examples/http_simple.xml /root/.tsung/tsung.xml
 ```
 
@@ -185,7 +183,7 @@ cp /usr/share/doc/tsung/examples/http_simple.xml /root/.tsung/tsung.xml
 
 一旦你已经很好地理解了它们，你就可以创建一个便利的别名，去快速观察 Tsung 报告。
 
-```
+```bash
 vim ~/.bashrc
 alias treport="/usr/lib/tsung/bin/tsung_stats.pl; firefox report.html"
 
@@ -194,7 +192,7 @@ source ~/.bashrc
 
 然后启动 Tsung
 
-```
+```bash
 [root@loadnode1 ~] tsung start
 Starting Tsung
 "Log directory is: /root/.tsung/log/20120421-1004"
@@ -202,7 +200,7 @@ Starting Tsung
 
 结束后观察报告
 
-```
+```bash
 cd /root/.tsung/log/20120421-1004
 treport
 ```

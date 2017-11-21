@@ -3,13 +3,11 @@ layout: post
 title: 沈阳市城镇居民基本医疗保险参保就医指南
 category: Document
 tags: government
-year: 2015
-month: 06
-day: 10
+date: 2015-06-10
 published: true
 summary: 在为人民服务的“硕鼠”面前，感觉好挫败，政策总是那么好，执行政策的人总是这么牛气冲天。其实什么样的人民养什么样的政府，群众一边责怪政府，但当自己与政府打交道时又一边“红包”“关系”……现在国家打击腐败，很多政府人员不敢腐败却不肯帮百姓办事了，政府人员“占茅坑不拉屎的”更糟。
-image: life.svg
-comment: true
+mathjax: false
+highlight: false
 ---
 
 ## 参保缴费

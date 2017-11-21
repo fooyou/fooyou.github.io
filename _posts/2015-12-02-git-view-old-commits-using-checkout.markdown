@@ -6,8 +6,8 @@ tags: git
 date: 2015-12-02 15:12:32
 published: true
 summary: 应用场景是，看大师们的代码库，比如我想看看大牛们是如何一点点把牛气冲天的linux内核写出来的。
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 ## 需求
@@ -21,13 +21,13 @@ git checkout 可以办到。
 
 ### Step 1： 列出所有的commit
 
-```
+```bash
 root$ git log
 ```
 
 找到需要查看的提交的hash值，比如这次提交的`c3f1a81a5dde6ccea1ec71c446cf96502b0a778a`。
 
-```
+```vim
 commit c3f1a81a5dde6ccea1ec71c446cf96502b0a778a
 Author: Joshua Liu <liuchaozhenyu@gmail.com>
 Date:   Mon Nov 30 17:29:42 2015 +0800
@@ -38,7 +38,7 @@ Date:   Mon Nov 30 17:29:42 2015 +0800
 
 ### Step 2：checkout
 
-```
+```bash
 git checkout <commit hash id>
 ```
 
@@ -56,7 +56,7 @@ git checkout <commit hash id>
  git log --pretty  | 使log结果更好看
 
 
-```
+```bash
 $ git log --pretty=oneline
 ca82a6dff817ec66f44342007202690a93763949 changed the version number
 085bb3bcb608e1e8451d4b2432f8ecbe6306e7e7 removed unnecessary test
@@ -64,7 +64,7 @@ a11bef06a3f659402fe7563abf99ad00de2209e6 first commit
 ```
 
 
-```
+```git
 $ git log --pretty=format:"%h - %an, %ar : %s"
 ca82a6d - Scott Chacon, 6 years ago : changed the version number
 085bb3b - Scott Chacon, 6 years ago : removed unnecessary test
@@ -81,17 +81,17 @@ git checkout 主要有三种用途:
 
 1. 检出分支（branch）
 
-    ```
+    ```git
     $ git checkout <branch>
     ```
 2. 检出文件
 
-    ```
+    ```git
     $ git checkout <commit> <file>
     ```
 3. 检出提交(commit or tag)
 
-    ```
+    ```git
     $ git checkout <commit>
     ```
     注意此时的“状态”是未附着在master分支上的，且是以只读形式存在的，因为已提交的内容是不容许修改的。

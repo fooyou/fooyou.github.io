@@ -3,13 +3,11 @@ layout: post
 title: Flask系列教程之二：Template
 category: Document
 tags: flask
-year: 2015
-month: 06
-day: 12
+date: 2015-06-12
 published: true
 summary: 跟随大师 Miguel Grinberg 的脚步学习Flask，系列教程二——template。
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 ## 为什么需要模板？

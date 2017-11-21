@@ -6,8 +6,8 @@ tags: network
 date: 2017-06-02 15:06:42
 published: true
 summary: 不被墙的全球 mastodon 正悄然兴起，赶快来体验吧
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: false
 ---
 
 先看下截图。

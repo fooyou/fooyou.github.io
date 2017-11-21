@@ -6,8 +6,8 @@ tags:
 date: 2016-04-22 14:04:12
 published: true
 summary: 
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 案例研究：
@@ -31,19 +31,19 @@ audit：审查
 5. umask / chmod: umask 可更改系统创建文件和文件夹时的默认权限，chmod可更改单独的文件或文件夹的权限。
 6. chattr: 不可变文件(immutabel)设置，设置为不可便文件，连 root 都不可以对其进行修改或者删除，除非移除该标志位。
     
-    ```
+    ```bash
     $ chattr +i /var/test_file
     ```
 
     设置后，可使用 lsattr 进行查看
 
-    ```
+    ```bash
     $ lsattr /var/test_file
     ----i-------- test_file
     ```
 7. strace: 可跟踪所有系统调用和可执行的编译。给定一个可执行文件，它将枚举所有与该文件相关的文件，包括配置文件、库依赖关系、打开的文件、输出的文件。它能显示系统单步调试本身所执行的一个二进制文件时大量的输出。
 
-    ```
+    ```bash
     $ strace touch
     open("/usr/lib/locale/locale-archive", O_RDONLY|O_CLOEXEC) = 3
     fstat(3, {st_mode=S_IFREG|0644, st_size=7216496, ...}) = 0
@@ -52,7 +52,7 @@ audit：审查
     ```
 8. ldd: 可枚举可执行文件的库依赖关系，但它不列举配置文件或打开的文件
 
-    ```
+    ```bash
     $ ldd touch
     linux-vdso.so.1 =>  (0x00007fffbe9f1000)
     libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fd8d2fcd000)
@@ -61,7 +61,7 @@ audit：审查
 
 9. lsof: 列举指定 daemon 程序所使用的所有打开文件
 
-    ```
+    ```bash
     $ lsof | grep sshd
     ...
     ```

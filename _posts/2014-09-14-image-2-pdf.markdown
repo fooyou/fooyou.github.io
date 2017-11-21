@@ -6,8 +6,8 @@ tags: image
 date: 2014-09-14
 published: true
 summary: 使用 ImageMagick的convert命令和gscan2pdf进行image 2 pdf和pdf 2image
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 今天老婆的音乐教学事业有所突破,我当然要支持,所以帮老婆把她师弟发过来的吉他教学内容转成pdf文档,教学内容为100多张图片,很大的图片.

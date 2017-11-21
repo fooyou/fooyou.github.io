@@ -3,13 +3,11 @@ layout: post
 title: pip如何使用cache
 category: Document
 tags: pip python
-year: 2015
-month: 07
-day: 09
+date: 2015-07-09
 published: true
 summary: maven默认状态下是把所有包都cache下来的，重复的包就不用多次下载，但是发现使用virtualenv下的pip不是，同样一个包不同环境会多次下载，幸亏看到了这个方法：
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 maven默认状态下是把所有包都cache下来的，重复的包就不用多次下载，但是发现使用virtualenv下的pip不是，同样一个包不同环境会多次下载，极大的浪费了时间和带宽。
@@ -22,13 +20,13 @@ maven默认状态下是把所有包都cache下来的，重复的包就不用多�
 
 linux下：
 
-```
+```bash
 export PIP_DOWNLOAD_CACHE=$HOME/.pip_packages
 ```
 
 MacOS下：
 
-```
+```bash
 export PIP_DOWNLOAD_CACHE=$HOME/Library/Caches/pip-packages
 ```
 

@@ -3,13 +3,11 @@ layout: post
 title: Python3.4 使用 virtualenv
 category: Document
 tags: python virtualenv
-year: 2015
-month: 06
-day: 15
+year: 2015-07-02
 published: true
 summary: 总之，折腾了一圈
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 感觉 virtualenv 虚拟 python 环境很好用，很多同行前辈都推荐。所以刚入python的我也用了，python 2.7 装完了，用着挺酷，然后开始装 python3.4 的，装完了发现很多问题，后来又发现 python3.4 内带了这个功能，当时就一脑门黑线。真心的应该用pycharm 看一眼python3.4 都内置了神马东东。好吧，使用内置的最后终于可行了，但仍有一些待解决的问题，以后再说吧。
@@ -17,7 +15,7 @@ comment: true
 
 __最后 python3.4 是这么好用的:__
 
-```
+```bash
 $ mkdir myproject
 $ cd myproject
 $ pyvenv venv

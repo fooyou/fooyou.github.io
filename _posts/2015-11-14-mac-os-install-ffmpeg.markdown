@@ -6,9 +6,8 @@ tags: macos
 date: 2015-11-14 11:55:10
 published: true
 summary: 其实就是介绍使用brew安装ffmpeg的，那还用介绍吗？还是有必要的。
-image: pirates.svg
-comment: true
-latex: false
+mathjax: false
+highlight: true
 ---
 
 不知道ffmpeg什么东西，她是一个开源项目，可以将任何格式的音视频文件进行编解码转换播放等等等等，基本可以这么说你对音视频相关的任何需求她都能办到，但首先你得会用她。开源领域内神一样的VLC，还有Media Player Classic都是在用ffmpeg的codec库。
@@ -23,19 +22,19 @@ Mac OS有着很美的操作界面，人性化的设计让许多开发者爱不�
 
 1. 使用Ruby安装Homebrew：
 
-    ```
+    ```bash
     $ ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
     ```
 
 2. 使用brew安装ffmpeg：
 
-    ```
+    ```bash
     $ brew install ffmpeg --with-ffplay
     ```
 
 除了安装选项 `--with-ffplay`外还有更多的选项如下：
 
-```
+```vim
 –with-fdk-aac  (Enable the Fraunhofer FDK AAC library)
 –with-ffplay  (Enable FFplay media player)
 –with-freetype  (Build with freetype support)

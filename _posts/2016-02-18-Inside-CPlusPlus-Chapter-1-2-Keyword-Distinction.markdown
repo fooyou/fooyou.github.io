@@ -6,8 +6,8 @@ tags: c++
 date: 2016-02-19 10:02:34
 published: true
 summary: struct 和 class 关键词的差异
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 ## 1.2 关键词的差异

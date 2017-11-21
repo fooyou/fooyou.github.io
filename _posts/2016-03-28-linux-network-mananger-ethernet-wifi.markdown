@@ -6,8 +6,8 @@ tags: linux network
 date: 2016-03-28 17:03:37
 published: true
 summary: ubuntu 创建了多个 ip 链接，不知道怎么切换，于是 google 出了这篇文章，很实用。
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 **Network**
@@ -16,7 +16,7 @@ ubuntu 使用 NetworkManager 管理以太网和 WiFi
 
 查看所有可见连接：
 
-```
+```bash
 $ nmcli con list
 ```
 
@@ -24,13 +24,13 @@ $ nmcli con list
 
 断开以太网（重启后不再自动连接）:
 
-```
+```bash
 $ nmcli dev disconnect iface eth0
 ```
 
 ip 配置存放在 `/etc/NetworkManager/system-connections/` 下，文件名即是以太网网络连接的 id 名。这里可以配置多个 ip，但只能启用一个。
 
-```
+```bash
 $ ls /etc/NetworkManager/system-connections/
 Home Work
 $ cat /etc/NetworkManager/system-connections/Home
@@ -51,13 +51,13 @@ method=auto
 
 启用 Home:
 
-```
+```bash
 $ nmcli con up id "Home"
 ```
 
 关闭 Home：
 
-```
+```bash
 $ nmcli con down id "Home"
 ```
 
@@ -65,11 +65,11 @@ $ nmcli con down id "Home"
 
 修改静态 IP 地址，可以编辑上面的 Home 文件，比如修改 [ipv4]：
 
-```
+```bash
 $ vim /etc/NetworkManager/system-connections/Home
 ```
 
-```
+```bash
 [ipv4]
 method=manual
 address1=192.168.1.100/24,192.168.1.1
@@ -78,7 +78,7 @@ dns=8.8.8.8;8.8.4.4;
 
 address1 的格式如下：
 
-```
+```bash
     address1=<IP>/<prefix>,<route>
 ```
 
@@ -86,43 +86,43 @@ address1 的格式如下：
 
 列出可见的 WiFi 列表：
 
-```
+```bash
 $ nmcli dev wifi
 ```
 
 创建一个新的名为“Mycafe”的连接，然后使用密码“caffeine”连接至 SSID 名为“Cafe Hotspot 1”：
 
-```
+```bash
 $ nmcli dev wifi connect "Cafe Hotspot 1" password "caffeine" name "Mycafe"
 ```
 
 断开 “Mycafe” 连接：
 
-```
+```bash
 $ nmcli con down id "Mycafe"
 ```
 
 启用 “Mycafe” 连接：
 
-```
+```bash
 $ nmcli con up id "Mycafe"
 ```
 
 显示 Wifi on/off 状态：
 
-```
+```bash
 $ nmcli nm wifi
 ```
 
 打开 wifi：
 
-```
+```bash
 $ nmcli nm wifi on
 ```
 
 关闭 wifi：
 
-```
+```bash
 $ nmcli nm wifi off
 ```
 

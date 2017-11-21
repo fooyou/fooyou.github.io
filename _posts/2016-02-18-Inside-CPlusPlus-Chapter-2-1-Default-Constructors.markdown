@@ -6,8 +6,8 @@ tags: c++
 date: 2016-02-19 15:02:08
 published: true
 summary: 构造语意学（The Semantics of Constructors）
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: false
 ---
 
 学习 C++ 一个听烂了的词叫 “C++ 编辑器会...” C++ 编辑器确实做了很多的事情，本章将展开在构造函数时它都干了些什么事。

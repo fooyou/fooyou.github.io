@@ -6,8 +6,8 @@ tags: mysql linux
 date: 2016-07-12 15:07:41
 published: true
 summary: 近期导入巨量数据，结果发现服务器硬盘不够用了，综合考虑了一下，决定先移动数据库到另一大分区，记录一下过程。
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: false
 ---
 
 **The table is full**

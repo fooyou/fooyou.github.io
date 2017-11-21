@@ -4,10 +4,9 @@ title: Git通过代理访问Github
 category: Document
 tags: git github
 date: 2012-05-13
-published: true
 summary: 公司代理如何拥抱github，使用ssh协议代理喽
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 实现方法已更新，参见 2016-07-07 博客

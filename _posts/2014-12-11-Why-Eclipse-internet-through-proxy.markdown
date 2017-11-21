@@ -6,8 +6,8 @@ tags: eclipse proxy ubuntu
 date: 2014-12-11
 published: true
 summary: Ubuntu下，Eclipse通过代理怎么也连不上网络，如何解决？ 
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 google一番之后，原来这是Eclispe的bug，好在找到了一个回避方法，就是不要对SOCKS设置proxy，如下：

@@ -8,8 +8,8 @@ month: 04
 day: 23
 published: true
 summary: 当你拥有多个python项目且每个项目的Python环境都不尽相同时，virtualenv就是拯救你Python环境的神器。
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 **virtualenv**

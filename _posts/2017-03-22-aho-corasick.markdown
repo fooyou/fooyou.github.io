@@ -6,8 +6,8 @@ tags: algorithm
 date: 2017-03-22 10:03:01
 published: true
 summary: 
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 ## 简介
 

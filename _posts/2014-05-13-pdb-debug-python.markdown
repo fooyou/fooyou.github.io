@@ -4,10 +4,9 @@ title: python使用pdb调试
 category: Document
 tags: python debug
 date: 2014-05-13
-published: true
 summary: 对于从Windows迁移来的开发者而言在Terminal里进行调试是很别扭的事，本文介绍如何使用pdb对python代码进行调试。
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 根据设计编写代码后需要对一些代码进行调试，可以通过log信息检查代码是否按照设计执行，有时发现代码工作异常但看log又不能提供更多信息时，就需要对代码进行调试以获得更详细的出错信息来帮助修正代码。

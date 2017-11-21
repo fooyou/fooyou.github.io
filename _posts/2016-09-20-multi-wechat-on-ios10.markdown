@@ -6,8 +6,8 @@ tags: network
 date: 2016-09-20 13:12:18
 published: true
 summary: 两个微信在 iOS 上多开
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: false
 ---
 
 方法：使用 safari 浏览器打开网址 http://m.pc6.com/s/144125，

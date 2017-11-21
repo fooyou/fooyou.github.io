@@ -6,8 +6,8 @@ tags: git
 date: 2016-03-22 16:03:56
 published: true
 summary: 回退一次 commit 很容易，但彻底删除一次 commit 或者彻底删除一个误传的文件需要……
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 git 仓库的设计是比较保守的，这个结论来自 git 文件提交管理里，所以对于误操作 git 的态度是非常严谨的，想轻易的删除一次提交或者某个已经提交的文件是很困难的，尤其是已经上传到版本库的提交，利用远程版本控制貌似删除无法彻底清除，除非你是管理员。
@@ -18,7 +18,7 @@ git 仓库的设计是比较保守的，这个结论来自 git 文件提交管�
 删除方法如下：
 
 
-```
+```git
 $ git filter-branch --tree-filter 'rm -f path/to/file' HEAD
 $ git ls-remote .
 $ git update-ref -d refs/original/refs/heads/master
@@ -29,7 +29,7 @@ $ git gc
 ```
 
 
-```
+```git
 $ git filter-branch --index-filter 'git rm -f --cached --ignore-unmatch path/to/file' HEAD
 $ git push origin master --force
 $ rm -rf .git/refs/original/
@@ -43,7 +43,7 @@ $ git gc --aggressive --prune=now
 那么，测试一下吧：
 
 
-```
+```bash
 joshua@joshua:~/Documents$ mkdir gdt
 joshua@joshua:~/Documents$ cd gdt/
 joshua@joshua:~/Documents/gdt$ git init
@@ -74,7 +74,7 @@ joshua@joshua:~/Documents/gdt$ du --max-depth=1 -h
 删除了，还有11M的 .git/ 缓存中，为能恢复代码，彻底删除吧！！这是个失误的操作。
 
 
-```
+```bash
 joshua@joshua:~/Documents/gdt$ git filter-branch --tree-filter 'rm -f test.txt' HEAD
 Rewrite c914919c47716d4fb13df4b0768a0e01e3776c3f (2/2)
 Ref 'refs/heads/master' was rewritten

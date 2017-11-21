@@ -6,8 +6,8 @@ tags: linux
 date: 2016-04-11 14:04:12
 published: true
 summary: 本文记录 ubuntu 系统下截取 tty 屏幕的方法和相关原理。
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 为了更有效率码农们开始时不时回归到 tty 终端工作，但有时需要在 tty 终端截屏...什么？使用 iPhone 拍照？别扯了，这不是在侮辱码农吗。所以这篇文档就诞生了。
@@ -35,7 +35,7 @@ A: Ctrl + Alt + F1 (F1 ~ F6)
 
 进入 tty 并登录后，你可以输入 `tty` 来查看信息
 
-```
+```bash
 $ tty
 /dev/tty1
 ```
@@ -43,7 +43,7 @@ $ tty
 如果你使用的是类似 mlterm 等的 GUI 终端，那么输出可能会是：
 
 
-```
+```bash
 $ fbterm
 $ tty
 /dev/pts/10
@@ -58,7 +58,7 @@ $ tty
 
 如果你使用 tty 命令看到的是 /dev/tty*，那么就可以使用这种方法，把 tty 界面导出为 txt 文件，使用 cat 命令就可以（注意是管理员权限）：
 
-```
+```bash
 $ cat /dev/vcs1 > tty1_text_screenshot.txt
 $ less tty1_text_screenshot.txt
 ```
@@ -73,14 +73,14 @@ cat 命令把控制台的内容 dump 到了文件中，然而这样 dump 出的�
 
 下载源码，编译，安装后，就可以在 tty 中使用了，文档上说直接：
 
-```
+```bash
 $ fbgrab gb.png
 ```
 
 就可以把 framebuffer 转化成 png 图像，可我试过不好用，后来自己转换一下就好用了，写个脚本取个别名：
 
 
-```
+```bash
 $ cp /dev/fb0 /tmp/xxxx.dump
 $ fbgrab -w 1440 -h 900 -b 32 -f /tmp/xxxx.dump fb.png
 $ fim fb.png
@@ -88,7 +88,7 @@ $ fim fb.png
 
 好了，好用就行。
 
-```
+```bash
 
       \o/   .------------------------------------.
        |     我使用的是正常的 tty 终端，怎么截取？

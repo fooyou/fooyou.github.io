@@ -6,9 +6,8 @@ tags: backbone
 date: 2015-09-10 11:12:15
 published: true
 summary: 对于Model这一部分，其官网是这么说的：“Model是js应用的核心，包括基础的数据以及围绕着这些数据的逻辑：数据转换、验证、属性计算和访问控制”。这句话基本上高度概括了Model在一个项目中的作用。实际上，不仅仅是js应用，在任何以数据收集和处理的项目中Model都是很重要的一块内容。
-image: pirates.svg
-comment: true
-latex: false
+mathjax: false
+highlight: true
 ---
 
 Model这个概念在我的印象中是来自于MVC这个东西，Model在其中的作用，除了是对业务中实体对象的抽象，另外的作用就是做持久化，所谓持久化就是把数据存储到磁盘上——文件形式、数据库形式。在web端也有对应的操作，比如存入LocalStorage，或者Cookie。

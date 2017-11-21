@@ -6,9 +6,8 @@ tags: linux thrift build
 date: 2015-08-20 15:46:00
 published: true
 summary: maven setting代理设置过了，为嘛不好用，最终build成功了，为嘛 sudo make install 又不好用，如何解决？
-image: pirates.svg
-comment: true
-latex: false
+mathjax: false
+highlight: true
 ---
 
 之前就在开发机上Build过，好像遇到什么代理的问题了，但很快解决了，没有留下什么记录。等过了好长时间又需要用到thrift，这时环境变了，一切都得重来，依稀记得设置的方式，却又遇到不同的问题。
@@ -17,25 +16,25 @@ latex: false
 
 安装Ubuntu需要的编译环境（是的elementary os来自ubuntu）：
 
-```
+```bash
 sudo apt-get install libboost-dev libboost-test-dev libboost-program-options-dev libboost-system-dev libboost-filesystem-dev libevent-dev automake libtool flex bison pkg-config g++ libssl-dev
 ```
 
 thrift会自动查找当前的开发语言环境，因为我只需用到python、java和C++并且环境都配好了，所以直接Configure：
 
-```
+```bash
 $ ./configure
 ```
 
 _代理配置（我没有用这种方式）_
 
-```
+```bash
 $ ./configure --with-java ANT_FLAGS='-Dproxy.enabled=1 -Dproxy.host=proxy.xxx.com -Dproxy.port=8080'
 ```
 
 没有问题，然后：
 
-```
+```bash
 $ make
 ```
 
@@ -49,7 +48,7 @@ $ make
 
 该安装了：
 
-```
+```bash
 sudo make install
 ```
 

@@ -6,8 +6,8 @@ tags: pac proxy
 date: 2015-11-28 00:11:54
 published: true
 summary: pac文件是什么，怎么通过pac文件针对不同host设置不同代理？
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 ## 什么是pac文件
@@ -63,7 +63,7 @@ function FindProxyForURL(url, host) {
 
 配置URL路径为：
 
-```
+```bash
 URL：file:///User/joshua/Document/proxy.pac
 ```
 

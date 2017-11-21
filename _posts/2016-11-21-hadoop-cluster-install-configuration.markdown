@@ -6,8 +6,8 @@ tags: bigdata
 date: 2016-11-21 15:11:25
 published: true
 summary: 详细步骤一步一步搭建完全分布式的 Hadoop 
-image: pirates.svg
-comment: true 
+mathjax: false
+highlight: true
 ---
 
 *由于项目原因，需要搭建基于 Hadoop-1.2.1 的分布式存储系统，尽管安装很简单，有大量官方和博客上的文档可供参考，但为了知识总结还是一步一步记录下来，以供参考*

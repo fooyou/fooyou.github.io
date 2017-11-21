@@ -6,22 +6,21 @@ tags: linux
 date: 2015-11-24 11:05:10
 published: true
 summary: Windows下有各种代码行统计工具，你的我的它的，linux下更是有各种方法工具。
-image: pirates.svg
-comment: true
-latex: false
+mathjax: false
+highlight: true
 ---
 
 ## 一、简单统计命令 find + wc
 
 **用法一： 查找当前目录下的python文件总行数**
 
-```
+```bash
 $ find . -name '*.c' | xargs wc -l
 ```
 
 输出如下：
 
-```
+```bash
     ...
    592 ./lzma920/C/Util/SfxSetup/SfxSetup.c
     88 ./lzma920/C/Xz.c
@@ -34,31 +33,31 @@ $ find . -name '*.c' | xargs wc -l
 
 改进一下，只显示代码行：
 
-```
+```bash
 $ find . -name '*.c' -print0 | xargs -0 cat | wc -l
 ```
 
 输出如下：
 
-```
+```bash
 30884
 ```
 
 还有'*.h'文件呢，难道在来一遍？多个类型文件呢？再改进如下：
 
-```
+```bash
 $ find . \( -name '*.h' -o -name '*.c' \) -print0 | xargs -0 cat | wc -l
 ```
 
 或者，更直观的多类型文件统计：
 
-```
+```bash
 $ find . '*.[h|c|cpp|cc|hpp]' -print0 | xargs -0 cat | wc -l
 ```
 
 输出：
 
-```
+```bash
 74575
 ```
 
@@ -78,7 +77,7 @@ $ find . '*.[h|c|cpp|cc|hpp]' -print0 | xargs -0 cat | wc -l
 
 1. 安装
 
-```
+```bash
 $ sudo apt-get install cloc
 ```
 
@@ -86,13 +85,13 @@ $ sudo apt-get install cloc
 
 统计7zip源码根目录下的代码量：
 
-```
+```bash
 $ cloc .
 ```
 
 结果：
 
-```
+```bash
     1512 text files.
     1179 unique files.
      223 files ignored.
@@ -118,7 +117,7 @@ SUM:                          1055          26259           9441         167893
 
 很酷有没有，但sloccount有更酷的功能，它能统计代码量和开发效率，不知道它根据什么统计的，可能是git或者svn的提交记录，但若是没有版本库只有源码呢，时间有限没有尝试也没有看官方文档，但看结果：
 
-```
+```bash
 Creating filelist for code
 Creating filelist for lzma920
 Have a non-directory at the top, so creating directory top_dir

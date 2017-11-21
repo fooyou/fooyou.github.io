@@ -6,22 +6,21 @@ tags: linux
 date: 2015-10-27 14:13:10
 published: true
 summary: 许多命令是重复的不断用的，虽然熟能生巧，但总打这些命令的确很烦人，所以可以通过history命令来简化重复命令的使用。
-image: pirates.svg
-comment: true
-latex: false
+mathjax: false
+highlight: true
 ---
 
 history命令可以快速的查找已使用的命令，更妙的是可以通过日期和时间戳去查找相应时间段使用过的命令。
 
 1. 列出所有执行过的命令
 
-```
+```bash
 $ history
 ```
 
 列出如下命令：
 
-```
+```bash
  1001  ps -e|grep w3m
  1002  echo $JAVA_HOME
  1003  cd Downloads/
@@ -29,14 +28,14 @@ $ history
 
 2. 列出所有执行过命令的日期和时间戳
 
-```
+```bash
 $ export HISTTIMEFORMAT='%F %T  '
 $ history
 ```
 
 export的那个变量将打印出日期和时间戳
 
-```
+```vim
  1022  2015-11-02 10:11:00  rm .fuse_hidden000*
  1023  2015-11-02 10:11:00  rm .fuse_hidden000000*
  1024  2015-11-02 10:11:00  rm .fuse_hidden0000006f00000005 
@@ -45,21 +44,21 @@ export的那个变量将打印出日期和时间戳
 
 3. 过滤历史消息
 
-```
+```bash
 $ export HISTIGNORE='ls -l:pwd:date:'
 $ history
 ```
 
 4. 忽略重复命令
 
-```
+```bash
 $ export HISTCONTROL=ignoredups
 $ history
 ```
 
 5. 取消export设置
 
-```
+```bash
 $ unset export HISTCONTROL
 $ unset export HISTTIMEFORMAT
 ```
@@ -80,13 +79,13 @@ $ unset export HISTTIMEFORMAT
 
 9. 删除或者清楚history记录
 
-```
+```bash
 $ history -c
 ```
 
 10. 搜索历史记录
 
-```
+```bash
 $ history | grep cmd
 ```
 
@@ -94,7 +93,7 @@ $ history | grep cmd
 
 按下`Ctrl + r`，输入简单搜索字符，终端会搜索出相匹配的最近执行的命令，按`enter`键执行搜出的命令，`esc`键返回。
 
-```
+```bash
 (reverse-i-search)`pa': mvn package
 ```
 
@@ -102,7 +101,7 @@ $ history | grep cmd
 
 `history`列出历史记录及其序号，然后`!n`，就可以执行第n号命令
 
-```
+```bash
 $ !1200
 ```
 

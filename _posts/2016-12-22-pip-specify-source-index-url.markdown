@@ -6,8 +6,8 @@ tags: python
 date: 2016-12-22 11:12:40
 published: true
 summary: 公司的国际线路慢的要死，使用 pip 安装模块一直断断...
-image: pirates.svg
-comment: true 
+mathjax: false
+highlight: true
 ---
 
 国内的 pypi 的镜像应该有好多，比如豆瓣、淘宝、清华...

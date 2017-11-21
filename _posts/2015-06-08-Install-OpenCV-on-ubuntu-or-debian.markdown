@@ -3,13 +3,11 @@ layout: post
 title: 在Ubuntu或Debian上安装OpenCV
 category: Document
 tags: opencv linux
-year: 2015
-month: 06
-day: 04
+date: 2015-06-04
 published: true
 summary: 安装过程记录一下
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 **注意:** 本文档记录的内容只在Ubuntu 14.04 LTS上测试过, OpenCV版本为3.0.0.

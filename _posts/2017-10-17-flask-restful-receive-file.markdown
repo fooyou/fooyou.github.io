@@ -6,8 +6,8 @@ tags: web
 date: 2017-10-17 16:10:44
 published: true
 summary: flask-restful 如何接受并保存文件
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 ## 前言

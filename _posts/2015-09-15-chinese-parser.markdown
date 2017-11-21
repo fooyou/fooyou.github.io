@@ -6,9 +6,8 @@ tags: nlp
 date: 2015-09-15 09:36:24
 published: true
 summary: 句法分析基本知识
-image: pirates.svg
-comment: true
-latex: false
+mathjax: false
+highlight: false
 ---
 
 句法分析判断输入的单词序列的构成是否合乎给定的语法，并通过构造句法树来确定句子的结构以及各层次句法成分之间的关系，即确定一个句子中的哪些词构成一个短语，哪些词是动词的主语或宾语等问题。目前，句法分析在机器翻译、信息检索与抽取、问答系统、语音识别等研究领域中都有重要的应用价值。

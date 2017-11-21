@@ -6,8 +6,8 @@ tags: linux
 date: 2016-05-20 10:05:24
 published: true
 summary: 
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: false
 ---
 
 本文搜集了 linux 上快速查看硬件信息或是配置信息的命令。

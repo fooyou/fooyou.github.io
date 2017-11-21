@@ -6,8 +6,8 @@ tags: python
 date: 2016-08-01 10:08:24
 published: true
 summary: 敏感信心如何存储呢？
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 *今天是八一建军节，现在的我能无忧无虑的工作生活，幸福并感激着！*

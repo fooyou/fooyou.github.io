@@ -3,13 +3,11 @@ layout: post
 title: 倾诉
 category: Document
 tags: christian
-year: 2015
-month: 06
-day: 15
+date: 2015-06-15
 published: true
 summary: 反省
-image: christian_cross.svg
-comment: false
+mathjax: false
+highlight: false
 ---
 
 

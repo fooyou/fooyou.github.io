@@ -6,9 +6,8 @@ tags: linux
 date: 2015-09-30 15:52:28
 published: true
 summary: ssh断开时目标机继续执行任务，通常使用nohup和screen，screen很强大貌似不在维护了，所以找到了一个后续版本tmux。
-image: pirates.svg
-comment: true
-latex: false
+mathjax: false
+highlight: true
 ---
 
 ssh离线任务工具一般用的是nohup和screen，screen更为强大，而tmux是其后续，他们两个操作类似，下面只介绍tmux的使用。
@@ -27,7 +26,7 @@ screen和tmux可以轻松的管理ssh远程任务，session、windows的管理�
 
 ## 安装
 
-```
+```bash
 $ sudo apt-get install tmux
 ```
 
@@ -72,7 +71,7 @@ $ sudo apt-get install tmux
 
 配置文件：~/.tmux.conf
 
-```
+```vim
 ##############################
 #  _
 # | |_ _ __ ___  _   ___  __

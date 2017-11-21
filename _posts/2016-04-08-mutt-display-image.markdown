@@ -6,8 +6,8 @@ tags: mutt linux
 date: 2016-04-08 16:04:43
 published: true
 summary: Google 了一大圈，终于能在 tty 终端下显示 mutt 邮件中的图片了。
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 最终搞定的是使用工具 [fim(fbi-improved)](http://www.nongnu.org/fbi-improved/)，原先的 fbi 在 tty 下也是可以显示图片的，但不如 fim 智能，fim会根据当前的环境自动切换视频模式（linux frame buffer, X/Xorg SDL lib, X/Xorg Imlib2 lib, ASCII mode aalib)。
@@ -18,7 +18,7 @@ w3m 在不使用外部图片浏览器显示图片时也和 fbi 一样，有哥�
 
 看到 fim 的智能选择视频模式后，立马安装：
 
-```
+```bash
 $ sudo apt-get install fim
 ```
 
@@ -26,7 +26,7 @@ Oh， Shit! 没有源，只要自己编译了，于是下了安装包[fim-0.5-rc
 
 根据 Readme 说明配置安装
 
-```
+```bash
 $ sudo apt-get install automake autoconf libtool
 $ sudo apt-get install libreadline-dev libexif-dev
 $ sudo apt-get install libjpeg-dev libpng-dev libtiff-dev libgif-dev
@@ -43,7 +43,7 @@ $ sudo make install
 
 好了，修改 mutt 的附件配置文件 ~/.mailcap
 
-```
+```bash
 image/*; fim %s; /dev/null
 ```
 

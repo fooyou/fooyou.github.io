@@ -6,8 +6,8 @@ tags: bigdata
 date: 2016-11-19 17:11:37
 published: true
 summary: 用titan + hbase 伪分布式搭建好了使用 GraphOfTheGodsFactory.load(graph) 也成功了，可以在创建其他图时手动删除了 hbase 数据库目录，但再次 TitanFactory.open('conf/titan-hbase-es.properties') 时竟然弹出了一大串的异常...
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 上篇说到了使用 titan + hbase 搭建为分布式图数据库引擎，并且使用 GraphOfTheGodsFactory 成功加载到了 hbase 里。现在需要把 GraphOfTheGodsFactory 的这个图删掉，然后用其他测试数据创建图。

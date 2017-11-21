@@ -6,8 +6,8 @@ tags: bigdata
 date: 2016-11-15 14:13:03
 published: true
 summary: 使用 Titan 以 hbase 构建图数据库引擎
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: false
 ---
 
 ### 关于 hbase 的使用及其配置文档

@@ -6,8 +6,8 @@ tags: linux
 date: 2016-04-13 11:04:09
 published: true
 summary: xclip 和 xsel 可以和系统剪贴板交互，但一直在使用 tmux，所以得把 tmux 的 Ctrl+b+[ 空格，选择后 Enter 这套流程 Copy 到系统剪贴板中。
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 为了能把 tmux 的复制的内容复制到 X11 系统剪贴板中，当前我是这么做的：

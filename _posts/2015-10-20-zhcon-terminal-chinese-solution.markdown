@@ -6,9 +6,8 @@ tags: linux
 date: 2015-10-20 09:13:58
 published: true
 summary: 突发奇想要在终端使用浏览器，这样在看新闻时就不怕广告图片什么的乱飞了，可以专注在文字阅读上，但若是在tty上呢？
-image: pirates.svg
-comment: true
-latex: false
+mathjax: false
+highlight: false
 ---
 
 十年前的大学时代，对于刚接触计算机的我来说，所知道的仅仅是有个叫Windows的系统，花几千块配个512M内存和独立显卡就可以流畅的玩魔兽，用电脑还可以聊QQ，看电影。Windows XP——一个观看世界的窗口。学校实验室里牛气冲天的Matlab，AutoCAD全都运行在那个窗口里，这么牛的窗口就这么突然来到我的学生时代，真的不知道这个怪胎从哪里来，都会干什么？

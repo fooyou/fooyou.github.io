@@ -3,13 +3,11 @@ layout: post
 title: Scrapy 学习笔记（一）
 category: Document
 tags: python scrapy
-year: 2015
-month: 04
-day: 24
+date: 2015-04-24
 published: true
 summary: 妹呀，早知道有scrapy就不用BeautifulSoup自己解析response了，快来学习吧，简单，高效
-image: pirates.svg
-comment: true
+mathjax: false
+highlight: true
 ---
 
 本文以dmoz.org网站为例，介绍简单的scrapy爬虫的创建。
