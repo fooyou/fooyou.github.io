@@ -85,7 +85,7 @@ static_cast 可以为指针加上 const 修饰符；
 - 编译器强制实施 bitwise constness，但你编写程序时应该使用“概念上的常量性”（conceptual constness）。
 - 当 const 和 non-const 成员函数有着实质等价的实现时，令 non-const 版本调用 const 版本可避免代码重复。
 
-### 条款2：尽量用 <iostream> 而不用 <stdio.h>
+### 条款2：尽量用 \<iostream\> 而不用 \<stdio.h\>
 
 > "类型安全和扩展性是 C++ 的基石"
 

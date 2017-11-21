@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 使用libreoffice把\*.[odt|xls|doc|docx|xlsx]转化成html
+title: 使用libreoffice把 .[odt|xls|doc|docx|xlsx]转化成html
 category: Document
 tags: doc office html
 date: 2015-11-30 16:11:19
