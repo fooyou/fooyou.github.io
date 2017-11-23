@@ -105,5 +105,7 @@ joshua@joshua:~/Documents/gdt$ du -sh
 
 OK!
 
+# 参考：
 
-> 参考：http://blog.csdn.net/king_sundi/article/details/7751906
+> https://itextpdf.com/blog/how-completely-remove-file-git-repository
+> http://blog.csdn.net/king_sundi/article/details/7751906
