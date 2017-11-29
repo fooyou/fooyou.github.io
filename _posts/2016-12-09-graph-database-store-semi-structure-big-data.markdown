@@ -21,12 +21,12 @@ highlight: false
 
 ## NOSQL 数据库
 
-     类型       |     举例
-----------------|--------------------
- Key-Value 存储 | redis、riak、Voldemort. Dynamo
- 宽列存储       | HBase、Cassandra
- 文件存储       | mongdb、CouchDB
- 图存储         | Neo4j、titan、OrientDB
+|    类型       |     举例        |
+| :---:         |     :---:       |
+| Key-Value 存储 | redis、riak、Voldemort. Dynamo |
+| 宽列存储       | HBase、Cassandra |
+| 文件存储       | mongdb、CouchDB |
+| 图存储         | Neo4j、titan、OrientDB |
 
 
 ### Key-Value 存储
