@@ -1,0 +1,15 @@
+---
+layout: post
+title: DeepOps GPU 集群的安装
+category: Document
+tags: k8s
+date: 2021-07-16 11:07:11
+published: true
+summary: GPU集群训练，Pascal+ 架构 k8s，非Pascal 架构 slurm
+image: pirates.svg
+comment: true
+---
+
+Nvidia 公司的开源方案：https://github.com/NVIDIA/deepops
+
+几乎是一键式安装，当然有众多的前提。
