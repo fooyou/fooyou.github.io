@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 【论文】LLaMA：开放和搞笑的基础语言模型集
+title: 【论文】LLaMA：开放和高效的基础语言模型集
 category: Document
 tags: llm llama
 date: 2023-08-01 10:08:02
