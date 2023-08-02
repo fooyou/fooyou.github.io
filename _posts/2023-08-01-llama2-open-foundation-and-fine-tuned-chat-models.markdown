@@ -3,7 +3,7 @@ layout: post
 title: 【论文】LLaMA 2: 开放式基础和微调聊天模型
 category: Document
 tags: llm llama2 llama
-date: 2023-08-01 16:08:24
+date: 2023-08-01 11:08:24
 published: true
 summary: 
 cover: 
