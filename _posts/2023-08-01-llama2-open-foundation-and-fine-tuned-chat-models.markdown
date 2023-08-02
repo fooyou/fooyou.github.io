@@ -94,7 +94,7 @@ comment: false
 **训练硬件。**我们在 Meta 的研究超级集群（RSC）（Lee 和 Sengupta，2022）以及内部生产集群上预训练了我们的模型。这两个集群都使用 NVIDIA A100s。两个集群之间有两个关键差异，第一个是可用的互连类型：RSC 使用 NVIDIA Quantum InfiniBand，而我们的生产集群则配备了基于通用以太网交换机的 RoCE（RDMA over converged Ethernet）解决方案。这两个解决方案都可以互连 200 Gbps 的端点。第二个差异是每个 GPU 的功耗限制 - RSC 使用 400W，而我们的生产集群使用 350W。通过这个双集群设置，我们能够比较这些不同类型的互连网络在大规模训练中的适用性。RoCE（一种更实惠的商业互连网络）是其中一种。
 
 
- -      | Params | Time(GPU-h) | Power(W) | Carbon Emitted(tCO2eq)
+ x      | Params | Time(GPU-h) | Power(W) | Carbon Emitted(tCO2eq)
 --------|--------|-------------|----------|------------------------
  LLaMA 2|  7B    | 184320      | 400      | 31.22
  LLaMA 2| 13B    | 368640      | 400      | 62.44
