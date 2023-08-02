@@ -7,7 +7,7 @@ date: 2023-08-01 10:08:02
 published: true
 summary: 
 cover: 
-comment: true
+comment: false
 ---
 
 作者：Hugo Touvron∗, Thibaut Lavril∗, Gautier Izacard∗, Xavier Martinet, Marie-Anne Lachaux, Timothee Lacroix, Baptiste Rozière, Naman Goyal, Eric Hambro, Faisal Azhar, Aurelien Rodriguez, Armand Joulin, Edouard Grave∗, Guillaume Lample∗
@@ -180,7 +180,7 @@ Stack Exchange 是一个高质量的问答网站，涵盖了从计算机科学�
 - 使用 0.1 的权重衰减（weight decay）和 1.0 的梯度裁剪（gradient clipping）；
 - 使用 2,000 个 warmup steps，并根据模型大小来调整 learning rate 和 batch size。
 
-![figure 1: Training loss over train tokens for the 7B, 13B, and 65B models](../postimgs/llama1_training_loss.jpg)
+![figure 1: Training loss over train tokens for the 7B, 13B, and 65B models](/postimgs/llama1_training_loss.jpg)
 
 *图1：7B, 13B, 33B, 和 65B 模型的训练损失。LLaMA-33B 和 LLaMA-65B 是在 1.4T token 上训练的，小点的模型是在 1.0T token 上训练的，所有模型的训练 batch 大小为 4M token*
 
@@ -237,11 +237,11 @@ Stack Exchange 是一个高质量的问答网站，涵盖了从计算机科学�
  Chinchilla | 70B  | 83.7  | 81.8 | 51.3 | 80.8      | 74.9       | -     | -     | -
  PaLM       | 62B  | 84.8  | 80.5 | -    | 79.7      | 77.0       | 75.2  | 52.5  | 50.4
  PaLM-cont  | 62B  | 83.9  | 81.4 | -    | 80.6      | 77.0       | -     | -     | -
- PaLMa      | 540B | 88.0  | 82.3 | -    | 83.4      | 81.1       | 76.6  | 53.0  | 53.4
+ PaLMa      | 540B |**88.0**|82.3 | -    | 83.4      |**81.1**    | 76.6  | 53.0  | 53.4
  LLaMA      | 7B   | 76.5  | 79.8 | 48.9 | 76.1      | 70.1       | 72.8  | 47.6  | 57.2
  LLaMA      | 13B  | 78.1  | 80.1 | 50.4 | 79.2      | 73.0       | 74.8  | 52.7  | 56.4
- LLaMA      | 33B  | 83.1  | 82.3 | 50.4 | 82.8      | 76.0       | 80.0  | 57.8  | 58.6
- LLaMA      | 65B  | 85.3  | 82.8 | 52.3 | 84.2      | 77.0       | 78.9  | 56.0  | 60.2
+ LLaMA      | 33B  | 83.1  | 82.3 | 50.4 | 82.8      | 76.0       |**80.0**|**57.8**| 58.6
+ LLaMA      | 65B  | 85.3  |**82.8**|**52.3**|**84.2**|77.0       | 78.9  | 56.0  |**60.2**
 
 *表3：Zero-shot performance on Common Sense Reasoning tasks*
 
@@ -270,5 +270,36 @@ Stack Exchange 是一个高质量的问答网站，涵盖了从计算机科学�
  PaLM       | 540B | 21.2   | 29.3   |    -   | 39.6
  LLaMA      |   7B | 16.8   | 18.7   | 22.0   | 26.1
  LLaMA      |  13B | 20.1   | 23.4   | 28.1   | 31.9
- LLaMA      |  33B | 24.9   | 28.3   | 32.9   | 36.0
- LLaMA      |  65B | 23.8   | 31.0   | 35.0   | 39.9
+ LLaMA      |  33B |**24.9**| 28.3   | 32.9   | 36.0
+ LLaMA      |  65B | 23.8   |**31.0**|**35.0**|**39.9**
+
+*表4：__NaturalQuestions.__ Exact match performance.*
+
+
+ Model      | psz  | 0-shot | 1-shot | 5-shot | 64-shot
+------------|------|--------|--------|--------|----------
+ Gopher     | 280B | 43.5   | -      | 57.0   | 57.2
+ Chinchilla | 70B  | 55.4   | -      | 64.1   | 64.6
+ LLaMA      |  7B  | 50.0   | 53.4   | 56.3   | 57.6
+ LLaMA      | 13B  | 56.6   | 60.5   | 63.1   | 64.0
+ LLaMA      | 33B  | 65.1   | 67.9   | 69.9   | 70.4
+ LLaMA      | 65B  |**68.2**|**71.6**|**72.6**|**73.0**
+
+*表 5：TriviaQA. Zero-shot and few-shot exact match performance on the filtered dev set.*
+
+在这两个基准测试中，LLaMA-65B 在零样本和少样本设置中都实现了 state-of-the-arts 的性能。 更重要的是，LLaMA-13B 在这些基准测试中与 GPT-3 和 Chinchilla 相比也具有竞争力，尽管参数只有后者的 10%~20％（5-10 smaller）。 在推理场景，LLaMA-13B 能在单个 V100 GPU 上运行。
+
+### 3.3 阅读理解（Reading Comprehension）
+
+阅读理解能力测试基于 “RACE 阅读理解基准测试”（Lai 等，2017）。 这个数据集是从为中国初中生和高中生设计的英文阅读理解考试中收集的。 一些设置遵循 Brown 等（2020），测试结果见表 6，
+
+ Model | psz  | RACE-middle | RACE-high
+-------|------|-------------|-----------
+ GPT-3 | 175B | 58.4        | 45.5
+ PaLM  |   8B | 57.9        | 42.3
+ PaLM  |  62B | 64.3        | 47.5
+ PaLM  | 540B | **68.1**    | 49.1
+ LLaMA |   7B | 61.1        | 46.9
+ LLaMA |  13B | 61.6        | 47.2
+ LLaMA |  33B | 64.1        | 48.3
+ LLaMA |  65B | 67.9        | **51.6**
